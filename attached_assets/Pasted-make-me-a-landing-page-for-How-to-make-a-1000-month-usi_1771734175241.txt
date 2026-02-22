@@ -1,0 +1,746 @@
+make me a landing page for "How to make a £1000/month using AI" act as if youre alex hormozi writing the sales copy and add images where you think is best, Add a pay wall of £9.99 to the PDF that has all the info: # Â£1000/Month with AI
+
+The No-BS Blueprint to Your First Â£1000 in 30-90 Days
+Introduction: Stop Dreaming, Start Doing
+You bought this book because you want money. Not someday. Not "when things align." Now.
+
+Good.
+
+I'm not here to sell you fairy tales about passive income while you sip margaritas on a beach. I'm here to show you exactly how to make Â£1000/month using AI toolsâ€”and I'm going to give you the step-by-step playbook that's already working for thousands of people.
+
+Here's the truth: AI isn't the future. It's right now. And while everyone else is "learning about it," you're going to be making money with it.
+
+This book is different. No fluff. No theory. Just action.
+
+What you'll get:
+
+8 proven AI business models you can start TODAY
+Exact tools, prompts, and workflows
+Real case studies from people who went from Â£0 to Â£1000+/month
+Timeline breakdowns (30, 60, 90 days)
+The mistakes that will kill your business before it starts
+What you won't get:
+
+Get-rich-quick schemes
+"Secret hacks" that don't work
+Vague advice about "finding your passion"
+Let's get to work.
+
+Chapter 1: Why Â£1000/Month Changes Everything
+Most people think small numbers don't matter. They're wrong.
+
+Â£1000/month isn't life-changing money. But it's life-starting money.
+
+Here's what Â£1000/month gives you:
+
+Proof that you can make money online
+Freedom to quit your side hustle you hate
+Leverage to reinvest and scale to Â£5k, Â£10k, Â£50k/month
+Confidence that you're not stuck
+The gap between Â£0 and Â£1000 is massive. The gap between Â£1000 and Â£10,000? Much smaller.
+
+The AI Advantage
+Five years ago, you needed:
+
+A website developer (Â£2000+)
+A copywriter (Â£500+ per page)
+A graphic designer (Â£300+ per project)
+A virtual assistant (Â£800+/month)
+Today? AI does all of this for Â£20/month in tools.
+
+You're not competing with agencies anymore. You're competing with other people who also have AI. And most of them will quit in 30 days.
+
+Your job: Don't be most people.
+
+Chapter 2: The 8 AI Business Models That Actually Work
+I've tested 47 different AI business models. Most are garbage. These 8 work.
+
+Model 1: AI Content Writing Service
+What it is: Write blog posts, articles, and website copy for businesses using AI.
+
+Revenue potential: Â£1000-Â£5000/month
+Time to first Â£: 7-14 days
+Difficulty: â­â­â˜†â˜†â˜†
+
+Tools you need:
+
+ChatGPT Plus (Â£20/month) or Claude Pro
+Grammarly (free version works)
+Google Docs
+The process:
+
+Find 50 local businesses with terrible websites (dentists, plumbers, lawyers)
+Offer to rewrite their "About" page for Â£100
+Use AI to draft it in 20 minutes
+Edit for 20 minutes (make it not sound like AI)
+Deliver in 24 hours
+Upsell them on blog posts (Â£200/month for 4 posts)
+Real case study:
+James, 34, Manchester. Started September 2024. First client in 9 days (local gym). Made Â£600 first month. Month 3: Â£2400. Now at Â£4200/month with 8 retainer clients.
+
+Timeline:
+
+Week 1: Build simple portfolio (3 sample pieces you write for fake businesses)
+Week 2: Outreach to 50 businesses via email/LinkedIn
+Week 3-4: Close 2-3 clients
+Month 2: Deliver quality, ask for referrals
+Month 3: Scale to Â£2000+
+Model 2: AI Social Media Management
+What it is: Manage social media for small businesses using AI tools.
+
+Revenue potential: Â£800-Â£3000/month
+Time to first Â£: 14-21 days
+Difficulty: â­â­â­â˜†â˜†
+
+Tools you need:
+
+ChatGPT for caption writing
+Canva (free) for graphics
+Buffer or Later (free tier) for scheduling
+The process:
+
+Target businesses with <5000 followers who post inconsistently
+Offer "30 days of content" for Â£300
+Use AI to create 30 posts in 2 hours
+Design graphics in Canva in 3 hours
+Schedule everything
+After 30 days, offer Â£400/month retainer
+Pricing structure:
+
+Â£300 setup (one-time)
+Â£400/month ongoing (3 platforms)
+Â£600/month premium (includes stories, reels scripting)
+Real case study:
+Sarah, 28, Bristol. Started with local coffee shop (owner was her friend). Grew their Instagram from 800 to 3400 followers in 90 days. Now manages 5 businesses at Â£400/month each = Â£2000/month.
+
+Model 3: AI-Powered Email Sequences
+What it is: Write automated email sequences for businesses (welcome series, sales funnels).
+
+Revenue potential: Â£500-Â£2000 per project
+Time to first Â£: 21-30 days
+Difficulty: â­â­â­â˜†â˜†
+
+Tools you need:
+
+ChatGPT Plus
+Google Docs
+Understanding of email marketing (free courses on YouTube)
+The process:
+
+Find businesses using Mailchimp/ConvertKit with no automation
+Offer to write their 5-email welcome sequence for Â£500
+Use AI to draft emails with proven frameworks
+Edit for voice and add personalization
+Deliver with setup instructions
+Why this works:
+Most businesses know they need email marketing. They don't know how to write emails. You do it for them in 3-4 hours of work. Â£500 for 4 hours = Â£125/hour.
+
+Real case study:
+Marcus, 41, London. Former sales manager. Built portfolio by doing 2 free sequences for friends' businesses. Now charges Â£800 per sequence. Does 3-4/month = Â£2400-Â£3200/month.
+
+Model 4: AI Video Script Writing
+What it is: Write scripts for YouTube videos, TikToks, and video ads.
+
+Revenue potential: Â£1000-Â£4000/month
+Time to first Â£: 14-30 days
+Difficulty: â­â­â­â­â˜†
+
+Tools you need:
+
+ChatGPT or Claude
+YouTube (to study viral videos)
+The process:
+
+Target YouTubers with 10k-100k subscribers (they have money but no team yet)
+Offer to write 4 video scripts for Â£200
+Use AI to analyze their top videos
+Generate scripts using proven viral frameworks
+Package with title ideas and thumbnail concepts
+Scaling path:
+
+Â£200 for 4 scripts = Â£50/script
+As you prove ROI, raise to Â£100/script
+Get 3-4 clients on retainer = Â£800-Â£1600/month each
+Real case study:
+Emma, 25, Leeds. Started writing scripts for finance YouTubers. First client paid Â£150 for 3 scripts. Client's channel grew 40%. Now writes for 4 creators at Â£600/month each = Â£2400/month.
+
+Model 5: AI Business Name & Brand Identity
+What it is: Create business names, taglines, and brand voice guides using AI.
+
+Revenue potential: Â£300-Â£1000 per project
+Time to first Â£: 7-14 days
+Difficulty: â­â­â˜†â˜†â˜†
+
+Tools you need:
+
+ChatGPT
+Canva for mood boards
+Google Docs for brand guides
+The process:
+
+Target new businesses (check Companies House for fresh registrations)
+Offer complete brand identity package for Â£500
+Use AI to generate 50+ name options
+Create tagline, mission statement, brand voice
+Deliver 15-page brand guide
+Package includes:
+
+Business name options (if needed)
+Tagline (3-5 options)
+Brand voice guide
+Sample social media bios
+Sample "About Us" copy
+Real case study:
+Tom, 32, Birmingham. Created packages for 8 startups in first 60 days. Average Â£600/project. Month 2: Â£4800. Now does 3-4/month at Â£800 each = Â£2400-Â£3200/month.
+
+Model 6: AI SEO Content Clusters
+What it is: Create 10-15 blog posts around one keyword topic for businesses.
+
+Revenue potential: Â£800-Â£2000 per cluster
+Time to first Â£: 30-45 days
+Difficulty: â­â­â­â­â˜†
+
+Tools you need:
+
+ChatGPT Plus
+Ahrefs or Ubersuggest (for keyword research)
+Google Docs
+The process:
+
+Find businesses with websites but no blog
+Pitch "content cluster" that ranks them on Google
+Research 10-15 related keywords (low competition)
+Use AI to draft all 10-15 posts
+Edit each post (30-60 min per post)
+Deliver with publishing schedule
+Why businesses pay for this:
+One content cluster can drive 500-2000 monthly visitors. That's worth Â£1000+ to most businesses.
+
+Real case study:
+Raj, 29, London. Built content clusters for law firms (high-value niche). Charges Â£1500 per cluster. Does 2/month = Â£3000/month. Just raised prices to Â£2000.
+
+Model 7: AI Ad Copy Testing Packs
+What it is: Create 20-30 ad variations for businesses to test.
+
+Revenue potential: Â£500-Â£1500 per pack
+Time to first Â£: 21-30 days
+Difficulty: â­â­â­â­â˜†
+
+Tools you need:
+
+ChatGPT
+Understanding of direct response copywriting
+Swipe file of winning ads
+The process:
+
+Target businesses running Facebook/Google ads
+Offer "Ad Testing Pack" (30 variations for Â£600)
+Use AI to generate variations using different frameworks
+Test different hooks, offers, CTAs
+Deliver in spreadsheet format
+Package includes:
+
+10 headline variations
+10 body copy variations
+10 CTA variations
+Combination recommendations
+Real case study:
+Lucy, 35, Manchester. Started with e-commerce brands. First client spent Â£12k on ads with 1 variation. Her pack helped them find winner that 3x'd ROI. Now charges Â£1200/pack. Does 2-3/month = Â£2400-Â£3600.
+
+Model 8: AI Course Outline Creation
+What it is: Create complete course outlines for coaches and educators.
+
+Revenue potential: Â£400-Â£1200 per outline
+Time to first Â£: 14-21 days
+Difficulty: â­â­â­â˜†â˜†
+
+Tools you need:
+
+ChatGPT
+Google Docs
+Basic understanding of course structure
+The process:
+
+Target coaches/experts who "want to create a course" (they all do)
+Offer complete course outline for Â£500
+Use AI to structure modules, lessons, exercises
+Include lesson scripts, workbooks, quiz ideas
+Deliver as roadmap they can record
+Package includes:
+
+6-8 module breakdown
+30-40 lesson titles and descriptions
+Script outlines for each lesson
+Student workbook template
+Quiz/assessment ideas
+Real case study:
+David, 38, Edinburgh. Created 11 course outlines in 90 days. Average Â£650/project. Month 3: Â£4550. Now pre-booked 2 months out.
+
+Chapter 3: Your First 7 Days (The Foundation)
+You can't make money until you're in business. Here's your week-one checklist.
+
+Day 1: Choose Your Model
+Pick ONE model from Chapter 2. Not three. ONE.
+
+Ask yourself:
+
+Which model excites me most?
+Which matches my existing skills?
+Which can I get my first client for fastest?
+Write it down. That's your focus for 90 days.
+
+Day 2: Learn the Tools
+Spend 4-6 hours mastering your AI tools.
+
+For ChatGPT:
+
+Learn to write detailed prompts
+Understand how to iterate on outputs
+Save your best prompts
+Practice assignment:
+Generate 10 versions of the same piece of content. Learn what prompts work.
+
+Day 3: Build Your Portfolio
+Create 3 samples of work:
+
+Sample 1: Something in your niche
+Sample 2: Different style/industry
+Sample 3: Your best work
+Don't have clients yet? Make up projects.
+
+"Social media content for fitness studio"
+"Email sequence for e-commerce brand"
+"YouTube scripts for productivity channel"
+Spend 8 hours on this. Make it good.
+
+Day 4: Set Up Your Infrastructure
+You need three things:
+
+Payment method: Stripe, PayPal, or Wise
+Portfolio host: Google Drive, Notion, or simple website (Carrd is Â£15/year)
+Communication: Professional email address (firstname@gmail is fine)
+No fancy branding. No logo. No business cards.
+
+Day 5-7: Outreach
+Build a list of 50-100 potential clients:
+
+Google "[your city] + [target business type]"
+LinkedIn search
+Instagram local business hashtags
+Create outreach template:
+
+Send 10/day. Follow up after 3 days.
+
+Chapter 4: Getting Your First Client (Days 8-30)
+Your first client is the hardest. After that, it's easier.
+
+The Offer Formula
+Make an offer so good they feel stupid saying no.
+
+Bad offer: "I'll write content for you"
+Good offer: "I'll write 3 blog posts for Â£200. If you're not happy, you pay nothing."
+
+Bad offer: "Social media management - Â£500/month"
+Good offer: "I'll create 30 days of content for Â£200. If your engagement doesn't increase, I'll refund you and you keep the content."
+
+The Pricing Strategy
+First 3 clients: Charge 50% of your "real" rate
+Clients 4-10: Charge 75% of your "real" rate
+Client 11+: Charge full rate
+
+Example:
+
+Your target rate: Â£600/month for social media management
+Clients 1-3: Â£300/month ("I'm building my portfolio")
+Clients 4-10: Â£450/month
+Client 11+: Â£600/month
+The Guarantee
+Every offer needs a guarantee:
+
+"If you're not happy, you don't pay"
+"Results in 30 days or I work for free until you get them"
+"If I don't deliver by [date], 50% refund"
+This is how you de-risk the sale.
+
+Where to Find Clients
+Best sources (in order):
+
+Your network (fastest) - Tell everyone what you're doing
+Local businesses (high trust) - Walk in, show your work
+LinkedIn (professional) - Comment, engage, then DM
+Facebook groups (volume) - Join groups where your clients hang out
+Cold email (scalable) - Build lists, send personalized emails
+Script for network:
+"Hey, I'm starting a [service] business helping [target] achieve [result]. Do you know anyone who might need this?"
+
+The First-Client Close
+When someone shows interest:
+
+Discovery call (15 min):
+
+"Tell me about your business"
+"What's your biggest challenge with [their pain point]?"
+"What have you tried before?"
+The pitch:
+
+"I can help you with that. Here's what I'd do..."
+Show portfolio
+Explain process
+Give timeline
+Handle objections:
+
+"It's too expensive" â†’ "What if I did a trial project for half price?"
+"I need to think about it" â†’ "What specifically do you need to think about?"
+"I'm not sure it will work" â†’ "That's why I'm offering a guarantee"
+Close:
+
+"Want to move forward?"
+Send invoice immediately
+Start work once paid
+Case Study: First Client Timeline
+Sophie, 27, Cardiff:
+
+Day 1-7: Chose AI content writing, built portfolio
+Day 8-15: Sent 50 outreach messages
+Day 12: First response (local physiotherapy clinic)
+Day 14: Discovery call
+Day 15: Sent proposal (Â£200 for 3 blog posts)
+Day 16: Got paid, started work
+Day 19: Delivered all 3 posts
+Day 20: Client asked for monthly retainer (Â£400/month)
+Her secret? She walked into the clinic, asked to speak to the owner, and showed her work on her phone.
+
+Chapter 5: Delivering Quality (Not Just AI Slop)
+AI makes you fast. But fast garbage is still garbage.
+
+The 70/30 Rule
+Let AI do 70% of the work. You do 30% that makes it great.
+
+AI's job:
+
+First drafts
+Structure and outlines
+Research and data
+Multiple variations
+Your job:
+
+Strategy and positioning
+Brand voice and personality
+Fact-checking and editing
+Client-specific customization
+The AI-to-Quality Workflow
+Step 1: Strategy (15% of time)
+
+Understand client's goals
+Research their audience
+Define success metrics
+Step 2: AI Generation (30% of time)
+
+Write detailed prompts
+Generate multiple versions
+Select best outputs
+Step 3: Human Polish (40% of time)
+
+Edit for clarity and flow
+Add personality and voice
+Remove AI-sounding phrases
+Inject specific examples
+Step 4: Client Refinement (15% of time)
+
+Send for feedback
+Make revisions
+Over-deliver slightly
+Phrases That Scream "AI Wrote This"
+Delete these immediately:
+
+"In today's digital landscape..."
+"Dive deep into..."
+"Unlock the power of..."
+"In conclusion..."
+"It's worth noting that..."
+"Delve into..."
+Replace with:
+
+Direct statements
+Short sentences
+Specific examples
+Your client's actual voice
+The Over-Delivery Trick
+Always deliver 110%:
+
+They ordered 3 blog posts? Give them 3 posts + 5 social media captions
+They wanted email sequence? Add subject line variations
+They hired you for scripts? Include thumbnail ideas
+This is how you get referrals and testimonials.
+
+Chapter 6: Scaling from Â£1000 to Â£3000/Month
+You hit Â£1000. Great. Don't celebrate yet.
+
+The Three Scaling Levers
+Lever 1: Raise Prices
+Every 10 clients, raise prices 20%.
+
+Start: Â£500/project
+After 10 clients: Â£600
+After 20 clients: Â£720
+After 30 clients: Â£864
+
+Math: 5 projects/month at Â£500 = Â£2500. 5 projects at Â£864 = Â£4320.
+
+Lever 2: Get Retainers
+Turn one-off projects into monthly recurring revenue.
+
+One-off: Â£500 for content package
+Retainer: Â£400/month for ongoing content (12 months = Â£4800)
+
+Lever 3: Increase Capacity
+You can only do so much work. Solutions:
+
+Use better AI workflows (faster)
+Hire VA to handle basic tasks (Â£8/hour)
+Create templates and systems
+Say no to low-value work
+The Productized Service Model
+Stop custom quoting everything. Create packages.
+
+Example: Content Writing Packages
+
+Bronze: Â£400/month (4 blog posts)
+Silver: Â£800/month (8 blog posts + social captions)
+Gold: Â£1500/month (12 blog posts + social + email)
+This is how you get from Â£1000 to Â£5000/month.
+
+Getting Clients to Stay
+Retention = recurring revenue.
+
+How to keep clients:
+
+Deliver on time (always)
+Communicate proactively (don't make them chase you)
+Show results (track metrics, send monthly reports)
+Ask for feedback (and implement it)
+Add small bonuses (surprise them occasionally)
+Average client lifetime: 6 months = not bad
+Average client lifetime: 12 months = great
+Average client lifetime: 24+ months = you win
+
+Case Study: The Â£3000 Month
+Oliver, 31, Liverpool:
+
+Month 1: Â£800 (2 clients, low prices)
+Month 2: Â£1600 (4 clients, raised prices)
+Month 3: Â£2800 (3 retainer clients, 2 one-off projects)
+Month 4: Â£3400 (4 retainers, 1 premium project)
+His secret? Every client was asked for a referral. 60% of his clients came from referrals.
+
+Chapter 7: Avoiding the Traps That Kill AI Businesses
+Most people fail. Here's why (and how to avoid it).
+
+Trap #1: Shiny Object Syndrome
+You start with content writing. Then you see someone making money with social media management. So you switch. Then you hear about AI art. So you switch again.
+
+Result: You're always a beginner. You never master anything.
+
+Solution: Pick ONE model. Do it for 90 days minimum. Get to Â£2000/month before adding anything new.
+
+Trap #2: Underpricing to Death
+You charge Â£50 for a service that takes you 4 hours. That's Â£12.50/hour. McDonalds pays better.
+
+Result: You burn out and quit.
+
+Solution: Price based on value, not hours. If your blog post makes a client Â£5000, charge Â£500, not Â£50.
+
+Trap #3: No Systems
+Every project is custom. Every client is different. You reinvent the wheel every time.
+
+Result: You can't scale. You're always busy but never growing.
+
+Solution: Create templates, workflows, and processes. Document everything. Build your system.
+
+Trap #4: Poor Client Selection
+You take every client who'll pay you. Including nightmare clients who argue, don't pay, and suck your soul.
+
+Result: You hate your business.
+
+Solution: Fire bad clients. Raise prices to filter better clients. Say no to red flags.
+
+Red flags:
+
+"I need this done yesterday"
+"My budget is Â£50 but..."
+"I'll pay you in exposure"
+"This should only take you 20 minutes"
+"I had someone else who did it cheaper"
+Trap #5: Relying on One Client
+You have one amazing client paying you Â£2000/month. Then they cancel.
+
+Result: You're back to Â£0.
+
+Solution: Never let one client be more than 40% of your revenue. Always be getting new clients.
+
+Trap #6: Not Building an Audience
+You get clients through outreach only. If you stop outreach, clients stop coming.
+
+Result: You're always hustling for the next client.
+
+Solution: Build an audience. Post your work. Share client wins. Write threads. Make videos. Let clients come to you.
+
+The 90-Day Failure Prevention Checklist
+Do this weekly:
+
+ Send 20 outreach messages
+ Post 3 times about your work
+ Ask 1 client for a testimonial
+ Improve 1 process/template
+ Learn 1 new AI technique
+ Review finances (Are you profitable?)
+ Talk to 2 potential clients
+If you do this for 90 days, you won't fail.
+
+Chapter 8: The 30-60-90 Day Roadmap
+Here's your exact timeline from Â£0 to Â£1000+/month.
+
+Days 1-30: Foundation & First Clients
+Week 1: Setup
+
+Choose business model
+Learn AI tools (10 hours practice)
+Create portfolio (3 pieces)
+Set up payment infrastructure
+Week 2: Outreach
+
+Build list of 100 potential clients
+Send 50 outreach messages
+Follow up on responses
+Book 3-5 discovery calls
+Week 3: Close & Deliver
+
+Close first 1-2 clients (even at low prices)
+Start delivering work
+Over-deliver by 10%
+Ask for testimonials
+Week 4: Refine
+
+Improve based on feedback
+Send second round of outreach (50 more)
+Close another 1-2 clients
+Start building systems
+Goal by Day 30: Â£500-Â£800 revenue, 2-4 active clients
+
+Days 31-60: Scale & Systems
+Week 5-6: Increase Capacity
+
+Raise prices by 25%
+Create service packages
+Build templates for common deliverables
+Document your workflows
+Week 7: Client Retention
+
+Turn one-off clients into retainers
+Send monthly reports to all clients
+Ask for referrals
+Continue outreach (20/week minimum)
+Week 8: Expand
+
+Add 3-5 new clients
+Fire worst client (if you have one)
+Hire VA for basic tasks (optional)
+Start posting on social media about your work
+Goal by Day 60: Â£1200-Â£1800 revenue, 5-8 active clients
+
+Days 61-90: Momentum & Â£1000+
+Week 9-10: Solidify
+
+Stabilize retainer clients
+Upsell existing clients on additional services
+Referral program (offer discount for referrals)
+Create case studies from best results
+Week 11: Optimize
+
+Audit all clients (keep best, fire worst)
+Raise prices again (10-15%)
+Improve delivery speed
+Build standard packages
+Week 12: Scale
+
+Focus on high-value clients only
+Say no to small projects
+Add premium tier offering
+Plan for Â£3000/month
+Goal by Day 90: Â£1500-Â£2500 revenue, 6-10 clients, systems in place
+
+Conclusion: You Have Everything You Need
+Here's what you know now:
+
+8 proven business models
+Exact tools and processes
+Pricing strategies that work
+How to get clients
+How to deliver quality
+How to scale to Â£3000+
+You don't need:
+
+More courses
+Better tools
+Perfect timing
+Permission
+You need:
+
+To start today
+To do the work
+To not quit
+The gap between you and Â£1000/month isn't skill. It's action.
+
+Most people will read this book and do nothing. They'll wait for "the right time." They'll keep researching. They'll convince themselves they need one more thing.
+
+Don't be most people.
+
+Pick your model. Build your portfolio. Send your first 10 outreach messages. Today.
+
+The only way this doesn't work is if you don't do it.
+
+Go.
+
+Bonus: Resources & Next Steps
+AI Tools:
+
+ChatGPT Plus: openai.com/chatgpt
+Claude Pro: claude.ai
+Jasper AI (alternative): jasper.ai
+Portfolio Hosting:
+
+Notion (free): notion.so
+Carrd (Â£15/year): carrd.co
+Google Sites (free): sites.google.com
+Payment Processing:
+
+Stripe: stripe.com
+PayPal: paypal.com
+Wise: wise.com
+Client Management:
+
+Notion (free): For tracking clients and projects
+Trello (free): For workflow management
+Google Sheets (free): For everything else
+Learning Resources:
+
+Copywriting: "Cashvertising" by Drew Eric Whitman
+Pricing: "Million Dollar Consulting" by Alan Weiss
+Sales: Alex Hormozi's YouTube channel
+Communities:
+
+Reddit: r/freelance, r/entrepreneur, r/sweatystartup
+Facebook: "Freelance Writing Den," "Digital Marketing Questions"
+Twitter/X: Follow people making money, not talking about it
+Next Steps:
+
+Close this book
+Open ChatGPT
+Pick your model
+Create your first portfolio piece
+Message me when you hit Â£1000/month
+Now go make money.
+
+Word count: 5,847 words
+Chapters: 8 + Introduction + Conclusion
+Style: Direct, actionable, Alex Hormozi-inspired (no fluff, real strategies, bold claims backed by specifics), and add anything else you think is necessary to make this super valuable, make sure the UI looks professional and alot of money was put into it making this
