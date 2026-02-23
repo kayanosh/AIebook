@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { ReviewCard } from "@/components/ReviewCard";
 import { FeatureItem } from "@/components/FeatureItem";
-import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
