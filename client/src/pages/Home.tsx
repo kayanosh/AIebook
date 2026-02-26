@@ -5,6 +5,7 @@ import { ReviewCard } from "@/components/ReviewCard";
 import { FeatureItem } from "@/components/FeatureItem";
 import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users, CheckCircle2, Timer } from "lucide-react";
 import { motion } from "framer-motion";
+import { SiOpenai, SiAnthropic, SiGoogle, SiGithub, SiPerplexity, SiNvidia } from "react-icons/si";
 
 export default function Home() {
   const [showCheckout, setShowCheckout] = useState(false);
@@ -26,6 +27,14 @@ export default function Home() {
   const timerSecs = String(timeLeft % 60).padStart(2, "0");
 
   const openCheckout = () => setShowCheckout(true);
+  const aiLogos = [
+    { name: "OpenAI", Icon: SiOpenai, color: "text-emerald-600" },
+    { name: "Anthropic", Icon: SiAnthropic, color: "text-orange-600" },
+    { name: "Google AI", Icon: SiGoogle, color: "text-blue-600" },
+    { name: "GitHub", Icon: SiGithub, color: "text-black" },
+    { name: "Perplexity", Icon: SiPerplexity, color: "text-indigo-600" },
+    { name: "NVIDIA", Icon: SiNvidia, color: "text-green-600" },
+  ];
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
@@ -127,6 +136,26 @@ export default function Home() {
           </motion.div>
         </div>
       </header>
+
+      {/* AI Stack Logos */}
+      <section className="py-8 md:py-10 px-4 bg-white border-y-2 border-black/10">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-center text-xs md:text-sm uppercase tracking-[0.18em] font-black text-muted-foreground mb-5">
+            Built for the AI Era
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+            {aiLogos.map(({ name, Icon, color }) => (
+              <div
+                key={name}
+                className="flex items-center justify-center gap-2 h-14 md:h-16 bg-muted/20 border-2 border-black/10 hover:border-black/30 transition-colors"
+              >
+                <Icon className={`w-5 h-5 md:w-6 md:h-6 ${color}`} />
+                <span className="text-[11px] md:text-xs font-bold uppercase tracking-wide">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Social Proof Bar */}
       <section className="bg-black text-white py-10 md:py-12 border-y-4 border-primary">
