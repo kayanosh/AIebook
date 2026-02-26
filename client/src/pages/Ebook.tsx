@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ContactFormDialog } from "@/components/ContactFormDialog";
+import { MagicLoginForm } from "@/components/MagicLoginForm";
 import { ArrowLeft, Lock, BookOpen, CheckCircle2, AlertTriangle, Lightbulb, Terminal, Users } from "lucide-react";
 
 // Payment gate check
