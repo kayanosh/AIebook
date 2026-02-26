@@ -56,7 +56,7 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
 
     try {
       // 1. Create PaymentIntent on server
-      const piRes = await fetch(api.paymentIntent.create.path, {
+      const piRes = await fetch("/api/payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, amountInPence }),

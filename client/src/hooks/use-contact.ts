@@ -5,8 +5,8 @@ import type { InsertContactRequest } from "@shared/schema";
 export function useContact() {
   return useMutation({
     mutationFn: async (data: InsertContactRequest) => {
-      const res = await fetch(api.contact.create.path, {
-        method: api.contact.create.method,
+      const res = await fetch("/api/contact", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });

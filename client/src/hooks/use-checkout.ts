@@ -5,8 +5,8 @@ import { api, type InsertLead } from "@shared/routes";
 export function useCheckout() {
   return useMutation({
     mutationFn: async (data: InsertLead) => {
-      const res = await fetch(api.checkout.create.path, {
-        method: api.checkout.create.method,
+      const res = await fetch("/api/checkout", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
