@@ -273,6 +273,21 @@ export default function Ebook() {
           </p>
         </div>
 
+        {/* Top Coaching CTA */}
+        <div className="mb-10 border-2 border-primary/30 bg-primary/5 p-6 md:p-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-black uppercase mb-2">Want Direct Help?</h2>
+          <p className="text-muted-foreground text-sm md:text-base mb-5 max-w-2xl mx-auto">
+            Book a 1-on-1 session and get personalised support to choose your model, set up your stack, and land your first client faster.
+          </p>
+          <Button
+            className="btn-brutal h-12 md:h-14 px-6 md:px-10 text-sm md:text-lg gap-2 w-full sm:w-auto"
+            onClick={() => setContactOpen(true)}
+          >
+            <Users className="w-4 h-4 md:w-5 md:h-5" />
+            Claim Your Coaching Call
+          </Button>
+        </div>
+
         {/* Chapter Nav */}
         <ChapterNav onNav={scrollTo} />
 
