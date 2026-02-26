@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 
 export async function sendMagicLink(email: string, token: string) {
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
