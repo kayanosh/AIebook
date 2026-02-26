@@ -448,6 +448,16 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
               <ToolStep num="5"><strong>Every future update:</strong> Make changes in VS Code → save → type <code>git add . && git commit -m "update" && git push</code> in the terminal. Vercel auto-deploys. Client sees changes in 60 seconds.</ToolStep>
             </ToolGuide>
 
+            <ToolGuide icon="GD" name="GoDaddy Domain + DNS (Exact Setup)" subtitle="If the client bought domain on GoDaddy">
+              <ToolStep num="1"><strong>Get domain values from Vercel first:</strong> In your Vercel project go to <strong>Settings → Domains</strong> and add both <code>yourdomain.com</code> and <code>www.yourdomain.com</code>.</ToolStep>
+              <ToolStep num="2"><strong>Log in to GoDaddy:</strong> Go to <strong>godaddy.com</strong> → Sign In → My Products → find the domain → click <strong>DNS</strong> (or "Manage DNS").</ToolStep>
+              <ToolStep num="3"><strong>Add apex/root record:</strong> Type <code>A</code>, Name <code>@</code>, Value <code>76.76.21.21</code>, TTL <code>1 hour</code>. Save. (If Vercel shows a different value, use Vercel's value.)</ToolStep>
+              <ToolStep num="4"><strong>Add www record:</strong> Type <code>CNAME</code>, Name <code>www</code>, Value <code>cname.vercel-dns.com</code>, TTL <code>1 hour</code>. Save.</ToolStep>
+              <ToolStep num="5"><strong>Remove conflicts:</strong> Delete any old A/CNAME records using <code>@</code> or <code>www</code> that point somewhere else, otherwise verification fails.</ToolStep>
+              <ToolStep num="6"><strong>Verify in Vercel:</strong> Go back to Vercel Domains page and click <strong>Refresh</strong>. Wait until both domains show <strong>Valid</strong>. This can take a few minutes to 24 hours.</ToolStep>
+              <ToolStep num="7"><strong>Final check:</strong> Open both <code>https://yourdomain.com</code> and <code>https://www.yourdomain.com</code>. Make sure one redirects to your preferred primary domain.</ToolStep>
+            </ToolGuide>
+
             <TipBox>
               <strong>Alternative AI tools for web dev:</strong> Use <strong>Claude</strong> (claude.ai) with Sonnet models for code editing/debugging. Prompt example: <strong>"You are my senior frontend dev. Fix mobile spacing issues in this React component and explain exactly what you changed."</strong>
             </TipBox>
