@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
   const [email, setEmail] = useState("");
@@ -30,19 +32,19 @@ export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input
+    <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-sm mx-auto">
+      <Input
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
         placeholder="Enter your email"
         required
-        className="border p-2 w-full"
+        className="h-11 sm:h-12 border-2 border-black text-base sm:text-lg focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary rounded-none"
       />
-      <button type="submit" disabled={loading} className="btn-brutal w-full">
+      <Button type="submit" disabled={loading} className="btn-brutal w-full h-11 sm:h-12 text-sm sm:text-base">
         {loading ? "Restoring..." : "Restore Access"}
-      </button>
-      {status && <div className="text-sm mt-2">{status}</div>}
+      </Button>
+      {status && <div className="text-xs sm:text-sm mt-2 text-center">{status}</div>}
     </form>
   );
 }
