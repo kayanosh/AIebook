@@ -372,7 +372,8 @@ export default function Ebook() {
               <Step num="4" title="Find businesses that need websites" desc="Use Google Maps. Search local businesses. Look for: no website at all, outdated/ugly websites, sites that aren't mobile-friendly. Make a list of 50." />
               <Step num="5" title="Build a sample site for them (free)" desc="Pick a business from your list. Use Lovable to build a stunning replacement for their site in 1-2 hours. Screenshot it. This is your pitch." />
               <Step num="6" title='Walk in or email: "I rebuilt your website"' desc={'Show them the before (their current site) and after (your Lovable build). Say: "I can make this live for £1,000. Includes hosting setup, mobile-responsive, and a contact form that works."'} />
-              <Step num="7" title="Deploy using VS Code + GitHub Copilot" desc="Once they say yes, export the code from Lovable, open it in VS Code, use GitHub Copilot to make any final tweaks, and deploy to Vercel or Netlify (both free). Full instructions below." />
+              <Step num="7" title="Deploy using VS Code + GitHub Copilot" desc="Once they say yes, export the code from Lovable, open it in VS Code, use GitHub Copilot to make final tweaks, and deploy to Vercel or Netlify (both free). Follow the beginner checklist below in order." />
+              <Step num="8" title="Create Fiverr + Upwork profiles" desc="Set up one clear service on both platforms: 'AI Website Build (Landing Page)' with one sample screenshot and a fixed starter price. This gives you inbound leads while you do direct outreach." />
             </div>
 
             <h4 className="font-bold uppercase text-sm text-primary mt-6 mb-3">Your AI Web Dev Toolkit</h4>
@@ -404,8 +405,12 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
               <ToolStep num="4"><strong>Review the generated site</strong> in the live preview. Click through every section. Note what needs changing.</ToolStep>
               <ToolStep num="5"><strong>Chat to make changes:</strong> Type things like "Move the testimonials above the pricing section" or "Add a Google Maps embed to the contact page" or "Make the CTA button red and bigger."</ToolStep>
               <ToolStep num="6"><strong>Add advanced features:</strong> "Add a booking calendar" · "Create a FAQ accordion section" · "Add an image gallery with lightbox" · "Build a blog section." Lovable handles all of these.</ToolStep>
-              <ToolStep num="7"><strong>Export the code</strong> when you're happy. Click the GitHub button to push the code to a repository. This is what you'll deploy.</ToolStep>
+              <ToolStep num="7"><strong>Export the code</strong> when you're happy. Click GitHub export in Lovable and create a new repository called <code>client-business-name-site</code>.</ToolStep>
             </ToolGuide>
+
+            <TipBox>
+              <strong>Beginner deploy checklist (do this in order):</strong> 1) Install Git from git-scm.com. 2) Create free GitHub account. 3) Export from Lovable to GitHub. 4) Open VS Code and run <code>git clone [repo-url]</code>. 5) Run <code>npm install</code>. 6) Run <code>npm run dev</code>. 7) Check it works before touching deployment.
+            </TipBox>
 
             <h4 className="font-bold uppercase text-sm text-primary mt-6 mb-3">Learning to Deploy: VS Code + GitHub Copilot</h4>
             <p className="text-muted-foreground mb-4">This is where you level up from "AI user" to "developer." Don't worry — it's far easier than you think, and you only need to learn it once. After that, you can deploy any project in under 10 minutes.</p>
@@ -429,7 +434,7 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
               <ToolStep num="1">Go to <strong>vercel.com</strong>. Sign up with your GitHub account (the same one linked to your Lovable repo).</ToolStep>
               <ToolStep num="2">Click <strong>"Add New Project"</strong> → Select your Lovable project repository from the list.</ToolStep>
               <ToolStep num="3">Click <strong>"Deploy."</strong> That's it. Vercel builds your site and gives you a live URL like <code>your-project.vercel.app</code>.</ToolStep>
-              <ToolStep num="4"><strong>Custom domain:</strong> The client gives you their domain (e.g., smithdental.co.uk). In Vercel, go to Settings → Domains → Add their domain. Update their DNS records (Vercel shows you exactly how). Takes 5 minutes once you've done it once.</ToolStep>
+              <ToolStep num="4"><strong>Custom domain (beginner version):</strong> In Vercel, go to Settings → Domains → Add domain. Then log in where the client bought the domain (GoDaddy/Namecheap/etc), copy the exact DNS record Vercel asks for (usually A or CNAME), paste it, and save. DNS can take 5 minutes to 24 hours.</ToolStep>
               <ToolStep num="5"><strong>Every future update:</strong> Make changes in VS Code → save → type <code>git add . && git commit -m "update" && git push</code> in the terminal. Vercel auto-deploys. Client sees changes in 60 seconds.</ToolStep>
             </ToolGuide>
 
@@ -479,9 +484,10 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
               <Step num="1" title="Open Google Maps for your city" desc='Search "dentist [your city]" or "plumber [your city]". Click on the first 50 results. Look at their websites. Find ones with bad, outdated, or thin content.' />
               <Step num="2" title='Create a sample "About" page' desc="Pick one of those businesses. Open ChatGPT. Use the prompt below to generate a re-written About page. Edit it to sound human. Save it as a PDF — this is your portfolio piece." />
               <Step num="3" title="Email or walk into the business" desc={`"I noticed your website's About page could be stronger. I rewrote it — here's what it could look like. If you like it, I can do this for £100." Show them the PDF.`} />
-              <Step num="4" title="When they say yes, send an invoice" desc="Use PayPal, Stripe, or Wise (setup instructions below). Get paid BEFORE you start the real work." />
+              <Step num="4" title="When they say yes, send an invoice" desc="Use PayPal, Stripe, or Wise (see Day 4 payment setup section below). Get paid BEFORE you start the real work." />
               <Step num="5" title="Use AI to draft the final version in 20 minutes" desc="Open ChatGPT, paste in their current page, tell it to rewrite with a specific tone. Edit for 20 minutes. Deliver in 24 hours." />
               <Step num="6" title="Upsell to monthly retainer" desc='"I can also write 4 blog posts per month for £200. This will help your Google ranking." Boom — recurring income.' />
+              <Step num="7" title="Create Fiverr + Upwork gigs" desc="Publish one offer called 'Website/About Page Rewrite'. Add your sample PDF, turnaround time, and starting price so clients can find you passively." />
             </div>
 
             <h4 className="font-bold uppercase text-sm text-primary mt-6 mb-3">How to Use ChatGPT (or Gemini) for Content Writing</h4>
@@ -533,6 +539,7 @@ Requirements:
               <Step num="4" title="Once they say yes, batch-create the content" desc="Use ChatGPT for all 30 captions (~1 hour). Use Canva for 30 graphics (~3 hours). Schedule everything using Buffer." />
               <Step num="5" title="Schedule posts automatically" desc="Use Buffer (free for up to 3 channels) to schedule all 30 posts at once. Set it and forget it." />
               <Step num="6" title="After 30 days, offer a retainer" desc='"Your engagement went up 40%. Want me to keep going? £400/month for 3 platforms."' />
+              <Step num="7" title="Create Fiverr + Upwork gigs" desc="Publish an offer like 'Monthly Social Media Content + Scheduling'. Add one sample carousel and 3 captions as portfolio proof." />
             </div>
 
             <PromptBox label="PROMPT // 30 Social Media Posts">{`You are a social media manager for a [type of business] called [name] in [city]. 
@@ -560,12 +567,14 @@ Tone: Friendly, professional, not salesy.`}</PromptBox>
               <ToolStep num="3">Search templates in the sidebar. Pick a template that matches their brand colours.</ToolStep>
               <ToolStep num="4"><strong>Edit the text</strong> to match your ChatGPT caption. Change colours to match the client's brand.</ToolStep>
               <ToolStep num="5">Click <strong>"Share" → "Download"</strong> → PNG format. Takes about 5 minutes per graphic.</ToolStep>
-              <ToolStep num="6"><strong>Pro tip:</strong> Create 3 templates and rotate them for visual consistency.</ToolStep>
+              <ToolStep num="6"><strong>Faster design option:</strong> Use Google Gemini image prompts with a "Nana Banana" style prompt pattern to quickly generate visual concepts, then import into Canva and add brand text/logo.</ToolStep>
+              <ToolStep num="7"><strong>Pro tip:</strong> Create 3 templates and rotate them for visual consistency.</ToolStep>
             </ToolGuide>
 
             <ToolGuide icon="Bu" name="Buffer — Scheduling Posts" subtitle="Cost: Free for up to 3 social media channels">
               <ToolStep num="1">Go to <strong>buffer.com</strong> and create a free account.</ToolStep>
               <ToolStep num="2">Click <strong>"Connect Channel"</strong> → connect the client's Instagram/Facebook.</ToolStep>
+              <ToolStep num="2b">Ask client to add you as admin/editor first (Meta Business Suite for Facebook/Instagram) so you don't need their password.</ToolStep>
               <ToolStep num="3">Click <strong>"Create Post"</strong> → upload graphic → paste caption → select date/time.</ToolStep>
               <ToolStep num="4">Repeat for all 30 posts. Schedule the entire month in 1-2 hours.</ToolStep>
               <ToolStep num="5">Buffer will auto-post. Check in once a week to reply to comments.</ToolStep>
@@ -596,6 +605,7 @@ Tone: Friendly, professional, not salesy.`}</PromptBox>
               <Step num="3" title="Write a sample 5-email welcome sequence" desc="Use ChatGPT with the prompt below. Edit each email for voice. Save as a Google Doc — this is your portfolio." />
               <Step num="4" title="Pitch the business owner" desc={`"I noticed you don't have a welcome email sequence. I wrote a sample one. Full 5-email sequence for £500, delivered in 48 hours."`} />
               <Step num="5" title="Deliver with setup instructions" desc="Write the emails + provide step-by-step instructions for Mailchimp or ConvertKit (or offer setup for extra £100)." />
+              <Step num="6" title="Create Fiverr + Upwork gigs" desc="Add an offer called '5-Email Welcome Sequence'. Upload one redacted sample and list exact deliverables." />
             </div>
 
             <PromptBox label="PROMPT // 5-Email Welcome Sequence">{`Write a 5-email welcome sequence for [business name], a [type of business] that sells [products/services].
@@ -629,6 +639,7 @@ For each email include:
               <Step num="2" title="Analyse their top 3 videos" desc="Watch them. Note the structure: hook, intro, main points, transitions, CTA. Paste transcript into ChatGPT to identify the pattern." />
               <Step num="3" title="Write a sample script for them" desc="Use ChatGPT for a video they haven't made yet. Match their tone and structure. Include title ideas and thumbnail concepts." />
               <Step num="4" title="DM them on Instagram/Twitter" desc='"I wrote a free script for your channel. Want me to send it? I write 4 scripts/month for £200."' />
+              <Step num="5" title="Create Fiverr + Upwork gigs" desc="Create one clear offer: 'YouTube Script Writing (10-min video)'. Include 1 sample script and 3 title examples." />
             </div>
 
             <PromptBox label="PROMPT // YouTube Script">{`Write a YouTube video script for a [niche] channel about [topic].
@@ -662,6 +673,7 @@ Total length: ~1500 words (roughly 10-minute video)`}</PromptBox>
               <Step num="2" title="Create a sample brand guide" desc="Use ChatGPT to generate: 10 name options, 5 taglines, a brand voice guide, sample About copy, and social media bios. Design in Canva." />
               <Step num="3" title="Email new business founders" desc='"Congrats on registering [business name]! I help new businesses build their brand identity. Full package is £500."' />
               <Step num="4" title="Deliver a 15-page brand guide" desc="Use ChatGPT for all copy. Use Canva for design. Deliver as a beautiful PDF. Takes 4-5 hours total." />
+              <Step num="5" title="Create Fiverr + Upwork gigs" desc="Publish offer 'Brand Name + Voice Guide Package'. Show 2 sample naming sets and one mini brand guide page." />
             </div>
             <CaseStudy>
               <p><strong>Tom, 32, Birmingham.</strong> Created packages for 8 startups in first 60 days. Average £600/project. Now does 3-4/month at £800 each = <strong>£2,400-£3,200/month.</strong></p>
@@ -673,9 +685,10 @@ Total length: ~1500 words (roughly 10-minute video)`}</PromptBox>
             <p className="text-muted-foreground"><strong className="text-foreground">What it is:</strong> You create a cluster of 10-15 blog posts around one keyword topic. This helps businesses rank on Google and drive organic traffic.</p>
             <div className="space-y-3">
               <Step num="1" title="Find businesses with no blog" desc={`Google "[industry] + [your city]." Visit websites. If zero blog posts, they're leaving traffic on the table.`} />
-              <Step num="2" title="Research keywords using Ubersuggest" desc="Go to neilpatel.com/ubersuggest. Find 10-15 keywords with low competition and decent search volume." />
+              <Step num="2" title="Research keywords using Ubersuggest" desc="Go to neilpatel.com/ubersuggest. Pick keywords with SEO difficulty under 35, search volume above 200/month, and clear buyer intent." />
               <Step num="3" title="Use AI to draft all 10-15 posts" desc="One prompt per post in ChatGPT. Each post: 800-1500 words, SEO-optimised. Edit each for 30-60 minutes." />
               <Step num="4" title="Deliver with a publishing schedule" desc="Give them a 6-week calendar. Charge £800-£2,000 per cluster depending on the niche." />
+              <Step num="5" title="Create Fiverr + Upwork gigs" desc="Offer '10-Post SEO Content Cluster'. Include keyword sheet + publishing calendar as deliverables." />
             </div>
             <CaseStudy>
               <p><strong>Raj, 29, London.</strong> Built content clusters for law firms. Charges £1,500 per cluster. Does 2/month. Just raised prices to <strong>£2,000.</strong></p>
@@ -690,6 +703,7 @@ Total length: ~1500 words (roughly 10-minute video)`}</PromptBox>
               <Step num="2" title="Find businesses with weak ad copy" desc="Search the Ad Library for local businesses running the same 1-2 ads for months. They need fresh variations." />
               <Step num="3" title="Use AI to generate 30 ad variations" desc="Feed ChatGPT their current ad + your swipe file. Ask for 10 headline, 10 body copy, and 10 CTA variations." />
               <Step num="4" title="Deliver as a spreadsheet" desc="Google Sheets: Headlines, Body Copy, CTAs, Recommended combinations. Charge £600-£1,200." />
+              <Step num="5" title="Create Fiverr + Upwork gigs" desc="Publish '30 Ad Copy Variations Pack' with a sample sheet so clients understand exactly what they receive." />
             </div>
             <CaseStudy>
               <p><strong>Lucy, 35, Manchester.</strong> First client spent £12k on ads with 1 variation. Her pack helped them find a winner that 3x'd ROI. Now charges £1,200/pack. Does 2-3/month = <strong>£2,400-£3,600.</strong></p>
@@ -704,6 +718,7 @@ Total length: ~1500 words (roughly 10-minute video)`}</PromptBox>
               <Step num="2" title="DM or email them" desc='"I help coaches turn their expertise into a structured online course. I handle the outline, lesson plans, workbooks — you just record."' />
               <Step num="3" title="Use AI to build the course outline" desc='ChatGPT: "Create a 6-module course outline. Each module has 5-6 lessons. Include descriptions, learning outcomes, exercises, and quiz questions."' />
               <Step num="4" title="Deliver a complete course blueprint" desc="6-8 modules, 30-40 lesson descriptions, script outlines, workbook template, quiz ideas. All in a beautiful PDF. Charge £500-£1,200." />
+              <Step num="5" title="Create Fiverr + Upwork gigs" desc="Offer 'Course Outline + Lesson Plan Package' and show 1 sample module outline in your portfolio." />
             </div>
             <CaseStudy>
               <p><strong>David, 38, Edinburgh.</strong> Created 11 course outlines in 90 days. Average £650/project. Month 3: £4,550. Now pre-booked <strong>2 months out.</strong></p>
@@ -743,6 +758,10 @@ Total length: ~1500 words (roughly 10-minute video)`}</PromptBox>
             <ToolStep num="4"><strong>Content alternative:</strong> If ChatGPT gives you generic output, try the same prompt in Gemini. Different AI models have different strengths — use both to get the best results.</ToolStep>
             <ToolStep num="5"><strong>Pro tip:</strong> Use Gemini for fact-checking and research, ChatGPT for creative writing. Together they're unstoppable.</ToolStep>
           </ToolGuide>
+
+          <TipBox>
+            <strong>Day 2 done checklist:</strong> You are done only when you have 1) one saved ChatGPT prompt template, 2) one saved Gemini prompt template, 3) one final polished sample output in Google Doc/PDF, and 4) one folder called "Client Prompts" with your best prompts.
+          </TipBox>
 
           <h3 className="text-xl font-black uppercase mt-8 mb-4 pt-6 border-t-2 border-black/10">Day 3: Build Your Portfolio (8 hours)</h3>
           <div className="space-y-3">
@@ -786,9 +805,23 @@ Total length: ~1500 words (roughly 10-minute video)`}</PromptBox>
             <Step num="✓" title="Portfolio host" desc="Google Drive link (free) or Notion page (free) or Carrd website (£15/year). Don't spend more than 30 minutes." variant="good" />
           </div>
 
+          <PromptBox label="TEMPLATE // First Invoice Message">{`Hi [Client Name],
+
+Great speaking with you today.
+
+As agreed, here is your invoice for:
+- Deliverable: [what they are buying]
+- Amount: £[amount]
+- Delivery timeline: [date/time]
+
+Once payment is received, I will start immediately.
+
+Thanks,
+[Your Name]`}</PromptBox>
+
           <h3 className="text-xl font-black uppercase mt-8 mb-4 pt-6 border-t-2 border-black/10">Days 5-7: Start Outreach</h3>
           <div className="space-y-3">
-            <Step num="1" title="Build a list of 50-100 potential clients" desc='Google "[your city] + [target business type]." Check LinkedIn. Search Instagram local hashtags. Put names and contacts in a Google Sheet.' />
+            <Step num="1" title="Build a list of 50-100 potential clients" desc='Google "[your city] + [target business type]." Check LinkedIn. Search Instagram local hashtags. In your Google Sheet add columns: Business Name, Contact Name, Email, Phone/DM, Source URL, First Contact Date, Follow-up Date, Status.' />
             <Step num="2" title="Send 10 outreach messages per day" desc="Use the template below. Personalise each one. Don't copy-paste generic messages." />
             <Step num="3" title="Follow up after 3 days" desc='"Hey [Name], just bumping this up. Happy to jump on a quick call this week." 80% of sales happen in the follow-up.' />
           </div>
@@ -1051,7 +1084,7 @@ I put together a quick sample of what I could do for [their business name]. Woul
         <ChapterCard id="bonus" icon="FIN" label="Bonus" title="Resources, Tools & Next Steps">
           <h3 className="text-xl font-black uppercase mb-4">AI Tools — Quick Links</h3>
           <div className="space-y-3">
-            <Step num="1" title="ChatGPT Plus — openai.com/chatgpt" desc="Your main AI writing tool. Free tier to start, £20/month for Plus. Non-negotiable." />
+            <Step num="1" title="ChatGPT Plus — openai.com/chatgpt" desc="Your main AI writing tool. Start free. Upgrade to Plus (£20/month) only once you're getting client work consistently." />
             <Step num="2" title="Google Gemini — gemini.google.com" desc="Google's AI assistant. Excellent for research, coding help, and content generation. Free to use with a Google account." />
             <Step num="3" title="Claude Pro — claude.ai" desc="Alternative to ChatGPT. Some prefer Claude for longer, nuanced content. Free tier available." />
             <Step num="4" title="Lovable — lovable.dev" desc="AI website builder. Describe what you want in plain English, get a fully functional website. The future of web development." />
@@ -1115,9 +1148,9 @@ I put together a quick sample of what I could do for [their business name]. Woul
           <div className="font-black uppercase text-xl">£1000/Mo With AI</div>
           <div className="text-sm">© 2025 All Rights Reserved.</div>
           <div className="flex gap-6 text-sm font-bold uppercase">
-            <a href="#" className="hover:text-primary">Terms</a>
+            <a href="/terms" className="hover:text-primary">Terms</a>
             <a href="#" className="hover:text-primary">Privacy</a>
-            <a href="#" className="hover:text-primary">Support</a>
+            <a href="mailto:admin@mathrix.co.uk" className="hover:text-primary">Support</a>
           </div>
         </div>
       </footer>
