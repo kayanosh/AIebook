@@ -1,8 +1,34 @@
 
+import Stripe from "stripe";
+
 type AccessStore = Record<string, boolean>;
 const globalWithAccessStore = globalThis as typeof globalThis & {
   accessStore?: AccessStore;
 };
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
+
+async function hasSuccessfulPayment(email: string): Promise<boolean> {
+  // Walk through payment intents and match successful payments by email.
+  // Works for this project because payment-intent stores receipt_email + metadata.email.
+  let startingAfter: string | undefined = undefined;
+  for (let i = 0; i < 20; i++) {
+    const page = await stripe.paymentIntents.list({
+      limit: 100,
+      ...(startingAfter ? { starting_after: startingAfter } : {}),
+    });
+
+    const match = page.data.some((pi) => {
+      const receiptEmail = (pi.receipt_email || "").toLowerCase();
+      const metaEmail = (pi.metadata?.email || "").toLowerCase();
+      return pi.status === "succeeded" && (receiptEmail === email || metaEmail === email);
+    });
+    if (match) return true;
+    if (!page.has_more || page.data.length === 0) break;
+    startingAfter = page.data[page.data.length - 1]?.id;
+  }
+  return false;
+}
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
@@ -15,6 +41,13 @@ export default async function handler(req: any, res: any) {
   const userEmail = bodyEmail || cookieEmail;
 
   if (userEmail) {
+    const paid = await hasSuccessfulPayment(userEmail);
+    if (!paid) {
+      return res.status(403).json({
+        success: false,
+        message: "No successful payment found for this email.",
+      });
+    }
     globalWithAccessStore.accessStore = globalWithAccessStore.accessStore || {};
     globalWithAccessStore.accessStore[userEmail] = true;
     res.setHeader("Set-Cookie", [

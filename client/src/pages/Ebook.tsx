@@ -240,8 +240,8 @@ export default function Ebook() {
     // Check access via API
     fetch("/api/check-access")
       .then(res => res.json())
-      .then(data => setHasAccess(Boolean(data.hasAccess) || hasEbookAccess()))
-      .catch(() => setHasAccess(hasEbookAccess()));
+      .then(data => setHasAccess(Boolean(data.hasAccess)))
+      .catch(() => setHasAccess(false));
   }, []);
 
   const scrollTo = (id: string) => {
