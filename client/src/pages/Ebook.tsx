@@ -460,7 +460,10 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
             <div className="bg-primary/5 border-2 border-primary/20 p-6 mt-6 text-center">
               <h4 className="text-xl font-black uppercase mb-2">Want to Learn This 1-on-1?</h4>
               <p className="text-muted-foreground text-sm mb-4">Get personalised coaching from an expert who'll walk you through building and deploying your first web app — step by step.</p>
-              <Button className="btn-brutal h-14 px-10 text-lg gap-2" onClick={() => setContactOpen(true)}>
+              <Button
+                className="btn-brutal h-12 sm:h-14 px-6 sm:px-10 text-sm sm:text-lg gap-2 mx-auto w-full sm:w-auto justify-center"
+                onClick={() => setContactOpen(true)}
+              >
                 <Users className="w-5 h-5" />
                 GET 1-ON-1 COACHING
               </Button>
@@ -1094,7 +1097,10 @@ I put together a quick sample of what I could do for [their business name]. Woul
           <div className="bg-primary/5 border-2 border-primary/20 p-6 mt-8 text-center">
             <h4 className="text-xl font-black uppercase mb-2">Want Personalised Coaching?</h4>
             <p className="text-muted-foreground text-sm mb-4">If you'd prefer someone to guide you 1-on-1, we offer personalised coaching sessions. Get hands-on help choosing your model, setting up your tools, and landing your first client.</p>
-            <Button className="btn-brutal h-14 px-10 text-lg gap-2" onClick={() => setContactOpen(true)}>
+            <Button
+              className="btn-brutal h-12 sm:h-14 px-6 sm:px-10 text-sm sm:text-lg gap-2 mx-auto w-full sm:w-auto justify-center"
+              onClick={() => setContactOpen(true)}
+            >
               <Users className="w-5 h-5" />
               REQUEST 1-ON-1 COACHING
             </Button>
