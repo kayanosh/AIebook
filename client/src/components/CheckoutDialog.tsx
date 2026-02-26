@@ -80,6 +80,12 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
         });
+        // Send branded confirmation email (AutonomousLab by Mathrix)
+        await fetch("/api/payment-confirmation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, amountInPence }),
+        }).catch(() => null);
         setSuccess(true);
         toast({ title: "Payment successful!", description: "Welcome — your blueprint is ready." });
       }

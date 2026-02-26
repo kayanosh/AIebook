@@ -20,7 +20,12 @@ export default async function handler(req: any, res: any) {
       amount: amountInPence,
       currency: 'gbp',
       receipt_email: email,
-      metadata: { email },
+      description: "AutonomousLab (by Mathrix) — £1000/Month with AI",
+      metadata: {
+        email,
+        productBrand: "AutonomousLab",
+        companyName: "Mathrix",
+      },
     });
 
     res.status(200).json({ clientSecret: paymentIntent.client_secret });
