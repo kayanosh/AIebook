@@ -100,6 +100,13 @@ export default function Home() {
                 )}
                 <span>{currentPrice}</span>
               </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full md:w-auto border-2 border-black font-bold uppercase tracking-wider"
+              >
+                <a href="/ebook">Already Purchased? Restore Access</a>
+              </Button>
               {!timerExpired && (
                 <div className="flex flex-col items-center gap-3 w-full md:w-auto">
                   <div className="flex items-center gap-3 bg-red-600 text-white px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full justify-center">
