@@ -1,28 +1,38 @@
+import nodemailer from "nodemailer";
+
+function getBaseUrl() {
+  if (process.env.APP_URL) return process.env.APP_URL;
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:5000";
+}
 
 export async function sendMagicLink(email: string, token: string) {
-  const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-  const magicUrl = `https://yourdomain.com/api/magic-login?token=${token}`;
+  const host = process.env.SMTP_HOST;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.SMTP_FROM || user;
+  const port = Number(process.env.SMTP_PORT || 587);
+  const secure = process.env.SMTP_SECURE === "true" || port === 465;
 
-  const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${SENDGRID_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      personalizations: [{
-        to: [{ email }],
-        subject: 'Your Magic Login Link',
-      }],
-      from: { email: process.env.SMTP_FROM || process.env.SMTP_USER },
-      content: [{
-        type: 'text/html',
-        value: `<p>Click <a href="${magicUrl}">here</a> to log in to your ebook access.</p>`,
-      }],
-    }),
+  if (!host || !user || !pass || !from) {
+    throw new Error("SMTP env vars are missing");
+  }
+
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: { user, pass },
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to send email');
-  }
+  const magicUrl = `${getBaseUrl()}/api/magic-login?token=${token}`;
+  await transporter.sendMail({
+    from,
+    to: email,
+    subject: "Your Magic Login Link",
+    html: `<p>Click <a href="${magicUrl}">here</a> to log in to your ebook access.</p>`,
+  });
 }
