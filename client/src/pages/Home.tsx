@@ -364,7 +364,7 @@ export default function Home() {
             © 2025 All Rights Reserved. Not affiliated with Facebook or Google.
           </div>
           <div className="flex gap-4 md:gap-6 text-xs md:text-sm font-bold uppercase">
-            <a href="#" className="hover:text-primary">Terms</a>
+            <a href="/terms" className="hover:text-primary">Terms</a>
             <a href="#" className="hover:text-primary">Privacy</a>
             <a href="#" className="hover:text-primary">Support</a>
           </div>
