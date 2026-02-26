@@ -75,7 +75,7 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
       if (error) throw new Error(error.message);
       if (paymentIntent?.status === "succeeded") {
         localStorage.setItem("ebookAccess", "true");
-        // Set access cookie via API
+        // Set access for authenticated user
         await fetch("/api/set-access", { method: "POST" });
         setSuccess(true);
         toast({ title: "Payment successful!", description: "Welcome — your blueprint is ready." });

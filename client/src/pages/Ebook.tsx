@@ -214,9 +214,15 @@ function Paywall() {
         >
           Go Back & Purchase
         </Button>
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-2">Already purchased? Log in:</h2>
+          {/* MagicLoginForm for email login */}
+          <MagicLoginForm onSuccess={() => window.location.reload()} />
+        </div>
       </div>
     </div>
   );
+import { MagicLoginForm } from "@/components/MagicLoginForm";
 }
 
 // ---- Main Ebook Page ----
