@@ -1,60 +1,96 @@
 import { useState } from "react";
-import { useCheckout } from "@/hooks/use-checkout";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Loader2, Lock, Download, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { insertLeadSchema, type InsertLead } from "@shared/schema";
+import { useLocation } from "wouter";
+import { api } from "@shared/routes";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK as string);
 
 interface CheckoutDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  amountInPence: number;
+  priceDisplay: string;
 }
 
-export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
+export function CheckoutDialog({ open, onOpenChange, amountInPence, priceDisplay }: CheckoutDialogProps) {
+  return (
+    <Elements stripe={stripePromise}>
+      <CheckoutDialogInner
+        open={open}
+        onOpenChange={onOpenChange}
+        amountInPence={amountInPence}
+        priceDisplay={priceDisplay}
+      />
+    </Elements>
+  );
+}
+
+function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }: CheckoutDialogProps) {
   const [success, setSuccess] = useState(false);
-  const [downloadUrl, setDownloadUrl] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-  
-  const checkoutMutation = useCheckout();
+  const [, navigate] = useLocation();
+  const stripe = useStripe();
+  const elements = useElements();
 
-  const form = useForm<InsertLead>({
-    resolver: zodResolver(insertLeadSchema),
-    defaultValues: {
-      email: "",
-    },
-  });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!stripe || !elements) return;
 
-  const onSubmit = (data: InsertLead) => {
-    checkoutMutation.mutate(data, {
-      onSuccess: (res) => {
+    // Validate email
+    if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    setEmailError("");
+    setLoading(true);
+
+    try {
+      // 1. Create PaymentIntent on server
+      const piRes = await fetch(api.paymentIntent.create.path, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, amountInPence }),
+      });
+      const piData = await piRes.json();
+      if (!piRes.ok) throw new Error(piData.message || "Payment setup failed");
+
+      // 2. Confirm card payment
+      const card = elements.getElement(CardElement);
+      if (!card) throw new Error("Card element not found");
+
+      const { error, paymentIntent } = await stripe.confirmCardPayment(piData.clientSecret, {
+        payment_method: { card, billing_details: { email } },
+      });
+
+      if (error) throw new Error(error.message);
+      if (paymentIntent?.status === "succeeded") {
+        localStorage.setItem("ebookAccess", "true");
         setSuccess(true);
-        setDownloadUrl(res.downloadUrl);
-        toast({
-          title: "Access Granted",
-          description: "Welcome to the 1%. Your download is ready.",
-        });
-      },
-      onError: (error) => {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-      },
-    });
+        toast({ title: "Payment successful!", description: "Welcome — your blueprint is ready." });
+      }
+    } catch (err: any) {
+      toast({ title: "Payment failed", description: err.message, variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleOpenChange = (newOpen: boolean) => {
     if (!newOpen) {
-      // Reset state when closing
       setTimeout(() => {
         setSuccess(false);
-        form.reset();
+        setEmail("");
+        setEmailError("");
       }, 300);
     }
     onOpenChange(newOpen);
@@ -69,9 +105,9 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
               {success ? "You're In." : "Almost There"}
             </DialogTitle>
             <DialogDescription className="text-white/90 font-medium text-lg">
-              {success 
-                ? "The gap between £0 and £1000 starts closing now." 
-                : "Enter your email to instantly unlock the blueprint."}
+              {success
+                ? "The gap between £0 and £1000 starts closing now."
+                : "Enter your details to unlock the blueprint."}
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -88,21 +124,25 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
                   Your copy of "£1000/Month with AI" is ready.
                 </p>
               </div>
-              
-              <Button 
+
+              <Button
                 className="w-full btn-brutal h-14 text-lg gap-2"
-                onClick={() => window.open(downloadUrl, '_blank')}
+                onClick={() => {
+                  onOpenChange(false);
+                  navigate("/ebook");
+                }}
               >
                 <Download className="w-5 h-5" />
-                Download PDF Now
+                Read The Blueprint Now
               </Button>
               
               <p className="text-xs text-center text-muted-foreground mt-4">
-                A copy has also been sent to {form.getValues().email}
+                Access granted for {email}
               </p>
             </div>
           ) : (
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Email */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <Label htmlFor="email" className="text-lg font-bold uppercase">Email Address</Label>
@@ -110,49 +150,65 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
                 </div>
                 <Input
                   id="email"
+                  type="email"
                   placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="h-12 border-2 border-black text-lg focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary rounded-none"
-                  {...form.register("email")}
                 />
-                {form.formState.errors.email && (
-                  <p className="text-sm text-primary font-bold">
-                    {form.formState.errors.email.message}
-                  </p>
+                {emailError && (
+                  <p className="text-sm text-primary font-bold">{emailError}</p>
                 )}
               </div>
 
+              {/* Card details */}
+              <div className="space-y-2">
+                <Label className="text-lg font-bold uppercase">Card Details</Label>
+                <div className="border-2 border-black px-4 py-3 focus-within:border-primary transition-colors">
+                  <CardElement
+                    options={{
+                      style: {
+                        base: {
+                          fontSize: "16px",
+                          color: "#000",
+                          fontFamily: "inherit",
+                          "::placeholder": { color: "#9ca3af" },
+                        },
+                        invalid: { color: "#ef4444" },
+                      },
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Order summary */}
               <div className="space-y-4">
                 <div className="bg-muted/50 p-4 rounded-sm border border-black/10 text-sm space-y-2">
                   <div className="flex justify-between font-bold">
                     <span>£1000/Month with AI (PDF)</span>
-                    <span>£9.99</span>
+                    <span>{priceDisplay}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground border-t pt-2 border-dashed border-black/20">
                     <span>Total</span>
-                    <span className="text-black font-black">£9.99</span>
+                    <span className="text-black font-black">{priceDisplay}</span>
                   </div>
                 </div>
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full btn-brutal h-14 text-xl"
-                  disabled={checkoutMutation.isPending}
+                  disabled={loading || !stripe}
                 >
-                  {checkoutMutation.isPending ? (
-                    <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Processing...
-                    </>
+                  {loading ? (
+                    <><Loader2 className="w-5 h-5 mr-2 animate-spin" />Processing...</>
                   ) : (
-                    <>
-                      GET INSTANT ACCESS
-                    </>
+                    <>PAY {priceDisplay} — GET ACCESS</>
                   )}
                 </Button>
-                
+
                 <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                   <Lock className="w-3 h-3" />
-                  <span>256-bit SSL Secure Payment</span>
+                  <span>256-bit SSL Secure Payment via Stripe</span>
                 </div>
               </div>
             </form>

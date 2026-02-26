@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { insertLeadSchema, leads } from "./schema";
+import { insertLeadSchema, insertContactRequestSchema } from "./schema";
 
 export const errorSchemas = {
   validation: z.object({
@@ -19,6 +19,28 @@ export const api = {
       input: insertLeadSchema,
       responses: {
         200: z.object({ success: z.boolean(), downloadUrl: z.string() }),
+        400: errorSchemas.validation,
+      },
+    },
+  },
+  paymentIntent: {
+    create: {
+      method: "POST" as const,
+      path: "/api/create-payment-intent" as const,
+      input: z.object({ email: z.string().email(), amountInPence: z.number() }),
+      responses: {
+        200: z.object({ clientSecret: z.string() }),
+        400: errorSchemas.validation,
+      },
+    },
+  },
+  contact: {
+    create: {
+      method: "POST" as const,
+      path: "/api/contact" as const,
+      input: insertContactRequestSchema,
+      responses: {
+        200: z.object({ success: z.boolean(), message: z.string() }),
         400: errorSchemas.validation,
       },
     },

@@ -1,25 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { ReviewCard } from "@/components/ReviewCard";
 import { FeatureItem } from "@/components/FeatureItem";
-import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users, CheckCircle2, Timer } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const [showCheckout, setShowCheckout] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(5 * 60); // 5 minutes in seconds
+
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timeLeft]);
+
+  const timerExpired = timeLeft <= 0;
+  const currentPrice = timerExpired ? "£49.99" : "£19.99";
+  const originalPrice = "£49.99";
+
+  const timerMins = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+  const timerSecs = String(timeLeft % 60).padStart(2, "0");
 
   const openCheckout = () => setShowCheckout(true);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
       {/* Checkout Dialog */}
-      <CheckoutDialog open={showCheckout} onOpenChange={setShowCheckout} />
+      <CheckoutDialog
+        open={showCheckout}
+        onOpenChange={setShowCheckout}
+        amountInPence={timerExpired ? 4999 : 1999}
+        priceDisplay={currentPrice}
+      />
 
       {/* Top Banner */}
       <div className="bg-black text-white text-center py-2 px-4 text-xs md:text-sm font-bold tracking-widest uppercase">
-        <span className="text-primary mr-2">⚠ WARNING:</span> 
-        Price increases to £49.99 when the timer hits zero.
+        <span className="text-primary mr-2">⚠ WARNING:</span>
+        {timerExpired
+          ? "Limited-time offer has expired. Full price is now £49.99."
+          : `Flash sale ends in ${timerMins}:${timerSecs} — grab it for £19.99 before it's gone!`}
       </div>
 
       {/* Hero Section */}
@@ -65,16 +88,35 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8"
           >
-            <Button 
-              size="lg" 
-              className="btn-brutal h-20 px-12 text-2xl w-full md:w-auto"
-              onClick={openCheckout}
-            >
-              Get The Blueprint • £9.99
-            </Button>
-            <p className="text-sm text-muted-foreground uppercase font-bold tracking-wider">
-              <span className="text-primary mr-1">●</span> Instant PDF Download
-            </p>
+            <div className="flex flex-col items-center gap-2 w-full md:w-auto">
+              <Button 
+                size="lg" 
+                className="btn-brutal h-20 px-12 text-2xl w-full md:w-auto"
+                onClick={openCheckout}
+              >
+                Get The Blueprint •{" "}
+                {!timerExpired && (
+                  <span className="line-through opacity-60 mr-1">{originalPrice}</span>
+                )}
+                <span>{currentPrice}</span>
+              </Button>
+              {!timerExpired && (
+                <div className="flex flex-col items-center gap-3 w-full md:w-auto">
+                  <div className="flex items-center gap-3 bg-red-600 text-white px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full justify-center">
+                    <Timer className="w-6 h-6 animate-pulse shrink-0" />
+                    <span className="text-4xl font-black tabular-nums tracking-tighter">{timerMins}:{timerSecs}</span>
+                    <span className="uppercase font-black text-sm tracking-widest leading-tight text-left">Price<br/>rises soon</span>
+                  </div>
+                  <Button
+                    onClick={openCheckout}
+                    className="bg-primary text-black font-black uppercase text-base px-6 py-3 h-auto border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all w-full"
+                  >
+                    Buy before it expires — £19.99
+                  </Button>
+                </div>
+              )}
+            </div>
+
           </motion.div>
         </div>
       </header>
@@ -84,7 +126,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-black text-primary mb-1">8</div>
+              <div className="text-4xl font-black text-primary mb-1">9</div>
               <div className="text-sm uppercase tracking-widest font-bold">Business Models</div>
             </div>
             <div>
@@ -96,7 +138,15 @@ export default function Home() {
               <div className="text-sm uppercase tracking-widest font-bold">Tested Methods</div>
             </div>
             <div>
-              <div className="text-4xl font-black text-primary mb-1">£9.99</div>
+              <div className="flex flex-col items-center">
+                {!timerExpired && (
+                  <div className="text-lg font-black line-through text-gray-400">{originalPrice}</div>
+                )}
+                <div className="text-4xl font-black text-primary mb-1">{currentPrice}</div>
+                {!timerExpired && (
+                  <div className="text-xs text-primary font-bold">{timerMins}:{timerSecs} left</div>
+                )}
+              </div>
               <div className="text-sm uppercase tracking-widest font-bold">Investment</div>
             </div>
           </div>
@@ -148,7 +198,7 @@ export default function Home() {
                 What's Inside<br/>The <span className="text-primary">Box?</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                This isn't theory. This is a collection of 8 battle-tested business models you can start TODAY with just a laptop and an internet connection.
+                This isn't theory. This is a collection of 9 battle-tested business models you can start TODAY with just a laptop and an internet connection.
               </p>
               
               <div className="space-y-4">
@@ -163,7 +213,7 @@ export default function Home() {
 
             <div className="lg:w-1/2 grid gap-6">
               {[
-                { title: "8 Proven AI Business Models", desc: "I tested 47 models. These are the only 8 that actually work in 2025." },
+                { title: "9 Proven AI Business Models", desc: "I tested 47 models. These are the only 9 that actually work in 2025." },
                 { title: "The 30-90 Day Roadmap", desc: "A day-by-day checklist from £0 to your first £1000." },
                 { title: "Pricing Psychology", desc: "How to charge £500 for a service that takes you 20 minutes." },
                 { title: "Client Acquisition Scripts", desc: "Copy-paste messages to get your first paying client in 7 days." },
@@ -201,10 +251,10 @@ export default function Home() {
             
             <div className="border border-white/20 p-8 bg-white/10 transform md:-translate-y-4">
               <div className="text-primary font-black text-6xl mb-6 opacity-50">02</div>
-              <h3 className="text-2xl font-bold uppercase mb-2">Video Script Writing</h3>
-              <p className="text-gray-400 mb-4">Revenue: £1000-£4000/mo</p>
+              <h3 className="text-2xl font-bold uppercase mb-2">Web/App Creation</h3>
+              <p className="text-gray-400 mb-4">Revenue: £2000-£8000/project</p>
               <p className="text-sm leading-relaxed">
-                Target YouTubers. Use AI to analyze viral hits. Write scripts that guarantee retention.
+                Use AI to build websites and apps for local businesses in hours. Charge project rates and keep monthly retainers.
               </p>
             </div>
 
@@ -258,25 +308,37 @@ export default function Home() {
           </h2>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 font-medium">
-            You have two choices. Close this tab and go back to scrolling. Or invest £9.99—less than a pizza—and build a real income stream.
+            You have two choices. Close this tab and go back to scrolling. Or invest{" "}
+            {timerExpired ? "£49.99" : "£19.99—less than a night out"}—and build a real income stream.
           </p>
           
           <div className="bg-black text-white p-8 mb-12 transform -rotate-1 shadow-xl">
             <div className="text-3xl font-black uppercase mb-2">The Offer</div>
             <ul className="text-left space-y-3 mb-8 max-w-md mx-auto">
               <li className="flex gap-2"><CheckCircle2 className="text-primary shrink-0" /> The Complete 90-Day Blueprint</li>
-              <li className="flex gap-2"><CheckCircle2 className="text-primary shrink-0" /> 8 Battle-Tested Models</li>
+              <li className="flex gap-2"><CheckCircle2 className="text-primary shrink-0" /> 9 Battle-Tested Models</li>
               <li className="flex gap-2"><CheckCircle2 className="text-primary shrink-0" /> Outreach Templates & Scripts</li>
               <li className="flex gap-2"><CheckCircle2 className="text-primary shrink-0" /> 100% Money-Back Guarantee</li>
             </ul>
-            <div className="text-4xl font-black text-primary">£9.99</div>
+            <div className="flex items-center gap-4 justify-center">
+              {!timerExpired && (
+                <div className="text-2xl font-black line-through text-gray-400">{originalPrice}</div>
+              )}
+              <div className="text-4xl font-black text-primary">{currentPrice}</div>
+            </div>
+            {!timerExpired && (
+              <div className="flex items-center justify-center gap-2 mt-2 text-sm font-bold text-primary uppercase">
+                <Timer className="w-4 h-4 animate-pulse" />
+                Offer expires in {timerMins}:{timerSecs}
+              </div>
+            )}
           </div>
 
           <Button 
             onClick={openCheckout}
             className="btn-brutal h-24 text-2xl px-16 w-full md:w-auto shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px]"
           >
-            I WANT THE BLUEPRINT <ArrowRight className="ml-2 w-8 h-8" />
+            I WANT THE BLUEPRINT — {currentPrice} <ArrowRight className="ml-2 w-8 h-8" />
           </Button>
           
           <p className="mt-6 text-sm text-muted-foreground font-bold uppercase">

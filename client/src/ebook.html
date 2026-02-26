@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>AI Money Blueprint — Full Guide</title>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+ <style>
+ :root {
+ --gold: #F5C518;
+ --gold-dark: #d4a800;
+ --black: #080808;
+ --dark: #111111;
+ --dark2: #1a1a1a;
+ --dark3: #222222;
+ --white: #ffffff;
+ --gray: #888888;
+ --light-gray: #cccccc;
+ --green: #22c55e;
+ --red: #ef4444;
+ }
+
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scroll-behavior: smooth; }
+
+ body {
+ font-family: 'Inter', system-ui, sans-serif;
+ background: #0a0a0a;
+ color: var(--white);
+ overflow-x: hidden;
+ line-height: 1.6;
+ }
+
+ /* ===== TOP BAR ===== */
+ .top-bar {
+ position: sticky;
+ top: 0;
+ background: rgba(10,10,10,0.97);
+ backdrop-filter: blur(16px);
+ padding: 14px 28px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ border-bottom: 1px solid #1e1e1e;
+ z-index: 10;
+ }
+ .top-bar span { font-size: 14px; font-weight: 700; color: var(--gold); }
+ .close-btn {
+ background: #1a1a1a;
+ border: 1px solid #333;
+ color: var(--white);
+ padding: 8px 20px;
+ border-radius: 8px;
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: 600;
+ font-family: inherit;
+ transition: all 0.2s;
+ text-decoration: none;
+ }
+ .close-btn:hover { background: #333; }
+
+ /* ===== WRAPPER ===== */
+ .pdf-wrapper {
+ max-width: 900px;
+ margin: 0 auto;
+ padding: 40px 24px 80px;
+ }
+
+ /* ===== CHAPTER NAV ===== */
+ .pdf-nav {
+ display: flex;
+ gap: 8px;
+ flex-wrap: wrap;
+ margin-bottom: 36px;
+ padding: 20px;
+ background: #111;
+ border: 1px solid #1e1e1e;
+ border-radius: 14px;
+ }
+ .pdf-nav-btn {
+ background: #1a1a1a;
+ border: 1px solid #2a2a2a;
+ color: var(--light-gray);
+ font-size: 12px;
+ font-weight: 600;
+ padding: 8px 14px;
+ border-radius: 8px;
+ cursor: pointer;
+ font-family: inherit;
+ transition: all 0.2s;
+ white-space: nowrap;
+ }
+ .pdf-nav-btn:hover, .pdf-nav-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+ /* ===== HERO CARD ===== */
+ .pdf-hero-card {
+ background: linear-gradient(135deg, #14140f 0%, #1a1a10 100%);
+ border: 1px solid rgba(245,197,24,0.2);
+ border-radius: 20px;
+ padding: 56px 48px;
+ text-align: center;
+ margin-bottom: 32px;
+ position: relative;
+ overflow: hidden;
+ }
+ .pdf-hero-card::before {
+ content: '';
+ position: absolute;
+ top: -60%; left: 50%; transform: translateX(-50%);
+ width: 600px; height: 400px;
+ background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+ }
+ .pdf-hero-card h1 {
+ font-size: clamp(32px, 4vw, 48px);
+ font-weight: 900;
+ color: var(--gold);
+ letter-spacing: -0.03em;
+ line-height: 1.1;
+ margin-bottom: 8px;
+ position: relative;
+ }
+ .pdf-hero-card .pdf-subtitle {
+ font-size: 17px;
+ color: var(--light-gray);
+ font-weight: 500;
+ position: relative;
+ }
+
+ /* ===== CHAPTER CARDS ===== */
+ .ch-card {
+ background: #111;
+ border: 1px solid #1e1e1e;
+ border-radius: 20px;
+ margin-bottom: 28px;
+ overflow: hidden;
+ transition: border-color 0.3s;
+ }
+ .ch-card:hover { border-color: #333; }
+ .ch-header {
+ padding: 32px 36px 24px;
+ border-bottom: 1px solid #1e1e1e;
+ display: flex;
+ align-items: flex-start;
+ gap: 20px;
+ }
+ .ch-icon {
+ width: 56px; height: 56px;
+ border-radius: 14px;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 26px;
+ flex-shrink: 0;
+ background: rgba(245,197,24,0.1);
+ border: 1px solid rgba(245,197,24,0.2);
+ }
+ .ch-label {
+ font-size: 11px;
+ font-weight: 800;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--gold);
+ margin-bottom: 4px;
+ display: block;
+ }
+ .ch-title {
+ font-size: 22px;
+ font-weight: 900;
+ line-height: 1.2;
+ letter-spacing: -0.02em;
+ color: var(--white);
+ }
+ .ch-body { padding: 28px 36px 36px; color: #c0c0c0; line-height: 1.8; font-size: 15px; }
+ .ch-body p { margin-bottom: 16px; }
+ .ch-body strong { color: var(--white); }
+ .ch-body em { color: var(--gold); font-style: normal; }
+ .ch-body ul, .ch-body ol { margin: 12px 0 20px 20px; }
+ .ch-body li { margin-bottom: 10px; }
+ .ch-body h3 {
+ font-size: 18px;
+ font-weight: 800;
+ color: var(--white);
+ margin: 36px 0 14px;
+ padding-top: 24px;
+ border-top: 1px solid #1e1e1e;
+ }
+ .ch-body h4 {
+ font-size: 15px;
+ font-weight: 700;
+ color: var(--gold);
+ margin: 24px 0 10px;
+ }
+
+ /* ===== STEP CARDS ===== */
+ .step-grid {
+ display: grid;
+ gap: 12px;
+ margin: 16px 0 24px;
+ }
+ .step {
+ background: #161616;
+ border: 1px solid #222;
+ border-radius: 12px;
+ padding: 18px 20px;
+ display: flex;
+ gap: 16px;
+ align-items: flex-start;
+ }
+ .step-num {
+ width: 32px; height: 32px;
+ border-radius: 50%;
+ background: var(--gold);
+ color: var(--black);
+ font-size: 13px;
+ font-weight: 900;
+ display: flex; align-items: center; justify-content: center;
+ flex-shrink: 0;
+ }
+ .step-content { flex: 1; }
+ .step-content strong { display: block; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+ .step-content p { font-size: 13px; color: var(--gray); margin: 0; line-height: 1.6; }
+
+ /* ===== TOOL CARDS ===== */
+ .tool-guide {
+ background: linear-gradient(135deg, #0d1117 0%, #111116 100%);
+ border: 1px solid #222;
+ border-radius: 14px;
+ padding: 24px;
+ margin: 16px 0;
+ }
+ .tool-guide-header {
+ display: flex; align-items: center; gap: 12px;
+ margin-bottom: 16px;
+ padding-bottom: 14px;
+ border-bottom: 1px solid #1e1e1e;
+ }
+ .tool-logo {
+ width: 40px; height: 40px; border-radius: 10px;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 20px; flex-shrink: 0;
+ }
+ .tool-logo.chatgpt { background: #10a37f; }
+ .tool-logo.canva { background: #7d2ae8; }
+ .tool-logo.buffer { background: #2c4bff; }
+ .tool-logo.stripe { background: #635bff; }
+ .tool-logo.paypal { background: #003087; }
+ .tool-logo.grammarly { background: #15c39a; }
+ .tool-logo.gdocs { background: #4285f4; }
+ .tool-logo.carrd { background: #ff5c5c; }
+ .tool-logo.notion { background: #fff; color: #000; }
+ .tool-logo.wise { background: #9fe870; color: #000; }
+ .tool-logo.ahrefs { background: #ff6a00; }
+ .tool-logo.claude { background: #d97706; }
+ .tool-guide-header h4 { margin: 0; font-size: 15px; font-weight: 800; color: var(--white); }
+ .tool-guide-header span { font-size: 12px; color: var(--gray); }
+ .tool-steps { list-style: none; margin: 0; padding: 0; }
+ .tool-steps li {
+ display: flex; gap: 12px; align-items: flex-start;
+ padding: 10px 0;
+ border-bottom: 1px solid #1a1a1a;
+ font-size: 13px;
+ color: var(--light-gray);
+ line-height: 1.5;
+ }
+ .tool-steps li:last-child { border-bottom: none; }
+ .tool-steps li .ts-num {
+ font-size: 11px;
+ font-weight: 800;
+ color: var(--gold);
+ background: rgba(245,197,24,0.1);
+ padding: 2px 8px;
+ border-radius: 4px;
+ flex-shrink: 0;
+ margin-top: 1px;
+ }
+
+ /* ===== MODEL CARDS ===== */
+ .model-inner-card {
+ background: #161616;
+ border: 1px solid #222;
+ border-radius: 16px;
+ overflow: hidden;
+ margin: 20px 0;
+ }
+ .model-inner-header {
+ background: linear-gradient(135deg, rgba(245,197,24,0.08) 0%, transparent 100%);
+ padding: 20px 24px;
+ border-bottom: 1px solid #222;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ flex-wrap: wrap;
+ gap: 12px;
+ }
+ .model-inner-header h4 { margin: 0; font-size: 17px; font-weight: 800; color: var(--white); }
+ .model-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+ .pdf-badge {
+ display: inline-block;
+ font-size: 11px;
+ font-weight: 700;
+ padding: 5px 12px;
+ border-radius: 100px;
+ }
+ .badge-revenue { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+ .badge-time { background: rgba(96,165,250,0.15); color: #93c5fd; border: 1px solid rgba(96,165,250,0.2); }
+ .badge-diff { background: rgba(245,197,24,0.12); color: var(--gold); border: 1px solid rgba(245,197,24,0.2); }
+ .model-inner-body { padding: 24px; }
+ .model-inner-body p { margin-bottom: 14px; font-size: 14px; color: #b0b0b0; }
+ .model-inner-body strong { color: var(--white); }
+
+ /* ===== CASE STUDY ===== */
+ .case-study {
+ background: linear-gradient(135deg, rgba(245,197,24,0.04) 0%, rgba(245,197,24,0.01) 100%);
+ border: 1px solid rgba(245,197,24,0.15);
+ border-left: 3px solid var(--gold);
+ border-radius: 12px;
+ padding: 20px 24px;
+ margin: 20px 0;
+ }
+ .case-study h4 { color: var(--gold); margin-top: 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px !important; }
+ .case-study p { margin-bottom: 6px !important; }
+
+ /* ===== PAYMENT BOX ===== */
+ .payment-box {
+ background: linear-gradient(135deg, #0f1a0f 0%, #111611 100%);
+ border: 1px solid rgba(34,197,94,0.2);
+ border-radius: 16px;
+ padding: 28px;
+ margin: 24px 0;
+ }
+ .payment-box h4 { color: var(--green) !important; margin-top: 0 !important; font-size: 16px !important; margin-bottom: 14px !important; display: flex; align-items: center; gap:10px; }
+
+ /* ===== TIP / WARN BOXES ===== */
+ .tip-box {
+ background: rgba(96,165,250,0.06);
+ border: 1px solid rgba(96,165,250,0.15);
+ border-left: 3px solid #60a5fa;
+ border-radius: 12px;
+ padding: 18px 22px;
+ margin: 16px 0;
+ font-size: 14px;
+ color: #93c5fd;
+ }
+ .tip-box strong { color: #bfdbfe; }
+ .warn-box {
+ background: rgba(239,68,68,0.06);
+ border: 1px solid rgba(239,68,68,0.15);
+ border-left: 3px solid var(--red);
+ border-radius: 12px;
+ padding: 18px 22px;
+ margin: 16px 0;
+ font-size: 14px;
+ color: #fca5a5;
+ }
+ .warn-box strong { color: #fecaca; }
+
+ /* ===== PROMPT BOX ===== */
+ .prompt-box {
+ background: #0d1117;
+ border: 1px solid #1e3a1e;
+ border-radius: 12px;
+ overflow: hidden;
+ margin: 16px 0;
+ }
+ .prompt-label {
+ background: rgba(34,197,94,0.1);
+ padding: 8px 16px;
+ font-size: 11px;
+ font-weight: 800;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--green);
+ border-bottom: 1px solid #1e3a1e;
+ }
+ .prompt-box pre {
+ background: transparent;
+ border: none;
+ border-radius: 0;
+ padding: 18px;
+ font-size: 13px;
+ margin: 0;
+ white-space: pre-wrap;
+ color: #a0e0b0;
+ line-height: 1.7;
+ }
+
+ /* ===== PRICING TABLE ===== */
+ .pricing-mini-table {
+ width: 100%;
+ border-collapse: separate;
+ border-spacing: 0;
+ border-radius: 12px;
+ overflow: hidden;
+ border: 1px solid #222;
+ margin: 16px 0;
+ }
+ .pricing-mini-table th {
+ background: #1a1a1a;
+ padding: 12px 16px;
+ font-size: 12px;
+ font-weight: 700;
+ text-align: left;
+ color: var(--gold);
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ }
+ .pricing-mini-table td {
+ padding: 12px 16px;
+ font-size: 13px;
+ color: var(--light-gray);
+ border-top: 1px solid #1e1e1e;
+ background: #111;
+ }
+ .pricing-mini-table tr:nth-child(even) td { background: #141414; }
+
+ /* ===== CHECKLIST ===== */
+ .checklist { list-style: none; margin-left: 0 !important; padding-left: 0 !important; }
+ .checklist li { display: flex; gap: 10px; align-items: flex-start; }
+ .checklist li::before { content: '✓'; color: var(--gold); font-weight: 900; flex-shrink: 0; }
+
+ /* ===== PROGRESS BAR ===== */
+ .progress-bar-wrap {
+ background: #1a1a1a;
+ border-radius: 8px;
+ height: 8px;
+ margin: 8px 0 20px;
+ overflow: hidden;
+ }
+ .progress-bar-fill {
+ height: 100%;
+ background: linear-gradient(90deg, var(--gold), #fbbf24);
+ border-radius: 8px;
+ transition: width 0.3s;
+ }
+
+ /* ===== RESPONSIVE ===== */
+ @media (max-width: 640px) {
+ .ch-header { padding: 24px 20px 18px; flex-direction: column; gap: 12px; }
+ .ch-body { padding: 20px; }
+ .pdf-hero-card { padding: 36px 24px; }
+ .model-inner-header { flex-direction: column; }
+ .step { flex-direction: column; gap: 8px; }
+ }
+
+ /* ===== PRINT STYLES ===== */
+ @media print {
+ .top-bar, .pdf-nav { display: none; }
+ body { background: #fff; color: #000; }
+ .ch-card { break-inside: avoid; border-color: #ddd; background: #fff; }
+ .ch-body, .ch-body strong { color: #111; }
+ .ch-body em { color: #b8860b; }
+ .ch-title { color: #000; }
+ .ch-label { color: #b8860b; }
+ .step { background: #f9f9f9; border-color: #ddd; }
+ .step-content p, .step-content strong { color: #222; }
+ }
+ </style>
+</head>
+<body>
+
+ <!-- Top Bar -->
+ <div class="top-bar">
+ <span>AI Money Blueprint — Full Guide</span>
+ <a href="index.html" class="close-btn">✕ Back to Home</a>
+ </div>
+
+ <div class="pdf-wrapper">
+
+ <!-- Hero Card -->
+ <div class="pdf-hero-card">
+ <h1>£1,000/Month with AI</h1>
+ <p class="pdf-subtitle">The No-BS Blueprint to Your First £1,000 in 30–90 Days</p>
+ </div>
+
+ <!-- Chapter Nav -->
+ <div class="pdf-nav">
+ <button class="pdf-nav-btn" onclick="scrollToChapter('intro')">Intro</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch1')">Ch 1</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch2')">Ch 2: Models</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch3')">Ch 3: First 7 Days</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch4')">Ch 4: First Client</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch5')">Ch 5: Quality</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch6')">Ch 6: Scaling</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch7')">Ch 7: Traps</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('ch8')">Ch 8: Roadmap</button>
+ <button class="pdf-nav-btn" onclick="scrollToChapter('bonus')">Bonus</button>
+ </div>
+
+ <!-- ==================== INTRODUCTION ==================== -->
+ <div class="ch-card" id="intro">
+ <div class="ch-header">
+ <div class="ch-icon">I</div>
+ <div>
+ <span class="ch-label">Introduction</span>
+ <div class="ch-title">Stop Dreaming, Start Doing</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>You bought this because you want money. Not someday. Not "when things align." <strong>Now.</strong></p>
+ <p>I'm not here to sell you fairy tales about passive income while you sip margaritas on a beach. I'm here to show you exactly how to make <em>£1,000/month using AI tools</em> — and I'm going to give you the step-by-step playbook that's already working for thousands of people.</p>
+ <p>Here's the truth: AI isn't the future. It's right now. And while everyone else is "learning about it," you're going to be <strong>making money</strong> with it.</p>
+
+ <h3>What You'll Get</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>8 proven AI business models</strong><p>Models you can start TODAY — each with exact tools, prompts, and workflows.</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Real case studies with real numbers</strong><p>People who went from £0 to £1,000+/month. Names, locations, timelines.</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>30-60-90 day action roadmap</strong><p>Exact timeline breakdowns so you know what to do every single day.</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>The 6 traps that kill 90% of AI businesses</strong><p>And exactly how to avoid every single one of them.</p></div></div>
+ </div>
+
+ <div class="warn-box">
+ <strong>What you WON'T find here:</strong> Get-rich-quick schemes. "Secret hacks" that don't work. Vague advice about "finding your passion." This is a <strong>work book</strong>. You have to do the work.
+ </div>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 1 ==================== -->
+ <div class="ch-card" id="ch1">
+ <div class="ch-header">
+ <div class="ch-icon">II</div>
+ <div>
+ <span class="ch-label">Chapter 1</span>
+ <div class="ch-title">Why £1,000/Month Changes Everything</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>Most people think small numbers don't matter. They're wrong.</p>
+ <p>£1,000/month isn't life-changing money. But it's life-<em>starting</em> money.</p>
+
+ <h3>What £1,000/Month Actually Gives You</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Proof</strong><p>Proof that you can make money online. Once you've done it, the doubt disappears forever.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Freedom</strong><p>Freedom to quit the side hustle you hate. £1k/month buys you options.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Leverage</strong><p>Leverage to reinvest and scale. £1k → £5k → £10k → £50k. The first step is the hardest.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Confidence</strong><p>The unshakeable belief that you're not stuck. You have a skill. You have a business.</p></div></div>
+ </div>
+
+ <h3>The AI Advantage — Why Now Is Different</h3>
+ <p>Five years ago, starting an online service business required a team:</p>
+ <table class="pricing-mini-table">
+ <tr><th>Service</th><th>Old Cost</th><th>AI Cost</th></tr>
+ <tr><td>Website Developer</td><td>£2,000+</td><td>£0 (AI + free tools)</td></tr>
+ <tr><td>Copywriter</td><td>£500+ per page</td><td>£20/month (ChatGPT)</td></tr>
+ <tr><td>Graphic Designer</td><td>£300+ per project</td><td>£0 (Canva free tier)</td></tr>
+ <tr><td>Virtual Assistant</td><td>£800+/month</td><td>£0 (AI does it)</td></tr>
+ <tr><td><strong>Total</strong></td><td><strong>£3,600+/month</strong></td><td><strong>£20/month</strong></td></tr>
+ </table>
+ <p>You're not competing with agencies anymore. You're competing with other people who also have AI. And most of them will quit in 30 days.</p>
+ <div class="tip-box"><strong>Key point:</strong> Don't be most people. The gap between £0 and £1,000 is massive. The gap between £1,000 and £10,000? Much smaller. You just need to cross the first gap.</div>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 2 ==================== -->
+ <div class="ch-card" id="ch2">
+ <div class="ch-header">
+ <div class="ch-icon">III</div>
+ <div>
+ <span class="ch-label">Chapter 2</span>
+ <div class="ch-title">The 8 AI Business Models That Actually Work</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>I've tested 47 different AI business models. Most are garbage. These 8 work. Each one includes: what it is, exactly how to do it step-by-step, which tools to use (and how to use them), how to get paid, and a real case study.</p>
+
+ <!-- MODEL 1 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 1: AI Content Writing Service</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£1k–£5k/mo</span>
+ <span class="pdf-badge badge-time">7–14 days to first £</span>
+ <span class="pdf-badge badge-diff">Easy</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> You write blog posts, articles, and website copy for businesses — using AI to do 70% of the heavy lifting. You edit, polish, and deliver. They pay you.</p>
+
+ <h4>Step-by-Step: How to Do This From Scratch</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Open Google Maps for your city</strong><p>Search "dentist [your city]" or "plumber [your city]" or "solicitor [your city]". Click on the first 50 results. Look at their websites. Find ones with bad, outdated, or thin content.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Create a sample "About" page</strong><p>Pick one of those businesses. Open ChatGPT. Use the prompt below to generate a re-written About page. Edit it to sound human. Save it as a PDF — this is your portfolio piece.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Email or walk into the business</strong><p>Say: "I noticed your website's About page could be stronger. I rewrote it — here's what it could look like. If you like it, I can do this for £100." Show them the PDF.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>When they say yes, send an invoice</strong><p>Use PayPal, Stripe, or Wise (setup instructions below). Get paid BEFORE you start the real work.</p></div></div>
+ <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Use AI to draft the final version in 20 minutes</strong><p>Open ChatGPT, paste in their current page, tell it to rewrite with a specific tone. Edit for 20 minutes. Deliver in 24 hours.</p></div></div>
+ <div class="step"><div class="step-num">6</div><div class="step-content"><strong>Upsell to monthly retainer</strong><p>After they're happy, say: "I can also write 4 blog posts per month for £200. This will help your Google ranking." Boom — recurring income.</p></div></div>
+ </div>
+
+ <h4>How to Use ChatGPT for Content Writing</h4>
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo chatgpt">GPT</div>
+ <div><h4>ChatGPT — Your Writing Engine</h4><span>Cost: £20/month for Plus (or free tier to start)</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>chat.openai.com</strong> and create a free account. You can start with the free tier — upgrade to Plus (£20/month) once you have your first paying client.</li>
+ <li><span class="ts-num">2</span> Click "New Chat." In the message box, type a <strong>detailed prompt</strong>. The more detail you give, the better the output. Never just say "write a blog post."</li>
+ <li><span class="ts-num">3</span> <strong>Use this exact prompt template:</strong></li>
+ </ol>
+ <div class="prompt-box">
+ <div class="prompt-label">PROMPT // About Page Rewrite</div>
+ <pre>You are an expert website copywriter. Rewrite the following "About" page for a [type of business] called [business name] in [city].
+
+Current page text:
+[paste their current About page text here]
+
+Requirements:
+- Tone: Professional but warm and approachable
+- Length: 300-400 words
+- Include: Their story, what makes them different, a call to action
+- Do NOT use phrases like— "In today's digital landscape" or "We pride ourselves"
+- Write like a human, not a robot
+- End with a clear call to action (book appointment, call us, etc.)</pre>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">4</span> Read the output. It'll be 80% good. Now <strong>edit it:</strong> remove any AI-sounding phrases, add specific details about the business, adjust the tone to match their brand.</li>
+ <li><span class="ts-num">5</span> If it's not right, type "Make it more casual" or "Make it shorter" or "Add a section about their 20 years of experience." ChatGPT will revise.</li>
+ <li><span class="ts-num">6</span> Copy the final version into Google Docs, format it nicely, export as PDF, and send to the client.</li>
+ </ol>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo grammarly">Gr</div>
+ <div><h4>Grammarly — Polishing Your Work</h4><span>Cost: Free (free tier is all you need)</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>grammarly.com</strong> and create a free account.</li>
+ <li><span class="ts-num">2</span> Install the <strong>browser extension</strong> (works in Chrome, Edge, Firefox). It'll check grammar everywhere you type, including Google Docs.</li>
+ <li><span class="ts-num">3</span> Before sending anything to a client, paste it into the Grammarly editor. Fix every error it flags. This takes 2 minutes and makes you look professional.</li>
+ </ol>
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>James, 34, Manchester.</strong> Started September 2024. First client in 9 days (local gym). Made £600 first month. Month 3: £2,400. Now at £4,200/month with 8 retainer clients.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 2 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 2: AI Social Media Management</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£800–£3k/mo</span>
+ <span class="pdf-badge badge-time">14–21 days to first £</span>
+ <span class="pdf-badge badge-diff">Medium</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> You manage Instagram, Facebook, and/or LinkedIn for small businesses. You create their posts, write their captions, design their graphics, and schedule everything — all using AI tools. They pay you monthly.</p>
+
+ <h4>Step-by-Step: How to Do This From Scratch</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Find businesses with weak social media</strong><p>Open Instagram. Search location tags for your city. Find businesses with under 5,000 followers who haven't posted in 2+ weeks, or post inconsistently. These are your targets. Make a list of 50.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Create a sample "30 days of content" for one of them</strong><p>Pick a business from your list. Use ChatGPT to generate 30 social media post ideas + captions. Design 5 sample graphics in Canva. Put it all in a Google Doc — this is your portfolio.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>DM or email the business owner</strong><p>Say: "I created 30 days of content ideas for your Instagram — for free. Want to see them? If you like them, I can run your socials for £300/month." Attach your sample.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Once they say yes, batch-create the content</strong><p>Use ChatGPT for all 30 captions (takes ~1 hour). Use Canva to design 30 graphics (takes ~3 hours). Schedule everything using Buffer.</p></div></div>
+ <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Schedule posts automatically</strong><p>Use Buffer (free for up to 3 channels) to schedule all 30 posts at once. Set it and forget it. The client sees consistent content all month.</p></div></div>
+ <div class="step"><div class="step-num">6</div><div class="step-content"><strong>After 30 days, offer a retainer</strong><p>"Your engagement went up 40%. Want me to keep going? £400/month for 3 platforms." They'll almost always say yes.</p></div></div>
+ </div>
+
+ <h4>How to Use Each Tool</h4>
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo chatgpt">GPT</div>
+ <div><h4>ChatGPT — Caption & Content Ideas</h4><span>Cost: Free or £20/month for Plus</span></div>
+ </div>
+ <div class="prompt-box">
+ <div class="prompt-label">PROMPT // 30 Social Media Posts</div>
+ <pre>You are a social media manager for a [type of business] called [name] in [city]. 
+
+Create 30 Instagram post ideas with full captions for the next 30 days.
+
+Mix of content types:
+- 8 educational posts (tips related to their industry)
+- 8 behind-the-scenes / personal posts
+- 6 promotional posts (their services/products)
+- 4 engagement posts (questions, polls, this-or-that)
+- 4 testimonial/review highlight posts
+
+For each post include:
+1. Post idea (1 sentence)
+2. Full caption (100-200 words)
+3. 5-10 relevant hashtags
+4. Best time to post (morning/afternoon/evening)
+
+Tone: Friendly, professional, not salesy.
+Do NOT use:— "In today's world",— "Dive deep", or generic filler phrases.</pre>
+ </div>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo canva">Ca</div>
+ <div><h4>Canva — Designing Graphics</h4><span>Cost: Free (Pro is £10/month but not needed)</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>canva.com</strong> and create a free account.</li>
+ <li><span class="ts-num">2</span> Click <strong>"Create a Design"</strong> → choose <strong>"Instagram Post (Square)"</strong> (1080x1080).</li>
+ <li><span class="ts-num">3</span> Search templates in the sidebar. Type the client's industry (e.g. "fitness", "cafe", "dentist"). Pick a template that matches their brand colours.</li>
+ <li><span class="ts-num">4</span> <strong>Edit the text</strong> to match your ChatGPT caption. Change colours to match the client's brand (look at their logo for colours).</li>
+ <li><span class="ts-num">5</span> Click <strong>"Share" → "Download"</strong> → PNG format. Do this for all 30 posts. Takes about 5 minutes per graphic once you get fast.</li>
+ <li><span class="ts-num">6</span> <strong>Pro tip:</strong> Create 3 templates and rotate them. This gives visual consistency and saves massive time.</li>
+ </ol>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo buffer">Bu</div>
+ <div><h4>Buffer — Scheduling Posts</h4><span>Cost: Free for up to 3 social media channels</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>buffer.com</strong> and create a free account.</li>
+ <li><span class="ts-num">2</span> Click <strong>"Connect Channel"</strong> → connect the client's Instagram/Facebook. You'll need their login details (ask them for access, or ask to be added as an admin).</li>
+ <li><span class="ts-num">3</span> Click <strong>"Create Post"</strong> → upload your Canva graphic → paste your ChatGPT caption → select the date and time.</li>
+ <li><span class="ts-num">4</span> Repeat for all 30 posts. You can do this in one sitting — schedule the entire month in 1-2 hours.</li>
+ <li><span class="ts-num">5</span> Buffer will auto-post at the scheduled times. Check in once a week to reply to comments on the client's behalf.</li>
+ </ol>
+ </div>
+
+ <table class="pricing-mini-table">
+ <tr><th>Package</th><th>Price</th><th>What's Included</th></tr>
+ <tr><td>Starter</td><td>£300 one-time</td><td>30 posts, 1 platform, 30-day trial</td></tr>
+ <tr><td>Growth</td><td>£400/month</td><td>30 posts, 3 platforms, monthly reporting</td></tr>
+ <tr><td>Premium</td><td>£600/month</td><td>45 posts + stories + reels scripting</td></tr>
+ </table>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>Sarah, 28, Bristol.</strong> Started with local coffee shop (owner was her friend). Grew their Instagram from 800 to 3,400 followers in 90 days. Now manages 5 businesses at £400/month each = <strong>£2,000/month.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 3 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 3: AI-Powered Email Sequences</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£500–£2k/project</span>
+ <span class="pdf-badge badge-time">21–30 days to first £</span>
+ <span class="pdf-badge badge-diff">Medium</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> You write automated email sequences for businesses — welcome sequences, sales funnels, follow-up series. Most businesses know they need this but have zero idea how to write the emails. You do it for them using AI in 3-4 hours.</p>
+
+ <h4>Step-by-Step: How to Do This From Scratch</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Learn the basics of email marketing (2 hours)</strong><p>Watch 3-4 free YouTube videos on "email welcome sequences" and "email sales funnels." You need to understand: what a welcome sequence is, what a sales funnel is, and what makes a good subject line. That's it.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Find businesses with email signup forms but no automation</strong><p>Go to websites of coaches, e-commerce shops, and course creators. Sign up for their email list. If you don't receive a welcome email within 24 hours, they have no automation. They need you.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Write a sample 5-email welcome sequence</strong><p>Use ChatGPT with the prompt below. Edit each email for voice and personality. Save as a Google Doc — this is your portfolio.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Pitch the business owner</strong><p>"I noticed you don't have a welcome email sequence. I wrote a sample one — want to see it? I can write your full 5-email sequence for £500, delivered in 48 hours."</p></div></div>
+ <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Deliver with setup instructions</strong><p>Write the emails + provide step-by-step instructions for setting them up in Mailchimp or ConvertKit (or offer to set it up for an extra £100).</p></div></div>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo chatgpt">GPT</div>
+ <div><h4>ChatGPT — Email Sequence Writer</h4><span>Use this exact prompt</span></div>
+ </div>
+ <div class="prompt-box">
+ <div class="prompt-label">PROMPT // 5-Email Welcome Sequence</div>
+ <pre>Write a 5-email welcome sequence for [business name], a [type of business] that sells [products/services].
+
+Email 1 (Day 0 — Immediate): Welcome + deliver lead magnet + introduce who they are
+Email 2 (Day 2): Share their story / origin / why they started
+Email 3 (Day 4): Provide massive value (tips, how-to related to their industry)
+Email 4 (Day 6): Social proof — customer results, testimonials, case studies
+Email 5 (Day 8): Soft pitch — introduce their main offer with clear CTA
+
+For each email include:
+- Subject line (+ 2 alternatives)
+- Full email body (150-300 words)
+- Clear call-to-action
+- Tone: Conversational, helpful, not pushy</pre>
+ </div>
+ </div>
+
+ <p><strong>The maths:</strong> You write the sequence in 3-4 hours using AI. You charge £500. That's <strong>£125/hour.</strong> Do 2-3 per month = £1,000-£1,500.</p>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>Marcus, 41, London.</strong> Former sales manager. Built portfolio by doing 2 free sequences for friends' businesses. Now charges £800 per sequence. Does 3-4/month = <strong>£2,400-£3,200/month.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 4 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 4: AI Video Script Writing</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£1k–£4k/mo</span>
+ <span class="pdf-badge badge-time">14–30 days to first £</span>
+ <span class="pdf-badge badge-diff">Advanced</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> You write scripts for YouTubers, TikTokers, and businesses making video ads. Most creators know they need scripts but hate writing them. You use AI to analyse their best videos and create scripts that follow the same pattern.</p>
+
+ <h4>Step-by-Step</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Find YouTubers with 10k-100k subscribers</strong><p>They have money to pay you but don't have a writing team yet. Search your niche (finance, fitness, tech, cooking). Look for channels that upload weekly.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Analyse their top 3 videos</strong><p>Watch them. Note the structure: hook (first 30 seconds), intro, main points, transitions, call-to-action. Paste the transcript into ChatGPT and ask it to identify the pattern.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Write a sample script for them</strong><p>Use ChatGPT to write a script for a video they haven't made yet. Match their tone and structure. Include title ideas and thumbnail concepts.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>DM them on Instagram/Twitter</strong><p>"I wrote a free script for your channel — [video idea]. Want me to send it? If you like it, I write 4 scripts/month for £200." Attach the sample.</p></div></div>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo chatgpt">GPT</div>
+ <div><h4>ChatGPT — Script Writing</h4><span>Getting transcripts + writing scripts</span></div>
+ </div>
+ <div class="prompt-box">
+ <div class="prompt-label">PROMPT // YouTube Script</div>
+ <pre>Write a YouTube video script for a [niche] channel about [topic].
+
+Structure:
+- HOOK (0-30 sec): Start with a bold claim or question that stops scrolling
+- INTRO (30-60 sec): Brief intro, what they'll learn, why it matters
+- MAIN CONTENT (5-8 min): 3-5 key points with examples and stories
+- CTA (30 sec): Subscribe, comment, check link in description
+
+Style notes:
+- Conversational, like talking to a friend
+- Short sentences and paragraphs
+- Include [PAUSE] markers and [B-ROLL SUGGESTION] notes
+- Add 3 title options and thumbnail text ideas at the end
+
+Total length: ~1500 words (roughly 10-minute video)</pre>
+ </div>
+ </div>
+
+ <p><strong>Scaling path:</strong> Start at £50/script → prove that your scripts get views → raise to £100/script → get 3-4 creators on retainer = £800-£1,600/month each.</p>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>Emma, 25, Leeds.</strong> Started writing scripts for finance YouTubers. First client paid £150 for 3 scripts. Client's channel grew 40%. Now writes for 4 creators at £600/month each = <strong>£2,400/month.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 5 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 5: AI Business Name & Brand Identity</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£300–£1k/project</span>
+ <span class="pdf-badge badge-time">7–14 days to first £</span>
+ <span class="pdf-badge badge-diff">Easy</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> New businesses need names, taglines, and brand voice guides. You create all of this using AI and deliver a professional brand package in a PDF. Target: brand new businesses that just registered.</p>
+
+ <h4>Step-by-Step</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Find new businesses</strong><p>Go to <strong>find-and-update.company-information.service.gov.uk</strong> — Companies House register. Search for businesses registered in the last 30 days. These are your targets — they need branding NOW.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Create a sample brand guide</strong><p>Pick any industry. Use ChatGPT to generate: 10 name options, 5 taglines, a brand voice guide, sample "About" copy, and social media bios. Put it in a Canva-designed PDF template. This is your portfolio.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Email new business founders</strong><p>"Congrats on registering [business name]! I help new businesses build their brand identity. Here's a sample of what I do. Full package is £500." Link to your portfolio PDF.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Deliver a 15-page brand guide</strong><p>Use ChatGPT for all copy. Use Canva for design and layout. Deliver as a beautiful PDF. Takes 4-5 hours total.</p></div></div>
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>Tom, 32, Birmingham.</strong> Created packages for 8 startups in first 60 days. Average £600/project. Month 2: £4,800. Now does 3-4/month at £800 each = <strong>£2,400-£3,200/month.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 6 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 6: AI SEO Content Clusters</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£800–£2k/cluster</span>
+ <span class="pdf-badge badge-time">30–45 days to first £</span>
+ <span class="pdf-badge badge-diff">Advanced</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> You create a cluster of 10-15 blog posts around one keyword topic for a business. This helps them rank on Google and drive organic traffic. Each cluster = one big project payment.</p>
+
+ <h4>Step-by-Step</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Find businesses with a website but no blog</strong><p>Google "[industry] + [your city]." Visit websites. If they have zero blog posts, they're leaving traffic (and money) on the table.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Research keywords using Ubersuggest</strong><p>Go to <strong>neilpatel.com/ubersuggest</strong> (free 3 searches/day). Type in keywords related to their business. Find 10-15 keywords with low competition and decent search volume.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Use AI to draft all 10-15 posts</strong><p>One prompt per post in ChatGPT. Each post: 800-1500 words, SEO-optimised, targeting one specific keyword. Edit each post for 30-60 minutes.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Deliver with a publishing schedule</strong><p>"Publish post 1 on Monday, post 2 on Thursday..." Give them a 6-week calendar. Charge £800-£2,000 per cluster depending on the niche.</p></div></div>
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>Raj, 29, London.</strong> Built content clusters for law firms (high-value niche). Charges £1,500 per cluster. Does 2/month = £3,000/month. Just raised prices to <strong>£2,000.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 7 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 7: AI Ad Copy Testing Packs</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£500–£1.5k/pack</span>
+ <span class="pdf-badge badge-time">21–30 days to first £</span>
+ <span class="pdf-badge badge-diff">Advanced</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> Businesses running Facebook/Google ads usually only test 1-2 ad variations. You create 20-30 variations for them to test — different hooks, body copy, and CTAs. The winning variation can 2-5x their ROI.</p>
+
+ <h4>Step-by-Step</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Study winning ads (1 day)</strong><p>Go to Facebook Ad Library (facebook.com/ads/library). Search for ads in your target niche. Save 20-30 winning ads in a Google Doc — this is your "swipe file."</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Find businesses running ads with weak copy</strong><p>Search the Ad Library for local businesses. If they're running the same 1-2 ads for months, they need fresh variations. These are your clients.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Use AI to generate 30 ad variations</strong><p>Feed ChatGPT their current ad + your swipe file examples. Ask for 10 headline variations, 10 body copy variations, and 10 CTA variations.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Deliver as a spreadsheet</strong><p>Google Sheets: Column A = Headlines, Column B = Body Copy, Column C = CTAs, Column D = Recommended combinations. Professional, easy to use. Charge £600-£1,200.</p></div></div>
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>Lucy, 35, Manchester.</strong> First client spent £12k on ads with 1 variation. Her pack helped them find a winner that 3x'd ROI. Now charges £1,200/pack. Does 2-3/month = <strong>£2,400-£3,600.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ <!-- MODEL 8 -->
+ <div class="model-inner-card">
+ <div class="model-inner-header">
+ <h4>Model 8: AI Course Outline Creation</h4>
+ <div class="model-badges">
+ <span class="pdf-badge badge-revenue">£400–£1.2k/outline</span>
+ <span class="pdf-badge badge-time">14–21 days to first £</span>
+ <span class="pdf-badge badge-diff">Medium</span>
+ </div>
+ </div>
+ <div class="model-inner-body">
+ <p><strong>What it is:</strong> Coaches, experts, and educators all "want to create a course." They never do because structuring 30+ lessons from scratch is overwhelming. You do it for them in a day using AI.</p>
+
+ <h4>Step-by-Step</h4>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Find coaches and experts on Instagram/LinkedIn</strong><p>Search hashtags: #lifecoach #businesscoach #fitnesscoach #nutritionist. Look for people with 5k-50k followers who sell 1-on-1 services. They all want a course to scale.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>DM or email them</strong><p>"I help coaches turn their expertise into a structured online course. I handle the outline, lesson plans, workbooks — you just record. Want to see a sample?"</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Use AI to build the full course outline</strong><p>ChatGPT: "Create a 6-module course outline for a [niche] coach. Each module has 5-6 lessons. Include lesson descriptions, key learning outcomes, exercise ideas, and quiz questions."</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Deliver a complete course blueprint</strong><p>6-8 modules · 30-40 lesson descriptions · Script outlines · Student workbook template · Quiz ideas. All in a beautifully designed Google Doc or PDF. Charge £500-£1,200.</p></div></div>
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY</h4>
+ <p><strong>David, 38, Edinburgh.</strong> Created 11 course outlines in 90 days. Average £650/project. Month 3: £4,550. Now pre-booked <strong>2 months out.</strong></p>
+ </div>
+ </div>
+ </div>
+
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 3 ==================== -->
+ <div class="ch-card" id="ch3">
+ <div class="ch-header">
+ <div class="ch-icon">IV</div>
+ <div>
+ <span class="ch-label">Chapter 3</span>
+ <div class="ch-title">Your First 7 Days (The Foundation)</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>You can't make money until you're in business. Here's your <strong>exact day-by-day checklist</strong> for week one. No guessing. No excuses.</p>
+
+ <h3>Day 1: Choose Your Model</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Pick ONE model from Chapter 2</strong><p>Not three. Not "maybe this one or that one." ONE. Write it down on paper right now. This is your focus for 90 days. No switching.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Ask yourself these 3 questions:</strong><p>Which model excites me most? Which matches skills I already have (even a little)? Which one can I get my first client for the fastest?</p></div></div>
+ </div>
+ <div class="tip-box"><strong>Not sure which to pick?</strong> Start with Model 1 (Content Writing) or Model 2 (Social Media Management). They're the easiest to start and have the shortest time to first payment.</div>
+
+ <h3>Day 2: Learn the Tools (4-6 hours)</h3>
+ <p>You need to get comfortable with AI before you sell AI-powered services. Spend today practising.</p>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo chatgpt">GPT</div>
+ <div><h4>ChatGPT — Complete Setup Guide</h4><span>This is your #1 tool. Master this first.</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>chat.openai.com</strong>. Click "Sign Up." Use your Google account or email. The free tier is fine to start.</li>
+ <li><span class="ts-num">2</span> Click <strong>"New Chat"</strong> in the top-left. This starts a blank conversation.</li>
+ <li><span class="ts-num">3</span> <strong>Understanding prompts:</strong> A prompt is what you type in the message box. The more specific your prompt, the better the output. Think of it like giving instructions to a very smart intern — if you say "write something good" you'll get garbage. If you say exactly what you want, format, tone, length, audience — you'll get gold.</li>
+ <li><span class="ts-num">4</span> <strong>Practice exercise:</strong> Generate 10 versions of the same piece of content (e.g., an About page for a dentist). Try different prompts. See how the output changes when you add more detail. Save your best prompts in a Google Doc — this is your prompt library.</li>
+ <li><span class="ts-num">5</span> <strong>Key skill — iterating:</strong> The first output is rarely perfect. Type follow-ups like "Make it shorter," "Add more personality," "Remove the cliché in paragraph 2." Chat back and forth until it's right.</li>
+ <li><span class="ts-num">6</span> <strong>When to upgrade to Plus (£20/month):</strong> Once you have your first paying client. The free tier is enough to build your portfolio and practice.</li>
+ </ol>
+ </div>
+
+ <h3>Day 3: Build Your Portfolio (8 hours)</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Create 3 sample pieces of work</strong><p>You don't need real clients to have a portfolio. Make up businesses. "Social media content for a fitness studio in Manchester." "Email sequence for an online clothing store." "Blog posts for a family solicitor." Make them industry-specific so prospects can see themselves in your work.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Polish them until they're genuinely impressive</strong><p>Run everything through Grammarly. Format nicely in Google Docs. Export as PDFs. These 3 pieces ARE your business right now — they need to be good.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Create a simple portfolio page</strong><p>Use Google Drive (free): create a folder, put your 3 PDFs in it, share the link. Or use Notion (free): create a page with your samples embedded. Don't spend more than 1 hour on this.</p></div></div>
+ </div>
+
+ <h3>Day 4: Set Up Your Payment & Infrastructure</h3>
+ <p>You need to be able to get paid and look professional. Here's exactly how to set up everything:</p>
+
+ <div class="payment-box">
+ <h4>How to Get Paid — Complete Setup Guide</h4>
+ <p>You need at least ONE payment method ready before you start outreach. Here are your options from easiest to most professional:</p>
+
+ <div class="tool-guide" style="margin-top:16px;">
+ <div class="tool-guide-header">
+ <div class="tool-logo paypal">PP</div>
+ <div><h4>PayPal — Easiest to Start</h4><span>Best for: Your first 1-5 clients</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>paypal.com</strong> → Click <strong>"Sign Up"</strong> → Choose <strong>"Business Account"</strong> (even if you're solo — it looks more professional).</li>
+ <li><span class="ts-num">2</span> Enter your name, email, and create a password. Add your bank account (where you want money sent).</li>
+ <li><span class="ts-num">3</span> To send an invoice: Click <strong>"Send & Request"</strong> → <strong>"Create Invoice"</strong> → Enter client's email, description of work, and amount (e.g. "Content Writing — 3 Blog Posts: £200").</li>
+ <li><span class="ts-num">4</span> Click <strong>"Send Invoice."</strong> The client receives an email, clicks "Pay," and the money goes to your PayPal account. You can then transfer to your bank — takes 1-2 business days.</li>
+ <li><span class="ts-num">5</span> <strong>Fees:</strong> PayPal takes ~2.9% + 30p per transaction. On a £200 invoice, you'll receive about £193. This is normal — don't try to avoid fees, just factor them into your pricing.</li>
+ </ol>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo stripe">St</div>
+ <div><h4>Stripe — Most Professional</h4><span>Best for: Retainer clients & recurring payments</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>stripe.com</strong> → Click <strong>"Start Now"</strong> → Create account with your email.</li>
+ <li><span class="ts-num">2</span> Complete identity verification (upload ID, enter bank details). Takes 1-2 days to get approved.</li>
+ <li><span class="ts-num">3</span> To create an invoice: Go to <strong>Dashboard</strong> → <strong>"Invoices"</strong> → <strong>"Create Invoice"</strong> → Add client's email, line items, and amount.</li>
+ <li><span class="ts-num">4</span> For <strong>recurring payments</strong> (monthly retainers): Go to <strong>"Subscriptions"</strong> → Create a subscription for the client at their monthly rate. They'll be automatically charged each month.</li>
+ <li><span class="ts-num">5</span> <strong>Stripe Payment Links</strong> (easiest): Go to <strong>"Payment Links"</strong> → Create a link for your service (e.g. "Social Media Management — £400/month"). Send this link to clients. They click, pay, done.</li>
+ <li><span class="ts-num">6</span> <strong>Fees:</strong> 1.4% + 20p for UK cards. Slightly better than PayPal. Money arrives in your bank in 2-7 days (faster as you build history).</li>
+ </ol>
+ </div>
+
+ <div class="tool-guide">
+ <div class="tool-guide-header">
+ <div class="tool-logo wise">Wi</div>
+ <div><h4>Wise — Best for International Clients</h4><span>Best for: Clients outside the UK</span></div>
+ </div>
+ <ol class="tool-steps">
+ <li><span class="ts-num">1</span> Go to <strong>wise.com</strong> → Sign up → Verify identity.</li>
+ <li><span class="ts-num">2</span> You'll get account details in GBP, USD, EUR, and more. Give clients the relevant bank details to send a bank transfer.</li>
+ <li><span class="ts-num">3</span> Best for larger invoices (£500+) where you want to avoid percentage fees. Wise charges very low flat fees.</li>
+ </ol>
+ </div>
+ </div>
+
+ <div class="step-grid">
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Set up professional email</strong><p>firstname.lastname@gmail.com is fine. If you want to look more professional, set up a custom domain email using Google Workspace (£5/month) — but this is optional for now.</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Portfolio host</strong><p>Google Drive link (free) or Notion page (free) or Carrd website (£15/year). Don't spend more than 30 minutes on this. A clean Google Drive folder with 3 PDFs works perfectly.</p></div></div>
+ </div>
+
+ <h3>Days 5-7: Start Outreach</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Build a list of 50-100 potential clients</strong><p>Google "[your city] + [target business type]." Check LinkedIn for business owners. Search Instagram local hashtags. Put names and contact info in a Google Sheet.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Send 10 outreach messages per day</strong><p>Use the template below. Personalise each one (mention something specific about their business). Don't copy-paste generic messages — people can tell.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Follow up after 3 days</strong><p>If they don't reply, send a short follow-up: "Hey [Name], just bumping this up in case you missed it. Happy to jump on a quick call this week." 80% of sales happen in the follow-up.</p></div></div>
+ </div>
+
+ <div class="prompt-box">
+ <div class="prompt-label">TEMPLATE // Outreach Email</div>
+ <pre>Subject: Quick question about [their business name]
+
+Hi [Name],
+
+I noticed [specific observation — e.g., "your website doesn't have a blog" or "you haven't posted on Instagram in 3 weeks"].
+
+I help [business type] with [specific outcome — e.g., "getting more customers through Google by writing SEO blog posts"] using AI-powered tools — which means I can deliver faster and cheaper than a traditional agency.
+
+I put together a quick sample of what I could do for [their business name]. Would you be open to a 15-min call this week?
+
+[Your name]
+[Link to portfolio]
+[Your email / phone number]</pre>
+ </div>
+
+ <div class="tip-box"><strong>Pro tip:</strong> Don't ask "Are you interested?" (easy to say no). Ask "Would you be open to a quick call?" (harder to refuse). The goal of the email isn't to sell — it's to get a conversation started.</div>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 4 ==================== -->
+ <div class="ch-card" id="ch4">
+ <div class="ch-header">
+ <div class="ch-icon">V</div>
+ <div>
+ <span class="ch-label">Chapter 4</span>
+ <div class="ch-title">Getting Your First Client (Days 8-30)</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>Your first client is the hardest. After that, everything gets easier. Here's the exact system for closing your first sale — even if you've never sold anything before.</p>
+
+ <h3>The Offer Formula</h3>
+ <p>Make an offer so good they feel stupid saying no.</p>
+ <div class="step-grid">
+ <div class="step" style="border-color:#ef4444;"><div class="step-num" style="background:#ef4444;">✗</div><div class="step-content"><strong>Bad offer</strong><p>"I'll write content for you"</p></div></div>
+ <div class="step" style="border-color:#22c55e;"><div class="step-num" style="background:#22c55e;">✓</div><div class="step-content"><strong>Good offer</strong><p>"I'll write 3 blog posts for £200. If you're not happy with any of them, you pay nothing. Delivered in 48 hours."</p></div></div>
+ </div>
+ <p>The good offer has: a specific deliverable (3 blog posts), a clear price (£200), a guarantee (pay nothing if not happy), and a timeline (48 hours). This is how you eliminate risk and make the decision easy.</p>
+
+ <h3>The Pricing Strategy</h3>
+ <table class="pricing-mini-table">
+ <tr><th>Stage</th><th>Pricing</th><th>Why</th></tr>
+ <tr><td>First 3 clients</td><td>50% of your target rate</td><td>Get testimonials, build confidence, learn fast</td></tr>
+ <tr><td>Clients 4-10</td><td>75% of your target rate</td><td>You have proof it works. Charge more.</td></tr>
+ <tr><td>Client 11+</td><td>Full rate</td><td>You have a portfolio, testimonials, and experience</td></tr>
+ </table>
+ <p><strong>Example:</strong> If your target rate is £600/month for social media → Clients 1-3: £300/month → Clients 4-10: £450/month → Client 11+: £600/month.</p>
+
+ <h3>Where to Find Clients (Best to Worst)</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Your network (fastest)</strong><p>Text/call everyone you know: "Hey, I'm starting a [service] business. Do you know any small businesses that need help with [outcome]?" You'll be surprised how many leads this generates.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Local businesses (high trust)</strong><p>Walk into businesses in person. Bring your portfolio on your phone or a printed sample. Business owners trust face-to-face over emails. Sophie from the case study got her first client by literally walking in.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>LinkedIn (professional)</strong><p>Comment on business owners' posts for 1-2 weeks. Provide value. Then DM them with your offer. They already know your name from your comments.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Facebook Groups (volume)</strong><p>Join groups where your target clients hang out: "Small Business Owners UK," "Freelance Business Owners." Answer questions. Be helpful. Then mention your service.</p></div></div>
+ <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Cold email (scalable)</strong><p>Build lists from Google Maps and LinkedIn. Send personalised emails using the template from Chapter 3. This is the slowest but most scalable method.</p></div></div>
+ </div>
+
+ <h3>The Discovery Call (15 Minutes)</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Ask about their business (5 min)</strong><p>"Tell me about your business. What do you do? Who are your customers?" Let them talk. Listen. Take notes.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Find the pain point (3 min)</strong><p>"What's your biggest challenge with [marketing/content/social media]?" Whatever they say — that's what you solve.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Present your solution (5 min)</strong><p>"I can help with that. Here's what I'd do..." Show your portfolio. Explain your process. Tell them the timeline and price.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Close (2 min)</strong><p>"Want to move forward?" If yes: send invoice immediately via PayPal or Stripe. Start work once they've paid. If they have objections, handle them:</p></div></div>
+ </div>
+
+ <div class="warn-box">
+ <strong>Handling common objections:</strong><br>
+ "It's too expensive" → "What if I did a trial project for half price?"<br>
+ "I need to think about it" → "Totally understand. What specifically do you need to think about?"<br>
+ "I'm not sure it'll work" → "That's exactly why I'm offering a guarantee — if you're not happy, you don't pay."
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY — First Client Timeline</h4>
+ <p><strong>Sophie, 27, Cardiff.</strong> Day 12: First response (physio clinic). Day 14: Discovery call. Day 15: Sent proposal (£200 for 3 blog posts). Day 16: Got paid via PayPal. Day 19: Delivered all 3 posts. Day 20: Client asked for £400/month retainer.</p>
+ <p><strong>Her secret?</strong> She walked into the clinic, spoke to the owner, and showed sample work on her phone. No fancy pitch deck. No website. Just real work, shown in person.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 5 ==================== -->
+ <div class="ch-card" id="ch5">
+ <div class="ch-header">
+ <div class="ch-icon">VI</div>
+ <div>
+ <span class="ch-label">Chapter 5</span>
+ <div class="ch-title">Delivering Quality (Not Just AI Slop)</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>AI makes you fast. But fast garbage is still garbage. Your clients are paying for <strong>quality</strong>, not speed. Here's how to make sure every deliverable is genuinely good.</p>
+
+ <h3>The 70/30 Rule</h3>
+ <p>Let AI do 70% of the work. You do the 30% that makes it great.</p>
+ <table class="pricing-mini-table">
+ <tr><th>AI Does (70%)</th><th>You Do (30%)</th></tr>
+ <tr><td>First drafts</td><td>Strategy and positioning</td></tr>
+ <tr><td>Structure and outlines</td><td>Brand voice and personality</td></tr>
+ <tr><td>Research and data</td><td>Fact-checking and editing</td></tr>
+ <tr><td>Multiple variations</td><td>Client-specific customisation</td></tr>
+ </table>
+
+ <h3>The AI-to-Quality Workflow</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Strategy (15% of your time)</strong><p>Before you open ChatGPT, understand: What does the client want? Who is their audience? What does success look like? This 15 minutes of thinking saves hours of revision.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>AI Generation (30% of your time)</strong><p>Write detailed prompts. Generate 2-3 versions. Pick the best one as your starting point. Don't settle for the first output.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Human Polish (40% of your time)</strong><p>This is where you earn your money. Edit for clarity. Add personality. Remove AI-sounding phrases. Inject specific examples, numbers, and stories the client has shared with you.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Client Refinement (15% of your time)</strong><p>Send for feedback. Make revisions quickly. Over-deliver slightly — add a bonus they didn't ask for.</p></div></div>
+ </div>
+
+ <h3>Phrases That Scream "AI Wrote This" — Delete Immediately</h3>
+ <div class="warn-box">
+ <strong>Never send copy that contains these:</strong><br>
+ — "In today's digital landscape..."<br>
+ — "Dive deep into..."<br>
+ — "Unlock the power of..."<br>
+ — "In conclusion..."<br>
+ — "It's worth noting that..."<br>
+ — "Delve into..."<br>
+ — "Navigate the complexities..."<br><br>
+ <strong>Replace with:</strong> Direct statements. Short sentences. Specific examples. Your client's actual voice and vocabulary.
+ </div>
+
+ <h3>The Over-Delivery Trick</h3>
+ <p>Always deliver 110%. This is how you get referrals, testimonials, and retainer clients.</p>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">+</div><div class="step-content"><strong>They ordered 3 blog posts?</strong><p>Give them 3 posts + 5 social media captions pulled from the posts.</p></div></div>
+ <div class="step"><div class="step-num">+</div><div class="step-content"><strong>They wanted an email sequence?</strong><p>Add 3 extra subject line variations for each email.</p></div></div>
+ <div class="step"><div class="step-num">+</div><div class="step-content"><strong>They hired you for scripts?</strong><p>Include thumbnail text ideas and SEO-optimised video descriptions.</p></div></div>
+ </div>
+ <div class="tip-box"><strong>The bonus hack:</strong> The extra items take you 15-20 minutes with AI. But to the client, it feels like you went above and beyond. This is how you turn one-off clients into retainer clients who refer friends.</div>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 6 ==================== -->
+ <div class="ch-card" id="ch6">
+ <div class="ch-header">
+ <div class="ch-icon">VII</div>
+ <div>
+ <span class="ch-label">Chapter 6</span>
+ <div class="ch-title">Scaling from £1,000 to £3,000/Month</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>You hit £1,000. Great. Don't celebrate yet. Here's how to 3x it.</p>
+
+ <h3>The Three Scaling Levers</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Raise Prices</strong><p>Every 10 clients, raise prices 20%. Start: £500/project → After 10 clients: £600 → After 20: £720 → After 30: £864. Same work, more money.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Get Retainers (Recurring Revenue)</strong><p>Turn one-off projects into monthly retainers. One-off £500 project → £400/month retainer × 12 months = £4,800 from one client. This is how you build predictable income.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Increase Capacity</strong><p>Use better AI workflows to work faster. Create templates for common deliverables. Hire a VA for basic tasks (£8/hour on Fiverr). Say no to low-value work so you can focus on high-value clients.</p></div></div>
+ </div>
+
+ <h3>The Productized Service Model</h3>
+ <p>Stop custom-quoting everything. Create packages so clients can pick one and pay instantly.</p>
+ <table class="pricing-mini-table">
+ <tr><th>Package</th><th>Price</th><th>Includes</th></tr>
+ <tr><td> Bronze</td><td>£400/month</td><td>4 blog posts per month</td></tr>
+ <tr><td> Silver</td><td>£800/month</td><td>8 blog posts + social media captions</td></tr>
+ <tr><td> Gold</td><td>£1,500/month</td><td>12 blog posts + social + email newsletter</td></tr>
+ </table>
+ <p><strong>The maths:</strong> 3 Silver clients = £2,400/month. 2 Gold clients = £3,000/month. That's life-changing money with 2-5 clients.</p>
+
+ <h3>Getting Clients to Stay</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Deliver on time — always</strong><p>Late delivery is the #1 reason clients leave. Set realistic deadlines and hit them every time.</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Communicate proactively</strong><p>Don't make them chase you. Send weekly updates. "Here's what I'm working on this week. Delivery by Friday."</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Show results with monthly reports</strong><p>Track metrics: page views, engagement, email opens. Send a monthly report. Clients who see results don't cancel.</p></div></div>
+ <div class="step"><div class="step-num">✓</div><div class="step-content"><strong>Ask for referrals</strong><p>"Do you know any other business owners who might need this?" 60% of Oliver's clients came from referrals.</p></div></div>
+ </div>
+
+ <div class="case-study">
+ <h4>CASE STUDY — The £3,000 Month</h4>
+ <p><strong>Oliver, 31, Liverpool:</strong> Month 1: £800 → Month 2: £1,600 → Month 3: £2,800 → Month 4: £3,400</p>
+ <p>His secret? Every single client was asked for a referral. 60% of his new clients came from existing client referrals.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 7 ==================== -->
+ <div class="ch-card" id="ch7">
+ <div class="ch-header">
+ <div class="ch-icon">VIII</div>
+ <div>
+ <span class="ch-label">Chapter 7</span>
+ <div class="ch-title">Avoiding the 6 Traps That Kill AI Businesses</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>Most people fail. Not because the models don't work — but because they fall into these traps. Learn them now so you don't learn them the hard way.</p>
+
+ <div class="step-grid">
+ <div class="step" style="border-color:#ef4444;">
+ <div class="step-num" style="background:#ef4444;">1</div>
+ <div class="step-content">
+ <strong>Trap #1: Shiny Object Syndrome</strong>
+ <p>You start content writing. Then see someone making money with social media. So you switch. Then hear about AI art. Switch again. <strong>Result:</strong> You're always a beginner.</p>
+ <p style="color:var(--green);margin-top:8px;"><strong>FIX:</strong> Pick ONE model. Do it for 90 days minimum. Get to £2,000/month before adding anything new.</p>
+ </div>
+ </div>
+ <div class="step" style="border-color:#ef4444;">
+ <div class="step-num" style="background:#ef4444;">2</div>
+ <div class="step-content">
+ <strong>Trap #2: Underpricing to Death</strong>
+ <p>You charge £50 for work that takes 4 hours. That's £12.50/hour. McDonald's pays better. <strong>Result:</strong> You burn out and quit.</p>
+ <p style="color:var(--green);margin-top:8px;"><strong>FIX:</strong> Price based on value, not hours. If your blog post makes a client £5,000 in revenue, charging £500 is a bargain.</p>
+ </div>
+ </div>
+ <div class="step" style="border-color:#ef4444;">
+ <div class="step-num" style="background:#ef4444;">3</div>
+ <div class="step-content">
+ <strong>Trap #3: No Systems</strong>
+ <p>Every project is custom. Every client is different. You reinvent the wheel every time. <strong>Result:</strong> You can't scale. Always busy, never growing.</p>
+ <p style="color:var(--green);margin-top:8px;"><strong>FIX:</strong> Create templates, workflows, and processes. Save your best prompts. Build your system once, use it forever.</p>
+ </div>
+ </div>
+ <div class="step" style="border-color:#ef4444;">
+ <div class="step-num" style="background:#ef4444;">4</div>
+ <div class="step-content">
+ <strong>Trap #4: Poor Client Selection</strong>
+ <p>You take every client who'll pay. Including nightmares who argue, micromanage, and destroy your motivation.</p>
+ <p style="color:var(--green);margin-top:8px;"><strong>FIX:</strong> Fire bad clients. Raise prices to filter better ones. Red flags: "I need this yesterday" · "My budget is £50 but..." · "I'll pay in exposure" · "This should take 20 minutes"</p>
+ </div>
+ </div>
+ <div class="step" style="border-color:#ef4444;">
+ <div class="step-num" style="background:#ef4444;">5</div>
+ <div class="step-content">
+ <strong>Trap #5: Relying on One Client</strong>
+ <p>One amazing client pays £2,000/month. They cancel. You're back to £0.</p>
+ <p style="color:var(--green);margin-top:8px;"><strong>FIX:</strong> Never let one client be more than 40% of your revenue. Always be getting new clients, even when you're busy.</p>
+ </div>
+ </div>
+ <div class="step" style="border-color:#ef4444;">
+ <div class="step-num" style="background:#ef4444;">6</div>
+ <div class="step-content">
+ <strong>Trap #6: Not Building an Audience</strong>
+ <p>You only get clients through outreach. If you stop reaching out, clients stop coming.</p>
+ <p style="color:var(--green);margin-top:8px;"><strong>FIX:</strong> Post your work publicly. Share client wins (with permission). Write about your process. Let clients come to you over time.</p>
+ </div>
+ </div>
+ </div>
+
+ <h3>The 90-Day Failure Prevention Checklist</h3>
+ <p>Do these every single week. If you do this for 90 days, you <strong>will not fail.</strong></p>
+ <ul class="checklist">
+ <li>Send 20 outreach messages</li>
+ <li>Post 3 times about your work on social media</li>
+ <li>Ask 1 client for a testimonial</li>
+ <li>Improve 1 process or template</li>
+ <li>Learn 1 new AI technique or prompt</li>
+ <li>Review your finances (Are you profitable?)</li>
+ <li>Talk to 2 potential clients</li>
+ </ul>
+ </div>
+ </div>
+
+ <!-- ==================== CHAPTER 8 ==================== -->
+ <div class="ch-card" id="ch8">
+ <div class="ch-header">
+ <div class="ch-icon">IX</div>
+ <div>
+ <span class="ch-label">Chapter 8</span>
+ <div class="ch-title">The 30-60-90 Day Roadmap</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>Here's your exact timeline from £0 to £1,000+/month. Follow it day by day.</p>
+
+ <h3>Days 1-30: Foundation & First Clients</h3>
+ <p style="font-size:12px;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">PROGRESS</p>
+ <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:33%"></div></div>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">W1</div><div class="step-content"><strong>Week 1: Setup</strong><p>Choose business model · Learn AI tools (10 hours practice) · Create portfolio (3 pieces) · Set up payment infrastructure (PayPal/Stripe/Wise)</p></div></div>
+ <div class="step"><div class="step-num">W2</div><div class="step-content"><strong>Week 2: Outreach</strong><p>Build list of 100 potential clients · Send 50 personalised outreach messages · Follow up on all responses · Book 3-5 discovery calls</p></div></div>
+ <div class="step"><div class="step-num">W3</div><div class="step-content"><strong>Week 3: Close & Deliver</strong><p>Close first 1-2 clients (even at low prices) · Start delivering work immediately · Over-deliver by 10% · Ask for testimonials on delivery</p></div></div>
+ <div class="step"><div class="step-num">W4</div><div class="step-content"><strong>Week 4: Refine</strong><p>Improve based on client feedback · Send second round of 50 outreach messages · Close another 1-2 clients · Start documenting your process</p></div></div>
+ </div>
+ <div class="tip-box"><strong>TARGET — Day 30:</strong> £500-£800 revenue, 2-4 active clients, testimonials from at least 1 client.</div>
+
+ <h3>Days 31-60: Scale & Systems</h3>
+ <p style="font-size:12px;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">PROGRESS</p>
+ <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:66%"></div></div>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">W5-6</div><div class="step-content"><strong>Increase Capacity</strong><p>Raise prices by 25% · Create formal service packages (Bronze/Silver/Gold) · Build templates for common deliverables · Document all your workflows</p></div></div>
+ <div class="step"><div class="step-num">W7</div><div class="step-content"><strong>Client Retention</strong><p>Convert one-off clients to monthly retainers · Send first monthly reports to all clients · Ask every client for referrals · Continue outreach (minimum 20/week)</p></div></div>
+ <div class="step"><div class="step-num">W8</div><div class="step-content"><strong>Expand</strong><p>Add 3-5 new clients · Fire your worst client (if you have one) · Start posting about your work on social media · Consider hiring a VA for basic tasks</p></div></div>
+ </div>
+ <div class="tip-box"><strong>TARGET — Day 60:</strong> £1,200-£1,800 revenue, 5-8 active clients, at least 2 on retainer.</div>
+
+ <h3>Days 61-90: Momentum & £1,000+</h3>
+ <p style="font-size:12px;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">PROGRESS</p>
+ <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">W9-10</div><div class="step-content"><strong>Solidify</strong><p>Stabilise retainer clients · Upsell existing clients on additional services · Create a referral program (give £50 discount for referrals) · Build case studies from your best results</p></div></div>
+ <div class="step"><div class="step-num">W11</div><div class="step-content"><strong>Optimise</strong><p>Audit all clients (keep the best, fire the worst) · Raise prices again (10-15%) · Improve delivery speed with better AI workflows · Build standard packages with clear pricing</p></div></div>
+ <div class="step"><div class="step-num">W12</div><div class="step-content"><strong>Scale</strong><p>Focus on high-value clients only · Say no to small projects below your minimum · Add a premium tier offering · Start planning for £3,000/month</p></div></div>
+ </div>
+ <div class="tip-box"><strong>TARGET — Day 90:</strong> £1,500-£2,500 revenue, 6-10 clients, systems in place, clear path to £3k+/month.</div>
+ </div>
+ </div>
+
+ <!-- ==================== CONCLUSION ==================== -->
+ <div class="ch-card">
+ <div class="ch-header">
+ <div class="ch-icon">X</div>
+ <div>
+ <span class="ch-label">Conclusion</span>
+ <div class="ch-title">You Have Everything You Need</div>
+ </div>
+ </div>
+ <div class="ch-body">
+ <p>Here's what you know now: 8 proven business models · Exact tools and how to use every one of them · Step-by-step processes · How to get paid · Where to find clients · How to close sales · How to deliver quality · How to scale to £3,000+.</p>
+ 
+ <h3>What you DON'T need</h3>
+ <div class="step-grid">
+ <div class="step" style="border-color:#ef4444;"><div class="step-num" style="background:#ef4444;">✗</div><div class="step-content"><strong>More courses.</strong><p>You have everything right here. Stop consuming, start executing.</p></div></div>
+ <div class="step" style="border-color:#ef4444;"><div class="step-num" style="background:#ef4444;">✗</div><div class="step-content"><strong>Better tools.</strong><p>ChatGPT free tier + Canva free + Google Docs free = enough to make your first £1,000.</p></div></div>
+ <div class="step" style="border-color:#ef4444;"><div class="step-num" style="background:#ef4444;">✗</div><div class="step-content"><strong>Perfect timing.</strong><p>There is no perfect time. Today is the best day to start. Tomorrow will always feel too soon.</p></div></div>
+ <div class="step" style="border-color:#ef4444;"><div class="step-num" style="background:#ef4444;">✗</div><div class="step-content"><strong>Permission.</strong><p>You don't need anyone to tell you it's OK. You already bought this guide. You already want it. Go.</p></div></div>
+ </div>
+
+ <h3>What you DO need</h3>
+ <div class="step-grid">
+ <div class="step" style="border-color:#22c55e;"><div class="step-num" style="background:#22c55e;">✓</div><div class="step-content"><strong>To start today.</strong><p>Not Monday. Not "when I'm ready." Today. Open ChatGPT right now.</p></div></div>
+ <div class="step" style="border-color:#22c55e;"><div class="step-num" style="background:#22c55e;">✓</div><div class="step-content"><strong>To do the work.</strong><p>Read Chapter 3 again. Follow Day 1. Then Day 2. One step at a time.</p></div></div>
+ <div class="step" style="border-color:#22c55e;"><div class="step-num" style="background:#22c55e;">✓</div><div class="step-content"><strong>To not quit.</strong><p>Most people quit in the first 30 days. If you don't quit, you win. It really is that simple.</p></div></div>
+ </div>
+
+ <p style="font-size:20px; font-weight:900; color:var(--gold); text-align:center; margin-top:36px; letter-spacing:-0.02em;">
+ The only way this doesn't work is if you don't do it.
+ </p>
+ <p style="font-size:32px; font-weight:900; color:var(--gold); text-align:center; margin-top:16px; letter-spacing:-0.03em;">
+ Go.
+ </p>
+ </div>
+ </div>
+
+ <!-- ==================== BONUS ==================== -->
+ <div class="ch-card" id="bonus">
+ <div class="ch-header">
+ <div class="ch-icon">FIN</div>
+ <div>
+ <span class="ch-label">Bonus</span>
+ <div class="ch-title">Resources, Tools & Next Steps</div>
+ </div>
+ </div>
+ <div class="ch-body">
+
+ <h3>AI Tools — Quick Links</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>ChatGPT Plus — openai.com/chatgpt</strong><p>Your main AI writing tool. Free tier to start, £20/month for Plus (faster, smarter outputs). This is non-negotiable.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Claude Pro — claude.ai</strong><p>Alternative to ChatGPT. Some people prefer Claude for longer, more nuanced content. Free tier available, Pro is £18/month.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Canva — canva.com</strong><p>Design tool for graphics, social media posts, PDFs, and presentations. Free tier is excellent. Pro (£10/month) only needed if you want premium templates.</p></div></div>
+ </div>
+
+ <h3>Payment & Business — Quick Start</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>PayPal — paypal.com</strong><p>Easiest way to send invoices and get paid. Business account is free. Use for your first clients.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Stripe — stripe.com</strong><p>Most professional payment processing. Best for recurring invoices and retainer clients. Payment links feature is incredibly useful.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Wise — wise.com</strong><p>Best for international payments and bank transfers. Low fees. Use for larger invoices and overseas clients.</p></div></div>
+ </div>
+
+ <h3>Portfolio & Scheduling</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Notion — notion.so (free)</strong><p>Portfolio hosting, project tracking, client management — all in one free tool.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Carrd — carrd.co (£15/year)</strong><p>Simple one-page website builder. Perfect for a professional-looking portfolio site with zero coding.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Buffer — buffer.com (free)</strong><p>Social media scheduling. Free for up to 3 channels. Schedule an entire month of content in one sitting.</p></div></div>
+ </div>
+
+ <h3>Recommended Reading</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Copywriting: "Cashvertising" by Drew Eric Whitman</strong><p>The best book on writing copy that sells. Read this and your output quality will double.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Pricing: "Million Dollar Consulting" by Alan Weiss</strong><p>How to price based on value. This book will pay for itself 1000x over.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Sales: Alex Hormozi's YouTube channel</strong><p>Free. Arguably better than anything you'd pay for. Watch his videos on offers, pricing, and closing.</p></div></div>
+ </div>
+
+ <h3>Your Next 5 Steps — Do Them Right Now</h3>
+ <div class="step-grid">
+ <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Close this guide</strong><p>You've read enough. Time to act.</p></div></div>
+ <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Open ChatGPT</strong><p>Go to chat.openai.com. Create an account if you haven't. It takes 2 minutes.</p></div></div>
+ <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Pick your model from Chapter 2</strong><p>Write it down. Say it out loud. That's your business now.</p></div></div>
+ <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Create your first portfolio piece</strong><p>Use the prompts in this guide. Spend 2 hours. Make it good.</p></div></div>
+ <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Send your first outreach message</strong><p>Find one business. Write one email. Hit send. You're in business.</p></div></div>
+ </div>
+
+ <p style="margin-top:48px; font-size:22px; font-weight:900; color:var(--gold); text-align:center; letter-spacing:-0.02em;">Now go make money.</p>
+ </div>
+ </div>
+
+ </div>
+
+<script>
+ function scrollToChapter(id) {
+ const el = document.getElementById(id);
+ if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ }
+</script>
+</body>
+</html>
