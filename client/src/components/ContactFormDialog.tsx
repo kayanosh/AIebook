@@ -132,14 +132,20 @@ export function ContactFormDialog({ open, onOpenChange }: ContactFormDialogProps
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="contact-phone" className="text-sm font-bold uppercase">Phone <span className="text-muted-foreground font-normal">(optional)</span></Label>
+                <Label htmlFor="contact-phone" className="text-sm font-bold uppercase">Phone</Label>
                 <Input
                   id="contact-phone"
                   type="tel"
                   placeholder="+44 7XXX XXXXXX"
+                  required
                   className="h-12 border-2 border-black text-lg focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary rounded-none"
                   {...form.register("phone")}
                 />
+                {form.formState.errors.phone && (
+                  <p className="text-sm text-primary font-bold">
+                    {form.formState.errors.phone.message}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">

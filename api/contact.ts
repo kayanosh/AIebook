@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  phone: z.string().optional().nullable(),
+  phone: z.string().min(7),
   message: z.string().optional().nullable(),
 });
 
@@ -44,7 +44,7 @@ export default async function handler(req: any, res: any) {
         <table style="border-collapse:collapse;width:100%">
           <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${input.name}</td></tr>
           <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${input.email}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${input.phone || "Not provided"}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${input.phone}</td></tr>
           <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Message</td><td style="padding:8px;border:1px solid #ddd">${input.message || "Not provided"}</td></tr>
         </table>
       `,
