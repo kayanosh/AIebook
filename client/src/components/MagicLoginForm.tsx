@@ -10,19 +10,21 @@ export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
     setLoading(true);
     setStatus(null);
     try {
-      const res = await fetch("/api/magic-login", {
+      const res = await fetch("/api/set-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
       const data = await res.json();
       if (data.success) {
-        setStatus("Magic link sent! Check your email.");
+        localStorage.setItem("ebookAccess", "true");
+        setStatus("Access restored. Redirecting...");
+        onSuccess();
       } else {
-        setStatus(data.message);
+        setStatus(data.message || "Unable to restore access.");
       }
     } catch (err) {
-      setStatus("Error sending magic link.");
+      setStatus("Error restoring access.");
     }
     setLoading(false);
   };
@@ -38,7 +40,7 @@ export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
         className="border p-2 w-full"
       />
       <button type="submit" disabled={loading} className="btn-brutal w-full">
-        {loading ? "Sending..." : "Send Magic Link"}
+        {loading ? "Restoring..." : "Restore Access"}
       </button>
       {status && <div className="text-sm mt-2">{status}</div>}
     </form>
