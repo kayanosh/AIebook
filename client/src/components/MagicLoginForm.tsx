@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
-export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
+export function MagicLoginForm({
+  onSuccess,
+  onBack,
+}: {
+  onSuccess: () => void;
+  onBack?: () => void;
+}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -43,6 +50,15 @@ export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
       />
       <Button type="submit" disabled={loading} className="btn-brutal w-full h-11 sm:h-12 text-sm sm:text-base">
         {loading ? "Restoring..." : "Restore Access"}
+      </Button>
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full h-11 sm:h-12 border-2 border-black font-bold uppercase text-xs sm:text-sm"
+        onClick={() => (onBack ? onBack() : window.history.back())}
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back
       </Button>
       {status && <div className="text-xs sm:text-sm mt-2 text-center">{status}</div>}
     </form>

@@ -366,7 +366,7 @@ export default function Home() {
           <div className="flex gap-4 md:gap-6 text-xs md:text-sm font-bold uppercase">
             <a href="/terms" className="hover:text-primary">Terms</a>
             <a href="#" className="hover:text-primary">Privacy</a>
-            <a href="#" className="hover:text-primary">Support</a>
+            <a href="mailto:admin@mathrix.co.uk" className="hover:text-primary">Contact</a>
           </div>
         </div>
       </footer>

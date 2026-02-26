@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Loader2, CheckCircle2, Users, Mail } from "lucide-react";
+import { Loader2, CheckCircle2, Users, Mail, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -175,6 +175,15 @@ export function ContactFormDialog({ open, onOpenChange }: ContactFormDialogProps
                       REQUEST 1-ON-1 COACHING
                     </>
                   )}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full h-11 sm:h-12 border-2 border-black font-bold uppercase text-xs sm:text-sm"
+                  onClick={() => onOpenChange(false)}
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back
                 </Button>
                 
                 <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
