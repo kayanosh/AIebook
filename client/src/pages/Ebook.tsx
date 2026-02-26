@@ -376,6 +376,15 @@ export default function Ebook() {
               <Step num="8" title="Create Fiverr + Upwork profiles" desc="Set up one clear service on both platforms: 'AI Website Build (Landing Page)' with one sample screenshot and a fixed starter price. This gives you inbound leads while you do direct outreach." />
             </div>
 
+            <ToolGuide icon="0→1" name="Zero Coding: Exact First Build Checklist" subtitle="If you have never coded before, follow this exactly">
+              <ToolStep num="1">Create accounts in this exact order: <strong>Gmail</strong> → <strong>GitHub</strong> → <strong>Lovable</strong> → <strong>Vercel</strong>. Use the same email for all.</ToolStep>
+              <ToolStep num="2">In Lovable, click <strong>New Project</strong> and paste this one-line prompt: <strong>"Build a simple one-page site for a plumber in London with services, testimonials, and contact form."</strong></ToolStep>
+              <ToolStep num="3">Wait for build to finish. Click each section and test links/buttons. If anything looks wrong, type one fix at a time (example: <strong>"Make text bigger on mobile"</strong>).</ToolStep>
+              <ToolStep num="4">When happy, click <strong>Export to GitHub</strong>. Repository name: <code>plumber-london-demo</code>.</ToolStep>
+              <ToolStep num="5">Open Vercel, click <strong>Add New Project</strong>, import <code>plumber-london-demo</code>, click <strong>Deploy</strong>.</ToolStep>
+              <ToolStep num="6">Copy the live Vercel URL and save it in your portfolio sheet as <strong>Demo #1</strong>. This proves you can ship.</ToolStep>
+            </ToolGuide>
+
             <h4 className="font-bold uppercase text-sm text-primary mt-6 mb-3">Your AI Web Dev Toolkit</h4>
             <ToolGuide icon="💜" name="Lovable — Your AI Website Builder" subtitle="Cost: Free tier available · lovable.dev">
               <ToolStep num="1">Go to <strong>lovable.dev</strong> and sign up with Google or email. The free tier gives you enough to build your first few client projects.</ToolStep>
@@ -421,6 +430,7 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
               <ToolStep num="3"><strong>Install GitHub Copilot extension:</strong> Open VS Code → click the Extensions icon (or Ctrl+Shift+X) → search "GitHub Copilot" → Install. Sign up for the free tier at <strong>github.com/features/copilot</strong>.</ToolStep>
               <ToolStep num="4"><strong>Clone your Lovable project:</strong> Open the terminal in VS Code (Ctrl+`) → type: <code>git clone [your-repo-url]</code> → press Enter. Your project files appear in the sidebar.</ToolStep>
               <ToolStep num="5"><strong>Install dependencies:</strong> In the terminal, type: <code>cd [project-folder] && npm install</code>. Wait for it to finish. Then type: <code>npm run dev</code>. Your site opens in the browser at localhost!</ToolStep>
+              <ToolStep num="6"><strong>If terminal says command not found:</strong> close VS Code, reopen it, and run commands one by one: <code>node -v</code>, <code>npm -v</code>, then <code>npm install</code>.</ToolStep>
             </ToolGuide>
 
             <ToolGuide icon="🤖" name="GitHub Copilot — Your AI Coding Assistant" subtitle="Cost: Free tier available · Works inside VS Code">
@@ -439,7 +449,7 @@ Tone: Professional but friendly. Target audience: [describe their customers].`}<
             </ToolGuide>
 
             <TipBox>
-              <strong>Alternative AI tools:</strong> You can also use <strong>Gemini</strong> (gemini.google.com) or <strong>ChatGPT</strong> to help you write code, debug issues, or generate content for the websites you build. Use whichever AI assistant you prefer — they all work.
+              <strong>Alternative AI tools for web dev:</strong> Use <strong>Claude</strong> (claude.ai) with Sonnet models for code editing/debugging. Prompt example: <strong>"You are my senior frontend dev. Fix mobile spacing issues in this React component and explain exactly what you changed."</strong>
             </TipBox>
 
             <h4 className="font-bold uppercase text-sm text-primary mt-6 mb-3">Pricing Your Web Dev Services</h4>
