@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { Loader2, Lock, Download, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
-import { api } from "@shared/routes";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK as string);
 
@@ -76,7 +75,11 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
       if (paymentIntent?.status === "succeeded") {
         localStorage.setItem("ebookAccess", "true");
         // Set access for authenticated user
-        await fetch("/api/set-access", { method: "POST" });
+        await fetch("/api/set-access", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
         setSuccess(true);
         toast({ title: "Payment successful!", description: "Welcome — your blueprint is ready." });
       }

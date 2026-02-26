@@ -10,10 +10,17 @@ export default async function handler(req: any, res: any) {
   }
 
   // Set access for authenticated user
-  const userEmail = req.cookies?.user_email;
+  const bodyEmail = typeof req.body?.email === "string" ? req.body.email.trim().toLowerCase() : "";
+  const cookieEmail = typeof req.cookies?.user_email === "string" ? req.cookies.user_email : "";
+  const userEmail = bodyEmail || cookieEmail;
+
   if (userEmail) {
     globalWithAccessStore.accessStore = globalWithAccessStore.accessStore || {};
     globalWithAccessStore.accessStore[userEmail] = true;
+    res.setHeader("Set-Cookie", [
+      `user_email=${encodeURIComponent(userEmail)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=31536000; Secure`,
+      "ebook_access=true; Path=/; SameSite=Lax; Max-Age=31536000; Secure",
+    ]);
     return res.status(200).json({ success: true });
   }
   return res.status(401).json({ success: false, message: 'User not authenticated.' });
