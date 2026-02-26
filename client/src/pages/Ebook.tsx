@@ -228,7 +228,10 @@ export default function Ebook() {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setHasAccess(hasEbookAccess());
+    // Check access via API
+    fetch("/api/check-access")
+      .then(res => res.json())
+      .then(data => setHasAccess(data.hasAccess));
   }, []);
 
   const scrollTo = (id: string) => {
