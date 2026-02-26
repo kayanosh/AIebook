@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { name, email, message } = req.body;
     // Replace with actual storage/email logic
     // For demo, just return success
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, message: "Request received. We'll be in touch soon." });
   } catch (err) {
     if (err instanceof z.ZodError) {
       return res.status(400).json({ message: err.errors[0].message });
