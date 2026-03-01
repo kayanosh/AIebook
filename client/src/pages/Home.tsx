@@ -271,9 +271,12 @@ export default function Home() {
             <p className="text-gray-500 text-sm uppercase tracking-widest font-bold">All 9 models have a full chapter — including scripts, pricing and day-one action steps</p>
             <Button
               onClick={openCheckout}
-              className="btn-brutal h-auto min-h-16 text-xl md:text-2xl px-10 md:px-16 py-5 shadow-[6px_6px_0px_0px_rgba(250,204,21,0.6)] hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,0.6)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto"
+              className="btn-brutal h-auto min-h-14 text-sm sm:text-lg md:text-2xl px-4 sm:px-10 md:px-16 py-4 shadow-[6px_6px_0px_0px_rgba(250,204,21,0.6)] hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,0.6)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto"
             >
-              I'm ready — get the blueprint {!timerExpired && <span className="ml-2 opacity-70 line-through text-base">{originalPrice}</span>} <span className="ml-1">{currentPrice}</span> <ArrowRight className="ml-2 w-5 h-5" />
+              I&#39;m ready — get the blueprint
+              {!timerExpired && <span className="ml-2 opacity-70 line-through text-xs sm:text-sm">{originalPrice}</span>}
+              <span className="ml-1">{currentPrice}</span>
+              <ArrowRight className="ml-2 w-4 h-4 shrink-0" />
             </Button>
             {!timerExpired && (
               <div className="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-widest animate-pulse">
@@ -336,7 +339,7 @@ export default function Home() {
             ))}
           </div>
           <div className="flex flex-col items-center mt-12">
-            <Button onClick={openCheckout} className="btn-brutal h-auto py-4 px-10 text-lg font-black uppercase w-full sm:w-auto">
+            <Button onClick={openCheckout} className="btn-brutal h-auto py-3 sm:py-4 px-4 sm:px-10 text-sm sm:text-base md:text-lg font-black uppercase w-full sm:w-auto">
               Start my 90-day roadmap — {currentPrice} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <p className="mt-3 text-xs text-muted-foreground font-bold uppercase text-center">30-day money-back guarantee · instant access</p>
@@ -588,7 +591,7 @@ export default function Home() {
 
           <Button 
             onClick={openCheckout}
-            className="btn-brutal h-auto min-h-16 md:min-h-24 text-base sm:text-xl md:text-2xl px-6 sm:px-10 md:px-16 py-4 md:py-0 w-full md:w-auto whitespace-normal leading-tight shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px]"
+            className="btn-brutal h-auto min-h-14 md:min-h-20 text-sm sm:text-lg md:text-2xl px-5 sm:px-10 md:px-16 py-4 w-full md:w-auto shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px]"
           >
             Get results in 7 days — {currentPrice} <ArrowRight className="ml-2 w-5 h-5 md:w-8 md:h-8" />
           </Button>
