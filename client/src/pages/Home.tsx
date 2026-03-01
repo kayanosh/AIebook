@@ -101,7 +101,7 @@ export default function Home() {
               variant="outline"
               size="lg"
               className="border-4 border-black font-black uppercase tracking-widest text-base md:text-lg px-10 py-5 h-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
-              onClick={() => document.getElementById("value")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("sneak-peek")?.scrollIntoView({ behavior: "smooth" })}
             >
               Show me what&#39;s inside <ChevronDown className="ml-2 w-5 h-5" />
             </Button>
@@ -117,7 +117,7 @@ export default function Home() {
       </header>
 
       {/* Sneak Peek — 9 Models */}
-      <section className="py-16 md:py-24 px-4 bg-black text-white">
+      <section id="sneak-peek" className="py-16 md:py-24 px-4 bg-black text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
             <span className="text-primary uppercase font-bold tracking-widest text-xs md:text-sm mb-3 block">Sneak Peek — What You're Getting</span>
