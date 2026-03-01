@@ -1,13 +1,12 @@
-import { NextApiRequest, NextApiResponse } from 'vercel';
 import { z } from 'zod';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 const emailSchema = z.string().email();
 
 // In-memory store for demo (replace with DB in production)
 const magicLinks: Record<string, string> = {};
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: any, res: any) {
   if (req.method === 'POST') {
     const { email } = req.body;
     try {

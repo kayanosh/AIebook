@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'vercel';
 import { z } from 'zod';
 // Import storage and api definitions as needed
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }

@@ -1,6 +1,15 @@
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
-export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
+export function MagicLoginForm({
+  onSuccess,
+  onBack,
+}: {
+  onSuccess: () => void;
+  onBack?: () => void;
+}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -10,37 +19,48 @@ export function MagicLoginForm({ onSuccess }: { onSuccess: () => void }) {
     setLoading(true);
     setStatus(null);
     try {
-      const res = await fetch("/api/magic-login", {
+      const res = await fetch("/api/set-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
       const data = await res.json();
       if (data.success) {
-        setStatus("Magic link sent! Check your email.");
+        localStorage.setItem("ebookAccess", "true");
+        setStatus("Access restored. Redirecting...");
+        onSuccess();
       } else {
-        setStatus(data.message);
+        setStatus(data.message || "Unable to restore access.");
       }
     } catch (err) {
-      setStatus("Error sending magic link.");
+      setStatus("Error restoring access.");
     }
     setLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input
+    <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-sm mx-auto">
+      <Input
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
         placeholder="Enter your email"
         required
-        className="border p-2 w-full"
+        className="h-11 sm:h-12 border-2 border-black text-base sm:text-lg focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-primary rounded-none"
       />
-      <button type="submit" disabled={loading} className="btn-brutal w-full">
-        {loading ? "Sending..." : "Send Magic Link"}
-      </button>
-      {status && <div className="text-sm mt-2">{status}</div>}
+      <Button type="submit" disabled={loading} className="btn-brutal w-full h-11 sm:h-12 text-sm sm:text-base">
+        {loading ? "Restoring..." : "Restore Access"}
+      </Button>
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full h-11 sm:h-12 border-2 border-black font-bold uppercase text-xs sm:text-sm"
+        onClick={() => (onBack ? onBack() : window.history.back())}
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Back
+      </Button>
+      {status && <div className="text-xs sm:text-sm mt-2 text-center">{status}</div>}
     </form>
   );
 }

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AutonomousLab">
+  <rect width="64" height="64" rx="10" fill="#0b0b0b"/>
+  <path d="M10 48L22 14H30L42 48H34L31 39H21L18 48H10ZM23 32H29L26 22L23 32Z" fill="#ef4444"/>
+  <path d="M46 14H54V48H46V14Z" fill="#ffffff"/>
+</svg>

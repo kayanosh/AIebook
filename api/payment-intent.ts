@@ -1,12 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'vercel';
 import Stripe from 'stripe';
 import { z } from 'zod';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2022-11-15',
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
@@ -23,7 +20,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       amount: amountInPence,
       currency: 'gbp',
       receipt_email: email,
-      metadata: { email },
+      description: "AutonomousLab (by Mathrix) — £1000/Month with AI",
+      metadata: {
+        email,
+        productBrand: "AutonomousLab",
+        companyName: "Mathrix",
+      },
     });
 
     res.status(200).json({ clientSecret: paymentIntent.client_secret });
