@@ -116,6 +116,128 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Sneak Peek — 9 Models */}
+      <section className="py-16 md:py-24 px-4 bg-black text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
+            <span className="text-primary uppercase font-bold tracking-widest text-xs md:text-sm mb-3 block">Sneak Peek — What You're Getting</span>
+            <h2 className="text-3xl md:text-6xl font-black uppercase mb-4">
+              9 Models. All Tested. <span className="text-primary">All Real.</span>
+            </h2>
+            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+              Every model below has a detailed chapter: what to do on Day 1, how to price it, where to find clients, and which AI tools cut the work in half.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {[
+              {
+                n: "01",
+                title: "AI Content Writing",
+                revenue: "£1,000 – £5,000/mo",
+                tag: "Beginner Friendly",
+                desc: "Local businesses need blogs, product pages and landing copy — but hate writing. Use AI to produce a full month of content in a day. Charge per piece or on retainer.",
+                tools: "ChatGPT · Claude · SurferSEO",
+              },
+              {
+                n: "02",
+                title: "Web & App Creation",
+                revenue: "£2,000 – £8,000/project",
+                tag: "High Ticket",
+                desc: "AI coding tools now build functional, polished websites in hours. Learn to scope projects, manage handoff, and charge project rates with optional monthly maintenance retainers.",
+                tools: "Cursor · v0 · Replit · Vercel",
+              },
+              {
+                n: "03",
+                title: "SEO Content Clusters",
+                revenue: "£800 – £2,000/cluster",
+                tag: "Scalable",
+                desc: "Create 10–20 interlinked articles targeting a niche in an afternoon. Sell as a one-off SEO package to local businesses, dentists, solicitors, estate agents.",
+                tools: "Claude · Perplexity · SurferSEO",
+              },
+              {
+                n: "04",
+                title: "Social Media Management",
+                revenue: "£500 – £1,500/mo per client",
+                tag: "Recurring Income",
+                desc: "Schedule a week of posts in 90 minutes using AI. Land 3–5 retainer clients and you're at £1,000+/mo. Chapter 4 includes the exact DM script that converts cold prospects.",
+                tools: "ChatGPT · Canva AI · Buffer",
+              },
+              {
+                n: "05",
+                title: "AI Email Marketing",
+                revenue: "£500 – £1,500/sequence",
+                tag: "High Demand",
+                desc: "Every business with a list needs email sequences — welcome, nurture, sales. AI writes them in minutes. You charge hundreds. The pricing psychology chapter shows you exactly how to sell this.",
+                tools: "ChatGPT · Mailchimp · Klaviyo",
+              },
+              {
+                n: "06",
+                title: "AI Automation Services",
+                revenue: "£1,500 – £5,000/setup",
+                tag: "Premium",
+                desc: "Build no-code automations that save businesses hours every week — auto-reply systems, lead routing, invoice generation. Charge a setup fee and optional monthly support.",
+                tools: "Make · Zapier · OpenAI API",
+              },
+              {
+                n: "07",
+                title: "Faceless YouTube / UGC",
+                revenue: "£600 – £3,000/mo",
+                tag: "Passive Potential",
+                desc: "Script, voice-over and edit faceless educational videos using AI. Monetise through AdSense, affiliate links or brand deals — no camera, no face required.",
+                tools: "ElevenLabs · Runway · CapCut AI",
+              },
+              {
+                n: "08",
+                title: "AI-Powered Ads & Copy",
+                revenue: "£750 – £2,500/mo per client",
+                tag: "High ROI for Clients",
+                desc: "Write Meta and Google ad copy with AI. Run A/B splits. Clients pay monthly because results compound. Even one winning campaign justifies months of fees.",
+                tools: "ChatGPT · AdCreative.ai · Meta Ads",
+              },
+              {
+                n: "09",
+                title: "Digital Products & Ebooks",
+                revenue: "£500 – £5,000/mo passive",
+                tag: "Sell Once, Earn Forever",
+                desc: "Package knowledge (yours or researched) into guides, templates and micro-courses with AI. Deploy on Gumroad or your own site. The blueprint includes the exact funnel used to sell this product.",
+                tools: "Claude · Gumroad · Canva AI",
+              },
+            ].map((model, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="border border-white/10 p-6 md:p-7 hover:bg-white/5 hover:border-primary/50 transition-all flex flex-col gap-3"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <span className="text-primary font-black text-4xl md:text-5xl leading-none opacity-40">{model.n}</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary border border-primary/30 px-2 py-1 text-right leading-tight">{model.tag}</span>
+                </div>
+                <h3 className="text-lg md:text-xl font-black uppercase mt-1">{model.title}</h3>
+                <p className="text-primary font-bold text-sm">{model.revenue}</p>
+                <p className="text-gray-400 text-sm leading-relaxed flex-1">{model.desc}</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-white/30 border-t border-white/10 pt-3 mt-1">
+                  Tools: {model.tools}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12 md:mt-16">
+            <p className="text-gray-500 text-sm uppercase tracking-widest font-bold mb-4">All 9 models have a full chapter — including scripts, pricing and day-one action steps</p>
+            <button
+              onClick={() => document.getElementById("value")?.scrollIntoView({ behavior: "smooth" })}
+              className="flex items-center gap-2 mx-auto text-sm font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
+            >
+              Continue reading <ChevronDown className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Problem/Agitation Section */}
       <section id="value" className="py-16 md:py-24 px-4 bg-muted/30">
         <div className="max-w-4xl mx-auto">
@@ -187,47 +309,6 @@ export default function Home() {
                   <FeatureItem title={item.title} description={item.desc} />
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Models Preview */}
-      <section className="py-16 md:py-24 px-4 bg-black text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10 md:mb-16">
-            <span className="text-primary uppercase font-bold tracking-widest text-sm mb-4 block">Sneak Peek</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase">
-              The Models That Pay
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            <div className="border border-white/20 p-6 md:p-8 hover:bg-white/5 transition-colors">
-              <div className="text-primary font-black text-5xl md:text-6xl mb-4 md:mb-6 opacity-50">01</div>
-              <h3 className="text-xl md:text-2xl font-bold uppercase mb-2">AI Content Writing</h3>
-              <p className="text-gray-400 mb-4">Revenue: £1000-£5000/mo</p>
-              <p className="text-sm leading-relaxed">
-                Find local businesses with terrible websites. Use AI to fix them. Charge £100-£500 per page.
-              </p>
-            </div>
-            
-            <div className="border border-white/20 p-6 md:p-8 bg-white/10 transform md:-translate-y-4">
-              <div className="text-primary font-black text-5xl md:text-6xl mb-4 md:mb-6 opacity-50">02</div>
-              <h3 className="text-xl md:text-2xl font-bold uppercase mb-2">Web/App Creation</h3>
-              <p className="text-gray-400 mb-4">Revenue: £2000-£8000/project</p>
-              <p className="text-sm leading-relaxed">
-                Use AI to build websites and apps for local businesses in hours. Charge project rates and keep monthly retainers.
-              </p>
-            </div>
-
-            <div className="border border-white/20 p-6 md:p-8 hover:bg-white/5 transition-colors">
-              <div className="text-primary font-black text-5xl md:text-6xl mb-4 md:mb-6 opacity-50">03</div>
-              <h3 className="text-xl md:text-2xl font-bold uppercase mb-2">SEO Clusters</h3>
-              <p className="text-gray-400 mb-4">Revenue: £800-£2000/project</p>
-              <p className="text-sm leading-relaxed">
-                Create 15-article clusters for businesses in one afternoon. Rank them on Google.
-              </p>
             </div>
           </div>
         </div>
