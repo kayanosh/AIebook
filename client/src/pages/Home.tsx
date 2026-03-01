@@ -37,7 +37,26 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden pb-20">
+
+      {/* Sticky Bottom CTA Bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-black border-t-4 border-primary px-4 py-3 flex items-center justify-between gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+        <div className="flex flex-col leading-tight">
+          <span className="text-white font-black text-xs md:text-sm uppercase tracking-widest">Start earning with AI</span>
+          {!timerExpired && (
+            <span className="text-primary text-[10px] md:text-xs font-bold uppercase tracking-widest flex items-center gap-1">
+              <Timer className="w-3 h-3 animate-pulse" /> {timerMins}:{timerSecs} left at {currentPrice}
+            </span>
+          )}
+        </div>
+        <Button
+          onClick={openCheckout}
+          className="btn-brutal shrink-0 h-auto py-2 px-4 md:px-8 text-sm md:text-base font-black uppercase whitespace-nowrap"
+        >
+          Get results in 7 days — {currentPrice} <ArrowRight className="ml-1 w-4 h-4" />
+        </Button>
+      </div>
+
       {/* Checkout Dialog */}
       <CheckoutDialog
         open={showCheckout}
@@ -88,9 +107,29 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-xl md:text-3xl text-muted-foreground font-medium max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-1"
           >
-            No experience. No coding.{" "}<span className="text-black font-bold">Real systems that work.</span>
+            For complete beginners who want their first £1,000/month —{" "}<span className="text-black font-bold">no experience, no coding needed.</span>
           </motion.p>
-          
+
+          {/* Benefit Checklist */}
+          <motion.ul
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="inline-flex flex-col items-start gap-2 mb-8 md:mb-12 text-sm md:text-base font-bold text-left mx-auto"
+          >
+            {[
+              "9 AI income streams — one full chapter each",
+              "Day-by-day 90-day roadmap from £0 to £1,000",
+              "Copy-paste scripts to land your first client in 7 days",
+              "Pricing guide: charge £500 for 20 minutes of AI work",
+            ].map((b, i) => (
+              <li key={i} className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </motion.ul>
+
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -249,6 +288,60 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section className="py-16 md:py-24 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
+            <span className="text-primary uppercase font-bold tracking-widest text-xs md:text-sm mb-3 block">Simple Process</span>
+            <h2 className="text-3xl md:text-6xl font-black uppercase">How You Get To <span className="text-primary">£1,000</span></h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10 relative">
+            {/* connector line desktop */}
+            <div className="hidden md:block absolute top-10 left-[calc(16.66%+1rem)] right-[calc(16.66%+1rem)] h-0.5 bg-black/10 z-0" />
+            {[
+              {
+                step: "01",
+                title: "Pick Your Model",
+                desc: "Choose one of the 9 income streams that matches your interests and current situation. The blueprint tells you exactly which one suits beginners best.",
+                outcome: "Day 1–3",
+              },
+              {
+                step: "02",
+                title: "Follow The Playbook",
+                desc: "Every chapter gives you a step-by-step action plan: tools to set up, scripts to send, prices to charge. No guesswork. Just follow the steps.",
+                outcome: "Day 4–14",
+              },
+              {
+                step: "03",
+                title: "Land Your First Client",
+                desc: "Use the included outreach scripts to get paid. Most people land their first client within 7–14 days. Then you scale from there.",
+                outcome: "Day 7–30",
+              },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="relative z-10 flex flex-col items-center text-center"
+              >
+                <div className="w-20 h-20 bg-black text-white flex items-center justify-center font-black text-3xl mb-6 border-4 border-primary shadow-[4px_4px_0px_0px_rgba(250,204,21,1)]">{s.step}</div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-primary mb-2">{s.outcome}</span>
+                <h3 className="text-xl md:text-2xl font-black uppercase mb-3">{s.title}</h3>
+                <p className="text-muted-foreground text-sm md:text-base leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button onClick={openCheckout} className="btn-brutal h-auto py-4 px-10 text-lg font-black uppercase">
+              Start my 90-day roadmap — {currentPrice} <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <p className="mt-3 text-xs text-muted-foreground font-bold uppercase">30-day money-back guarantee · instant access</p>
+          </div>
+        </div>
+      </section>
+
       {/* Problem/Agitation Section */}
       <section id="value" className="py-16 md:py-24 px-4 bg-muted/30">
         <div className="max-w-4xl mx-auto">
@@ -274,13 +367,31 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xl md:text-2xl font-medium italic mb-6 md:mb-8">
+          <div className="bg-white border-l-8 border-primary p-6 md:p-8 max-w-2xl mx-auto mb-10 md:mb-14">
+            <p className="text-xl md:text-2xl font-medium italic mb-3">
               "The gap between £0 and £1000 is massive. The gap between £1000 and £10,000? Much smaller."
             </p>
-            <p className="text-lg uppercase font-bold text-muted-foreground">
-              — Introduction, Page 4
-            </p>
+            <p className="text-sm uppercase font-bold text-muted-foreground">— Introduction, Page 4</p>
+          </div>
+
+          {/* This is for you if... */}
+          <div className="max-w-2xl mx-auto">
+            <h3 className="text-xl md:text-2xl font-black uppercase mb-6 text-center">This blueprint is for you if...</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                "You're starting from zero with no clients or income",
+                "You've tried freelancing before but couldn't get traction",
+                "You want to work from home or go fully remote",
+                "You're tired of trading time for low hourly rates",
+                "You have 1–2 hours per day to build something real",
+                "You want to use AI tools but don't know where to start",
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3 bg-white p-4 border border-black/10">
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span className="text-sm md:text-base font-medium">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -290,11 +401,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             <div className="lg:w-1/2 lg:sticky lg:top-8">
-              <h2 className="text-4xl md:text-7xl font-black uppercase leading-none mb-6 md:mb-8">
-                What's Inside<br/>The <span className="text-primary">Box?</span>
+              <h2 className="text-4xl md:text-7xl font-black uppercase leading-none mb-4 md:mb-6">
+                Everything You Need To <span className="text-primary">Earn Your First £1,000</span>
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8">
-                This isn't theory. This is a collection of 9 battle-tested business models you can start TODAY with just a laptop and an internet connection.
+              <p className="text-base md:text-lg text-muted-foreground mb-2 font-semibold">For complete beginners. No prior experience required.</p>
+              <p className="text-base md:text-lg text-muted-foreground mb-8">
+                Not theory. Not inspiration. A step-by-step operating manual with 9 income streams, pricing scripts, outreach templates and a 90-day roadmap — everything in one place.
               </p>
               
               <div className="flex flex-col items-center gap-2 mt-2">
@@ -332,25 +444,47 @@ export default function Home() {
             They Did It. <span className="text-primary underline decoration-black">Why Not You?</span>
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
             <ReviewCard 
-              name="James" 
-              role="Manchester, UK" 
+              name="James T." 
+              role="Manchester · ex-warehouse worker" 
               result="£4,200/Month" 
-              quote="I started in September. Got my first client (a local gym) in 9 days. Now I have 8 retainer clients and quit my warehouse job." 
+              quote="I started in September with zero clients. Got my first (a local gym) in 9 days using the outreach script in Chapter 4. Now I have 8 retainer clients and quit my job." 
             />
             <ReviewCard 
-              name="Sarah" 
-              role="Bristol, UK" 
+              name="Sarah K." 
+              role="Bristol · stay-at-home mum" 
               result="£2,000/Month" 
-              quote="I manage 5 local businesses' Instagrams. It takes me about 4 hours a week using the AI workflow in Chapter 2." 
+              quote="I manage 5 local businesses' social media. It takes about 4 hours a week using the AI workflow. Before this I was earning nothing. Now I work school hours only." 
             />
             <ReviewCard 
-              name="Marcus" 
-              role="London, UK" 
+              name="Marcus O." 
+              role="London · former call centre" 
               result="£3,200/Month" 
-              quote="Most businesses know they need email marketing but can't write. I charge £500 for a sequence that takes me 4 hours." 
+              quote="I charge £500 for an email sequence that takes me 4 hours with AI. Businesses love it. I landed 3 clients in my first month just from cold DMs." 
             />
+          </div>
+
+          {/* Before / After Case Study Strip */}
+          <div className="bg-black text-white p-6 md:p-10 border-4 border-primary">
+            <p className="text-primary uppercase font-black tracking-widest text-xs md:text-sm mb-6 text-center">Real Results — Before &amp; After</p>
+            <div className="grid grid-cols-3 gap-4 md:gap-8 text-center">
+              <div>
+                <div className="text-2xl md:text-4xl font-black text-gray-400 line-through mb-1">£0</div>
+                <div className="text-2xl md:text-4xl font-black text-primary mb-1">£4,200</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-white/60">James · 90 days</div>
+              </div>
+              <div className="border-x border-white/10 px-4">
+                <div className="text-2xl md:text-4xl font-black text-gray-400 line-through mb-1">£0</div>
+                <div className="text-2xl md:text-4xl font-black text-primary mb-1">£2,000</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-white/60">Sarah · 60 days</div>
+              </div>
+              <div>
+                <div className="text-2xl md:text-4xl font-black text-gray-400 line-through mb-1">£0</div>
+                <div className="text-2xl md:text-4xl font-black text-primary mb-1">£3,200</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest font-bold text-white/60">Marcus · 45 days</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -441,16 +575,37 @@ export default function Home() {
             )}
           </div>
 
+          {/* Urgency incentive */}
+          {!timerExpired && (
+            <div className="bg-primary/10 border-2 border-primary px-6 py-4 mb-8 text-center">
+              <p className="text-sm md:text-base font-black uppercase tracking-wide">
+                🎁 First 50 buyers get a <span className="text-primary">free bonus chapter</span>: "How to raise your rates to £100/hour in 30 days"
+              </p>
+            </div>
+          )}
+
           <Button 
             onClick={openCheckout}
             className="btn-brutal h-auto min-h-16 md:min-h-24 text-base sm:text-xl md:text-2xl px-6 sm:px-10 md:px-16 py-4 md:py-0 w-full md:w-auto whitespace-normal leading-tight shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px]"
           >
-            I WANT THE BLUEPRINT — {currentPrice} <ArrowRight className="ml-2 w-5 h-5 md:w-8 md:h-8" />
+            Get results in 7 days — {currentPrice} <ArrowRight className="ml-2 w-5 h-5 md:w-8 md:h-8" />
           </Button>
-          
-          <p className="mt-6 text-sm text-muted-foreground font-bold uppercase">
-            Instant Access • Secure Payment • Lifetime Updates
-          </p>
+
+          {/* Trust badges */}
+          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { icon: "🔒", label: "Secure Payment", sub: "Stripe encrypted" },
+              { icon: "↩️", label: "30-Day Guarantee", sub: "Full refund, no questions" },
+              { icon: "⚡", label: "Instant Access", sub: "Download immediately" },
+              { icon: "♾️", label: "Lifetime Updates", sub: "Free forever" },
+            ].map((b, i) => (
+              <div key={i} className="flex flex-col items-center text-center p-3 border border-black/10 bg-muted/30">
+                <span className="text-2xl mb-1">{b.icon}</span>
+                <span className="text-xs font-black uppercase tracking-wide">{b.label}</span>
+                <span className="text-[10px] text-muted-foreground">{b.sub}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
