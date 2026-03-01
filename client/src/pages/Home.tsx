@@ -129,7 +129,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             {[
               {
                 n: "01",
@@ -210,16 +210,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="border border-white/10 p-6 md:p-7 hover:bg-white/5 hover:border-primary/50 transition-all flex flex-col gap-3"
+                className="border border-white/10 p-4 md:p-7 hover:bg-white/5 hover:border-primary/50 transition-all flex flex-col gap-2 md:gap-3"
               >
-                <div className="flex items-start justify-between gap-2">
-                  <span className="text-primary font-black text-4xl md:text-5xl leading-none opacity-40">{model.n}</span>
-                  <span className="text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary border border-primary/30 px-2 py-1 text-right leading-tight">{model.tag}</span>
+                <div className="flex items-start justify-between gap-1">
+                  <span className="text-primary font-black text-3xl md:text-5xl leading-none opacity-40">{model.n}</span>
+                  <span className="text-[9px] md:text-[10px] font-black uppercase tracking-wider bg-primary/10 text-primary border border-primary/30 px-1.5 py-1 text-right leading-tight">{model.tag}</span>
                 </div>
-                <h3 className="text-lg md:text-xl font-black uppercase mt-1">{model.title}</h3>
-                <p className="text-primary font-bold text-sm">{model.revenue}</p>
-                <p className="text-gray-400 text-sm leading-relaxed flex-1">{model.desc}</p>
-                <p className="text-[11px] font-bold uppercase tracking-widest text-white/30 border-t border-white/10 pt-3 mt-1">
+                <h3 className="text-sm md:text-xl font-black uppercase mt-0.5">{model.title}</h3>
+                <p className="text-primary font-bold text-xs md:text-sm">{model.revenue}</p>
+                <p className="text-gray-400 text-xs md:text-sm leading-relaxed flex-1">{model.desc}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/30 border-t border-white/10 pt-2 mt-1 hidden sm:block">
                   Tools: {model.tools}
                 </p>
               </motion.div>
