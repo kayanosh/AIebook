@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CheckoutDialog } from "@/components/CheckoutDialog";
 import { ReviewCard } from "@/components/ReviewCard";
 import { FeatureItem } from "@/components/FeatureItem";
-import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users, CheckCircle2, Timer } from "lucide-react";
+import { ArrowRight, Flame, BookOpen, Ban, Trophy, Target, TrendingUp, Users, CheckCircle2, Timer, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { SiOpenai, SiAnthropic, SiGoogle, SiGithub, SiPerplexity, SiNvidia } from "react-icons/si";
 
@@ -95,102 +95,29 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 w-full"
+            className="flex flex-col items-center gap-4"
           >
-            <div className="flex flex-col items-center gap-2 w-full max-w-md md:max-w-none md:w-auto">
-              <Button 
-                size="lg" 
-                className="btn-brutal h-auto min-h-16 px-6 sm:px-10 py-4 text-base sm:text-xl md:text-2xl w-full md:w-auto whitespace-normal text-center leading-tight"
-                onClick={openCheckout}
-              >
-                Get The Blueprint •{" "}
-                {!timerExpired && (
-                  <span className="line-through opacity-60 mr-1">{originalPrice}</span>
-                )}
-                <span>{currentPrice}</span>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full md:w-auto border-2 border-black font-bold uppercase tracking-wider text-xs sm:text-sm whitespace-normal h-auto py-3"
-              >
-                <a href="/ebook">Already Purchased? Restore Access</a>
-              </Button>
-              {!timerExpired && (
-                <div className="flex flex-col items-center gap-3 w-full md:w-auto">
-                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 bg-red-600 text-white px-4 sm:px-6 py-3 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full justify-center">
-                    <Timer className="w-6 h-6 animate-pulse shrink-0" />
-                    <span className="text-3xl sm:text-4xl font-black tabular-nums tracking-tighter">{timerMins}:{timerSecs}</span>
-                    <span className="uppercase font-black text-[10px] sm:text-sm tracking-widest leading-tight text-center sm:text-left">Price<br/>rises soon</span>
-                  </div>
-                  <Button
-                    onClick={openCheckout}
-                    className="bg-primary text-black font-black uppercase text-sm sm:text-base px-4 sm:px-6 py-3 h-auto border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all w-full whitespace-normal leading-tight"
-                  >
-                    Buy before it expires — £19.99
-                  </Button>
-                </div>
-              )}
-            </div>
-
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-4 border-black font-black uppercase tracking-widest text-base md:text-lg px-10 py-5 h-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
+              onClick={() => document.getElementById("value")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              Show me what&#39;s inside <ChevronDown className="ml-2 w-5 h-5" />
+            </Button>
+            <Button
+              asChild
+              variant="ghost"
+              className="text-xs font-bold uppercase tracking-wider text-muted-foreground"
+            >
+              <a href="/ebook">Already purchased? Restore access</a>
+            </Button>
           </motion.div>
         </div>
       </header>
 
-      {/* AI Stack Logos */}
-      <section className="py-8 md:py-10 px-4 bg-white border-y-2 border-black/10">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-center text-xs md:text-sm uppercase tracking-[0.18em] font-black text-muted-foreground mb-5">
-            Built for the AI Era
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
-            {aiLogos.map(({ name, Icon, color }) => (
-              <div
-                key={name}
-                className="flex items-center justify-center gap-2 h-14 md:h-16 bg-muted/20 border-2 border-black/10 hover:border-black/30 transition-colors"
-              >
-                <Icon className={`w-5 h-5 md:w-6 md:h-6 ${color}`} />
-                <span className="text-[11px] md:text-xs font-bold uppercase tracking-wide">{name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Bar */}
-      <section className="bg-black text-white py-10 md:py-12 border-y-4 border-primary">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-primary mb-1">9</div>
-              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Business Models</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-primary mb-1">90</div>
-              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Day Roadmap</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-primary mb-1">47+</div>
-              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Tested Methods</div>
-            </div>
-            <div>
-              <div className="flex flex-col items-center">
-                {!timerExpired && (
-                  <div className="text-lg font-black line-through text-gray-400">{originalPrice}</div>
-                )}
-                <div className="text-3xl md:text-4xl font-black text-primary mb-1">{currentPrice}</div>
-                {!timerExpired && (
-                  <div className="text-xs text-primary font-bold">{timerMins}:{timerSecs} left</div>
-                )}
-              </div>
-              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Investment</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Problem/Agitation Section */}
-      <section className="py-16 md:py-24 px-4 bg-muted/30">
+      <section id="value" className="py-16 md:py-24 px-4 bg-muted/30">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-6xl font-black uppercase text-center mb-10 md:mb-16">
             Most People <span className="bg-black text-white px-2">Fail</span> Because...
@@ -237,13 +164,13 @@ export default function Home() {
                 This isn't theory. This is a collection of 9 battle-tested business models you can start TODAY with just a laptop and an internet connection.
               </p>
               
-              <div className="space-y-4">
-                <Button onClick={openCheckout} className="btn-brutal h-16 w-full text-xl">
-                  Start Making Money Today <ArrowRight className="ml-2" />
-                </Button>
-                <p className="text-xs text-center text-muted-foreground uppercase">
-                  30-Day Money Back Guarantee
-                </p>
+              <div className="flex flex-col items-center gap-2 mt-2">
+                <button
+                  onClick={() => document.getElementById("proof")?.scrollIntoView({ behavior: "smooth" })}
+                  className="flex items-center gap-2 text-sm font-black uppercase tracking-widest text-muted-foreground hover:text-black transition-colors"
+                >
+                  See what others achieved <ChevronDown className="w-4 h-4" />
+                </button>
               </div>
             </div>
 
@@ -307,7 +234,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 px-4 bg-primary/5">
+      <section id="proof" className="py-16 md:py-24 px-4 bg-primary/5">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-6xl font-black uppercase text-center mb-10 md:mb-16">
             They Did It. <span className="text-primary underline decoration-black">Why Not You?</span>
@@ -332,6 +259,58 @@ export default function Home() {
               result="£3,200/Month" 
               quote="Most businesses know they need email marketing but can't write. I charge £500 for a sequence that takes me 4 hours." 
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Bar */}
+      <section className="bg-black text-white py-10 md:py-12 border-y-4 border-primary">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            <div>
+              <div className="text-3xl md:text-4xl font-black text-primary mb-1">9</div>
+              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Business Models</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-black text-primary mb-1">90</div>
+              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Day Roadmap</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-black text-primary mb-1">47+</div>
+              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Tested Methods</div>
+            </div>
+            <div>
+              <div className="flex flex-col items-center">
+                {!timerExpired && (
+                  <div className="text-lg font-black line-through text-gray-400">{originalPrice}</div>
+                )}
+                <div className="text-3xl md:text-4xl font-black text-primary mb-1">{currentPrice}</div>
+                {!timerExpired && (
+                  <div className="text-xs text-primary font-bold">{timerMins}:{timerSecs} left</div>
+                )}
+              </div>
+              <div className="text-xs md:text-sm uppercase tracking-wide md:tracking-widest font-bold">Investment</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Stack Logos */}
+      <section className="py-8 md:py-10 px-4 bg-white border-y-2 border-black/10">
+        <div className="max-w-7xl mx-auto">
+          <p className="text-center text-xs md:text-sm uppercase tracking-[0.18em] font-black text-muted-foreground mb-5">
+            Tools covered inside the blueprint
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+            {aiLogos.map(({ name, Icon, color }) => (
+              <div
+                key={name}
+                className="flex items-center justify-center gap-2 h-14 md:h-16 bg-muted/20 border-2 border-black/10 hover:border-black/30 transition-colors"
+              >
+                <Icon className={`w-5 h-5 md:w-6 md:h-6 ${color}`} />
+                <span className="text-[11px] md:text-xs font-bold uppercase tracking-wide">{name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
