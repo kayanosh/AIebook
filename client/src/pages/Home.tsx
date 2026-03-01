@@ -226,13 +226,24 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-12 md:mt-16">
-            <p className="text-gray-500 text-sm uppercase tracking-widest font-bold mb-4">All 9 models have a full chapter — including scripts, pricing and day-one action steps</p>
+          <div className="text-center mt-12 md:mt-16 flex flex-col items-center gap-6">
+            <p className="text-gray-500 text-sm uppercase tracking-widest font-bold">All 9 models have a full chapter — including scripts, pricing and day-one action steps</p>
+            <Button
+              onClick={openCheckout}
+              className="btn-brutal h-auto min-h-16 text-xl md:text-2xl px-10 md:px-16 py-5 shadow-[6px_6px_0px_0px_rgba(250,204,21,0.6)] hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,0.6)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
+            >
+              I'm ready — get the blueprint {!timerExpired && <span className="ml-2 opacity-70 line-through text-base">{originalPrice}</span>} <span className="ml-1">{currentPrice}</span> <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            {!timerExpired && (
+              <div className="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-widest animate-pulse">
+                <Timer className="w-4 h-4" /> Offer expires in {timerMins}:{timerSecs}
+              </div>
+            )}
             <button
               onClick={() => document.getElementById("value")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center gap-2 mx-auto text-sm font-black uppercase tracking-widest text-white/40 hover:text-primary transition-colors"
+              className="flex items-center gap-2 mx-auto text-sm font-black uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors mt-2"
             >
-              Continue reading <ChevronDown className="w-4 h-4" />
+              Not yet — keep reading <ChevronDown className="w-4 h-4" />
             </button>
           </div>
         </div>
