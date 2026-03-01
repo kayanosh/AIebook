@@ -40,20 +40,22 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden pb-20">
 
       {/* Sticky Bottom CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-black border-t-4 border-primary px-4 py-3 flex items-center justify-between gap-3 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
-        <div className="flex flex-col leading-tight">
-          <span className="text-white font-black text-xs md:text-sm uppercase tracking-widest">Start earning with AI</span>
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-black border-t-4 border-primary px-3 py-3 flex items-center justify-between gap-2 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
+        <div className="flex flex-col leading-tight min-w-0">
+          <span className="text-white font-black text-xs md:text-sm uppercase tracking-widest truncate">Start earning with AI</span>
           {!timerExpired && (
             <span className="text-primary text-[10px] md:text-xs font-bold uppercase tracking-widest flex items-center gap-1">
-              <Timer className="w-3 h-3 animate-pulse" /> {timerMins}:{timerSecs} left at {currentPrice}
+              <Timer className="w-3 h-3 animate-pulse shrink-0" /> {timerMins}:{timerSecs} left at {currentPrice}
             </span>
           )}
         </div>
         <Button
           onClick={openCheckout}
-          className="btn-brutal shrink-0 h-auto py-2 px-4 md:px-8 text-sm md:text-base font-black uppercase whitespace-nowrap"
+          className="btn-brutal shrink-0 h-auto py-2 px-3 md:px-8 text-xs md:text-base font-black uppercase whitespace-nowrap"
         >
-          Get results in 7 days — {currentPrice} <ArrowRight className="ml-1 w-4 h-4" />
+          <span className="hidden sm:inline">Get results in 7 days — </span>
+          <span className="sm:hidden">Start now — </span>
+          {currentPrice} <ArrowRight className="ml-1 w-4 h-4" />
         </Button>
       </div>
 
@@ -139,7 +141,7 @@ export default function Home() {
             <Button
               variant="outline"
               size="lg"
-              className="border-4 border-black font-black uppercase tracking-widest text-base md:text-lg px-10 py-5 h-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
+              className="border-4 border-black font-black uppercase tracking-widest text-base md:text-lg px-10 py-5 h-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all w-full sm:w-auto"
               onClick={() => document.getElementById("sneak-peek")?.scrollIntoView({ behavior: "smooth" })}
             >
               Show me what&#39;s inside <ChevronDown className="ml-2 w-5 h-5" />
@@ -147,7 +149,7 @@ export default function Home() {
             <Button
               asChild
               variant="ghost"
-              className="text-xs font-bold uppercase tracking-wider text-muted-foreground"
+              className="text-xs font-bold uppercase tracking-wider text-muted-foreground w-full sm:w-auto justify-center"
             >
               <a href="/ebook">Already purchased? Restore access</a>
             </Button>
@@ -269,7 +271,7 @@ export default function Home() {
             <p className="text-gray-500 text-sm uppercase tracking-widest font-bold">All 9 models have a full chapter — including scripts, pricing and day-one action steps</p>
             <Button
               onClick={openCheckout}
-              className="btn-brutal h-auto min-h-16 text-xl md:text-2xl px-10 md:px-16 py-5 shadow-[6px_6px_0px_0px_rgba(250,204,21,0.6)] hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,0.6)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
+              className="btn-brutal h-auto min-h-16 text-xl md:text-2xl px-10 md:px-16 py-5 shadow-[6px_6px_0px_0px_rgba(250,204,21,0.6)] hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,0.6)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto"
             >
               I'm ready — get the blueprint {!timerExpired && <span className="ml-2 opacity-70 line-through text-base">{originalPrice}</span>} <span className="ml-1">{currentPrice}</span> <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -333,11 +335,11 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <Button onClick={openCheckout} className="btn-brutal h-auto py-4 px-10 text-lg font-black uppercase">
+          <div className="flex flex-col items-center mt-12">
+            <Button onClick={openCheckout} className="btn-brutal h-auto py-4 px-10 text-lg font-black uppercase w-full sm:w-auto">
               Start my 90-day roadmap — {currentPrice} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <p className="mt-3 text-xs text-muted-foreground font-bold uppercase">30-day money-back guarantee · instant access</p>
+            <p className="mt-3 text-xs text-muted-foreground font-bold uppercase text-center">30-day money-back guarantee · instant access</p>
           </div>
         </div>
       </section>
