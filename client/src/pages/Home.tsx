@@ -66,10 +66,11 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.9] tracking-tighter mb-8"
+            className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.9] tracking-tighter mb-8"
           >
-            Make <span className="text-primary">£1000/Mo</span><br/>
-            Using <span className="underline decoration-8 decoration-primary underline-offset-8">AI Tools</span>
+            Make <span className="text-primary">£1,000/Month</span><br/>
+            With AI —<br/>
+            <span className="underline decoration-8 decoration-primary underline-offset-8">Step-by-Step Beginner Blueprint</span>
           </motion.h1>
           
           <motion.p 
@@ -78,8 +79,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl md:text-3xl text-muted-foreground font-medium max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            Not "someday". <span className="text-black font-bold">Now.</span><br/>
-            I'm not here to sell fairy tales. I'm here to give you the exact playbook that's working for thousands.
+            No experience. No coding.{" "}<span className="text-black font-bold">Real systems that work.</span>
           </motion.p>
           
           <motion.div 
