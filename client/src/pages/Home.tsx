@@ -100,7 +100,8 @@ export default function Home() {
           >
             Make <span className="text-primary">£1,000/Month</span><br/>
             With AI —<br/>
-            <span className="underline decoration-8 decoration-primary underline-offset-8">Step-by-Step Beginner Blueprint</span>
+            <span className="underline decoration-4 md:decoration-8 decoration-primary underline-offset-4 md:underline-offset-8">Step-by-Step Beginner</span><br/>
+            <span>Blueprint</span>
           </motion.h1>
           
           <motion.p 
