@@ -20,7 +20,7 @@ export default function Home() {
   }, [timeLeft]);
 
   const timerExpired = timeLeft <= 0;
-  const currentPrice = timerExpired ? "£49.99" : "£19.99";
+  const currentPrice = timerExpired ? "£49.99" : "£9.99";
   const originalPrice = "£49.99";
 
   const timerMins = String(Math.floor(timeLeft / 60)).padStart(2, "0");
@@ -63,7 +63,7 @@ export default function Home() {
       <CheckoutDialog
         open={showCheckout}
         onOpenChange={setShowCheckout}
-        amountInPence={timerExpired ? 4999 : 1999}
+        amountInPence={timerExpired ? 4999 : 999}
         priceDisplay={currentPrice}
       />
 
