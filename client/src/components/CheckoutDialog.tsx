@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { Elements, CardElement, PaymentRequestButtonElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -36,10 +36,103 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [paymentRequest, setPaymentRequest] = useState<any>(null);
+  const [canMakePayment, setCanMakePayment] = useState(false);
   const { toast } = useToast();
   const [, navigate] = useLocation();
   const stripe = useStripe();
   const elements = useElements();
+
+  // Helper to grant access after successful payment
+  const grantAccess = useCallback(async (buyerEmail: string) => {
+    localStorage.setItem("ebookAccess", "true");
+    await fetch("/api/set-access", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: buyerEmail }),
+    });
+    await fetch("/api/payment-confirmation", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: buyerEmail, amountInPence }),
+    }).catch(() => null);
+    setSuccess(true);
+    toast({ title: "Payment successful!", description: "Welcome — your blueprint is ready." });
+  }, [amountInPence, toast]);
+
+  // Set up Apple Pay / Google Pay via Payment Request API
+  useEffect(() => {
+    if (!stripe || !open) return;
+
+    const pr = stripe.paymentRequest({
+      country: "GB",
+      currency: "gbp",
+      total: {
+        label: "The 3-Step AI Income System",
+        amount: amountInPence,
+      },
+      requestPayerEmail: true,
+    });
+
+    pr.canMakePayment().then((result) => {
+      if (result) {
+        setPaymentRequest(pr);
+        setCanMakePayment(true);
+      }
+    });
+
+    pr.on("paymentmethod", async (ev: any) => {
+      try {
+        // Create PaymentIntent on server
+        const piRes = await fetch("/api/payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: ev.payerEmail || "wallet@customer.com", amountInPence }),
+        });
+        const piData = await piRes.json();
+        if (!piRes.ok) {
+          ev.complete("fail");
+          return;
+        }
+
+        // Confirm the payment with the wallet payment method
+        const { error, paymentIntent } = await stripe.confirmCardPayment(
+          piData.clientSecret,
+          { payment_method: ev.paymentMethod.id },
+          { handleActions: false }
+        );
+
+        if (error) {
+          ev.complete("fail");
+          toast({ title: "Payment failed", description: error.message, variant: "destructive" });
+          return;
+        }
+
+        ev.complete("success");
+
+        if (paymentIntent?.status === "requires_action") {
+          const { error: actionError } = await stripe.confirmCardPayment(piData.clientSecret);
+          if (actionError) {
+            toast({ title: "Payment failed", description: actionError.message, variant: "destructive" });
+            return;
+          }
+        }
+
+        // Grant access
+        const buyerEmail = ev.payerEmail || "wallet@customer.com";
+        setEmail(buyerEmail);
+        await grantAccess(buyerEmail);
+      } catch (err: any) {
+        ev.complete("fail");
+        toast({ title: "Payment failed", description: err.message, variant: "destructive" });
+      }
+    });
+
+    return () => {
+      setPaymentRequest(null);
+      setCanMakePayment(false);
+    };
+  }, [stripe, open, amountInPence, grantAccess, toast]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,21 +166,7 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
 
       if (error) throw new Error(error.message);
       if (paymentIntent?.status === "succeeded") {
-        localStorage.setItem("ebookAccess", "true");
-        // Set access for authenticated user
-        await fetch("/api/set-access", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        });
-        // Send branded confirmation email (AutonomousLab by Mathrix)
-        await fetch("/api/payment-confirmation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, amountInPence }),
-        }).catch(() => null);
-        setSuccess(true);
-        toast({ title: "Payment successful!", description: "Welcome — your blueprint is ready." });
+        await grantAccess(email);
       }
     } catch (err: any) {
       toast({ title: "Payment failed", description: err.message, variant: "destructive" });
@@ -132,7 +211,7 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
               <div className="text-center space-y-2">
                 <h3 className="text-2xl font-bold uppercase">Payment Verified</h3>
                 <p className="text-muted-foreground">
-                  Your copy of "£1000/Month with AI" is ready.
+                  Your copy of "The 3-Step AI Income System" is ready.
                 </p>
               </div>
 
@@ -153,6 +232,29 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Apple Pay / Google Pay */}
+              {canMakePayment && paymentRequest && (
+                <div className="space-y-3">
+                  <PaymentRequestButtonElement
+                    options={{
+                      paymentRequest,
+                      style: {
+                        paymentRequestButton: {
+                          type: "buy",
+                          theme: "dark",
+                          height: "48px",
+                        },
+                      },
+                    }}
+                  />
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 h-px bg-black/10" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">or pay with card</span>
+                    <div className="flex-1 h-px bg-black/10" />
+                  </div>
+                </div>
+              )}
+
               {/* Email */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
@@ -196,7 +298,7 @@ function CheckoutDialogInner({ open, onOpenChange, amountInPence, priceDisplay }
               <div className="space-y-4">
                 <div className="bg-muted/50 p-4 rounded-sm border border-black/10 text-sm space-y-2">
                   <div className="flex justify-between font-bold">
-                    <span>£1000/Month with AI (PDF)</span>
+                    <span>The 3-Step AI Income System (PDF)</span>
                     <span>{priceDisplay}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground border-t pt-2 border-dashed border-black/20">

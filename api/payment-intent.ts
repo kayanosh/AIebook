@@ -11,7 +11,7 @@ export default async function handler(req: any, res: any) {
   try {
     // Validate input
     const { amountInPence, email } = req.body;
-    const allowedAmounts = [1999, 4999];
+    const allowedAmounts = [999, 2900];
     if (!allowedAmounts.includes(amountInPence)) {
       return res.status(400).json({ message: 'Invalid amount.' });
     }

@@ -20,8 +20,8 @@ export default function Home() {
   }, [timeLeft]);
 
   const timerExpired = timeLeft <= 0;
-  const currentPrice = timerExpired ? "£49.99" : "£9.99";
-  const originalPrice = "£49.99";
+  const currentPrice = timerExpired ? "£29" : "£9.99";
+  const originalPrice = "£29";
 
   const timerMins = String(Math.floor(timeLeft / 60)).padStart(2, "0");
   const timerSecs = String(timeLeft % 60).padStart(2, "0");
@@ -42,7 +42,7 @@ export default function Home() {
       {/* Sticky Bottom CTA Bar */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-black border-t-4 border-primary px-3 py-3 flex items-center justify-between gap-2 shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
         <div className="flex flex-col leading-tight min-w-0">
-          <span className="text-white font-black text-xs md:text-sm uppercase tracking-widest truncate">Start earning with AI</span>
+          <span className="text-white font-black text-xs md:text-sm uppercase tracking-widest truncate">3 AI services businesses pay £300–£1,000 for</span>
           {!timerExpired && (
             <span className="text-primary text-[10px] md:text-xs font-bold uppercase tracking-widest flex items-center gap-1">
               <Timer className="w-3 h-3 animate-pulse shrink-0" /> {timerMins}:{timerSecs} left at {currentPrice}
@@ -63,7 +63,7 @@ export default function Home() {
       <CheckoutDialog
         open={showCheckout}
         onOpenChange={setShowCheckout}
-        amountInPence={timerExpired ? 4999 : 999}
+        amountInPence={timerExpired ? 2900 : 999}
         priceDisplay={currentPrice}
       />
 
@@ -71,8 +71,8 @@ export default function Home() {
       <div className="bg-black text-white text-center py-2 px-3 text-[10px] sm:text-xs md:text-sm font-bold tracking-wide md:tracking-widest uppercase leading-tight">
         <span className="text-primary mr-2">⚠ WARNING:</span>
         {timerExpired
-          ? "Limited-time offer has expired. Full price is now £49.99."
-          : `Flash sale ends in ${timerMins}:${timerSecs} — grab it for £19.99 before it's gone!`}
+          ? "Limited-time offer has expired. Full price is now £29."
+          : `Flash sale ends in ${timerMins}:${timerSecs} — grab it for £9.99 before it's gone!`}
       </div>
 
       {/* Hero Section */}
@@ -89,7 +89,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="inline-block bg-black text-white px-4 py-2 mb-6 md:mb-8 font-black uppercase tracking-widest text-xs md:text-base transform -rotate-2"
           >
-            The No-BS Blueprint
+            The 3-Step AI Income System
           </motion.div>
           
           <motion.h1 
@@ -98,10 +98,9 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.95] md:leading-[0.9] tracking-tighter mb-6 md:mb-8"
           >
-            Make <span className="text-primary">£1,000/Month</span><br/>
-            With AI —<br/>
-            <span className="underline decoration-4 md:decoration-8 decoration-primary underline-offset-4 md:underline-offset-8">Step-by-Step Beginner</span><br/>
-            <span>Blueprint</span>
+            How People With <span className="text-primary">Zero Tech Skills</span><br/>
+            Are Making <span className="underline decoration-4 md:decoration-8 decoration-primary underline-offset-4 md:underline-offset-8">£1,000/Month</span><br/>
+            <span>Using AI Micro-Services</span>
           </motion.h1>
           
           <motion.p 
@@ -110,7 +109,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-xl md:text-3xl text-muted-foreground font-medium max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-1"
           >
-            For complete beginners who want their first £1,000/month —{" "}<span className="text-black font-bold">no experience, no coding needed.</span>
+            A 30-minute system using ChatGPT, Claude and Midjourney to sell simple AI services{" "}<span className="text-black font-bold">businesses already pay for.</span>
           </motion.p>
 
           {/* Benefit Checklist */}
@@ -121,10 +120,10 @@ export default function Home() {
             className="inline-flex flex-col items-start gap-2 mb-8 md:mb-12 text-sm md:text-base font-bold text-left mx-auto"
           >
             {[
-              "9 AI income streams — one full chapter each",
-              "Day-by-day 90-day roadmap from £0 to £1,000",
-              "Copy-paste scripts to land your first client in 7 days",
-              "Pricing guide: charge £500 for 20 minutes of AI work",
+              "9 AI income models you can start today",
+              "The exact prompts used to create paid deliverables",
+              "How to find your first paying client in 48 hours",
+              "The £100–£500 service packages businesses already buy",
             ].map((b, i) => (
               <li key={i} className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary shrink-0" />
@@ -140,13 +139,17 @@ export default function Home() {
             className="flex flex-col items-center gap-4"
           >
             <Button
-              variant="outline"
+              onClick={openCheckout}
               size="lg"
-              className="border-4 border-black font-black uppercase tracking-widest text-base md:text-lg px-10 py-5 h-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all w-full sm:w-auto"
-              onClick={() => document.getElementById("sneak-peek")?.scrollIntoView({ behavior: "smooth" })}
+              className="btn-brutal font-black uppercase tracking-widest text-base md:text-lg px-10 py-5 h-auto w-full sm:w-auto"
             >
-              Show me what&#39;s inside <ChevronDown className="ml-2 w-5 h-5" />
+              Get the AI Income Blueprint — {currentPrice} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            {!timerExpired && (
+              <div className="flex items-center gap-2 text-primary text-xs font-black uppercase tracking-widest animate-pulse">
+                <Timer className="w-4 h-4" /> {timerMins}:{timerSecs} left at this price
+              </div>
+            )}
             <Button
               asChild
               variant="ghost"
@@ -157,6 +160,74 @@ export default function Home() {
           </motion.div>
         </div>
       </header>
+
+      {/* Proof Section — Real Results */}
+      <section className="py-16 md:py-24 px-4 bg-muted/30 border-y-4 border-black">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10 md:mb-14">
+            <span className="text-primary uppercase font-bold tracking-widest text-xs md:text-sm mb-3 block">Don't Take Our Word For It</span>
+            <h2 className="text-3xl md:text-6xl font-black uppercase">
+              Real Deliverables. <span className="text-primary">Real Money.</span>
+            </h2>
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-4">
+              These are actual outputs created using the system inside the blueprint — sold to real businesses for real money.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                amount: "£350",
+                label: "Logo Project",
+                desc: "Brand identity package created using AI prompts — delivered in under 2 hours. Client was a local restaurant.",
+                placeholder: "Screenshot: AI-generated logo deliverable",
+              },
+              {
+                amount: "£120",
+                label: "Instagram Content Pack",
+                desc: "30 days of Instagram posts, captions and hashtags generated with AI. Sold as a monthly retainer to a beauty salon.",
+                placeholder: "Screenshot: AI content pack example",
+              },
+              {
+                amount: "£900/mo",
+                label: "Retainer Client",
+                desc: "Monthly AI automation setup for a property management company — invoice routing, auto-replies and lead sorting.",
+                placeholder: "Screenshot: Client invoice / Stripe payment",
+              },
+            ].map((proof, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col"
+              >
+                {/* Placeholder image area */}
+                <div className="bg-gray-100 border-b-2 border-black h-48 flex items-center justify-center p-4">
+                  <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 text-center">{proof.placeholder}</span>
+                </div>
+                <div className="p-5 md:p-6 flex flex-col gap-2 flex-1">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl md:text-3xl font-black text-primary">{proof.amount}</span>
+                    <span className="text-xs font-black uppercase tracking-widest bg-black text-white px-2 py-1">{proof.label}</span>
+                  </div>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{proof.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Button
+              onClick={openCheckout}
+              className="btn-brutal h-auto py-3 sm:py-4 px-4 sm:px-10 text-sm sm:text-base md:text-lg font-black uppercase w-full sm:w-auto"
+            >
+              I want results like these — {currentPrice} <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* Sneak Peek — 9 Models */}
       <section id="sneak-peek" className="py-16 md:py-24 px-4 bg-black text-white">
@@ -294,12 +365,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* The 3-Step AI Income System */}
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <span className="text-primary uppercase font-bold tracking-widest text-xs md:text-sm mb-3 block">Simple Process</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase">How You Get To <span className="text-primary">£1,000</span></h2>
+            <span className="text-primary uppercase font-bold tracking-widest text-xs md:text-sm mb-3 block">The Named System</span>
+            <h2 className="text-3xl md:text-6xl font-black uppercase">The 3-Step <span className="text-primary">AI Income System</span></h2>
+            <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mt-4">
+              This is the exact mechanism people are using to go from zero to £1,000/month. No fluff. Three steps.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 md:gap-10 relative">
             {/* connector line desktop */}
@@ -307,21 +381,21 @@ export default function Home() {
             {[
               {
                 step: "01",
-                title: "Pick Your Model",
-                desc: "Choose one of the 9 income streams that matches your interests and current situation. The blueprint tells you exactly which one suits beginners best.",
+                title: "Find Businesses That Need Content",
+                desc: "Use the prospecting scripts inside the blueprint to identify local businesses already spending money on content, social media and automation — but doing it badly.",
                 outcome: "Day 1–3",
               },
               {
                 step: "02",
-                title: "Follow The Playbook",
-                desc: "Every chapter gives you a step-by-step action plan: tools to set up, scripts to send, prices to charge. No guesswork. Just follow the steps.",
-                outcome: "Day 4–14",
+                title: "Generate Deliverables Using AI",
+                desc: "Plug our tested prompts into ChatGPT, Claude or Midjourney. In 30 minutes you'll have client-ready blog posts, ad copy, social content or automation workflows.",
+                outcome: "Day 4–7",
               },
               {
                 step: "03",
-                title: "Land Your First Client",
-                desc: "Use the included outreach scripts to get paid. Most people land their first client within 7–14 days. Then you scale from there.",
-                outcome: "Day 7–30",
+                title: "Sell Bundles for £100–£500",
+                desc: "Package your AI output into service bundles businesses already pay for. Use the included pricing templates and outreach scripts to close your first deal.",
+                outcome: "Day 7–14",
               },
             ].map((s, i) => (
               <motion.div
@@ -408,11 +482,11 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             <div className="lg:w-1/2 lg:sticky lg:top-8">
               <h2 className="text-4xl md:text-7xl font-black uppercase leading-none mb-4 md:mb-6">
-                Everything You Need To <span className="text-primary">Earn Your First £1,000</span>
+                Inside <span className="text-primary">The Blueprint</span>
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-2 font-semibold">For complete beginners. No prior experience required.</p>
+              <p className="text-base md:text-lg text-muted-foreground mb-2 font-semibold">Not motivation. Not theory. Outcomes.</p>
               <p className="text-base md:text-lg text-muted-foreground mb-8">
-                Not theory. Not inspiration. A step-by-step operating manual with 9 income streams, pricing scripts, outreach templates and a 90-day roadmap — everything in one place.
+                Every section is designed to get you from "I have no idea what to sell" to "I just got paid" — as fast as possible.
               </p>
               
               <div className="flex flex-col items-center gap-2 mt-2">
@@ -427,12 +501,12 @@ export default function Home() {
 
             <div className="lg:w-1/2 grid gap-6">
               {[
-                { title: "9 Proven AI Business Models", desc: "I tested 47 models. These are the only 9 that actually work in 2025." },
-                { title: "The 30-90 Day Roadmap", desc: "A day-by-day checklist from £0 to your first £1000." },
-                { title: "Pricing Psychology", desc: "How to charge £500 for a service that takes you 20 minutes." },
-                { title: "Client Acquisition Scripts", desc: "Copy-paste messages to get your first paying client in 7 days." },
-                { title: "The 'No-BS' Tech Stack", desc: "Stop paying for 10 tools. You only need these 3." },
-                { title: "Real Case Studies", desc: "Detailed breakdowns of people who went from £0 to £1000+." },
+                { title: "9 AI Income Models You Can Start Today", desc: "Not theory — these are tested businesses making real money right now. Pick one and go." },
+                { title: "The Exact Prompts Used To Create Paid Deliverables", desc: "Copy-paste into ChatGPT or Claude, get client-ready output in minutes. No prompt engineering needed." },
+                { title: "How To Find Your First Paying Client In 48 Hours", desc: "Word-for-word DM scripts, outreach templates, and the exact platforms where buyers are already looking." },
+                { title: "The £100–£500 Service Packages Businesses Already Buy", desc: "Pre-built offers with pricing, scope and delivery timelines. Just fill in your name and send." },
+                { title: "Pricing Psychology That Stops You Undercharging", desc: "Why you should charge £500 for 20 minutes of AI work — and how to make clients happy to pay it." },
+                { title: "3 Real Case Studies From £0 to £1,000+", desc: "Names, timelines, exact steps they took. See how James, Sarah and Marcus built their income streams." },
               ].map((item, i) => (
                 <div key={i} className="bg-muted/20 p-6 border-2 border-black/5 hover:border-black hover:bg-white transition-colors">
                   <FeatureItem title={item.title} description={item.desc} />
@@ -556,7 +630,7 @@ export default function Home() {
           
           <p className="text-lg md:text-2xl text-muted-foreground mb-8 md:mb-12 font-medium">
             You have two choices. Close this tab and go back to scrolling. Or invest{" "}
-            {timerExpired ? "£49.99" : "£19.99—less than a night out"}—and build a real income stream.
+            {timerExpired ? "£29" : "£9.99—less than a takeaway"}—and build a real income stream.
           </p>
           
           <div className="bg-black text-white p-6 md:p-8 mb-10 md:mb-12 transform -rotate-1 shadow-xl">
@@ -590,6 +664,15 @@ export default function Home() {
             </div>
           )}
 
+          {/* 7-Day Guarantee */}
+          <div className="bg-green-50 border-4 border-green-600 p-6 md:p-8 mb-8 text-center">
+            <div className="text-3xl mb-3">🛡️</div>
+            <h3 className="text-xl md:text-2xl font-black uppercase mb-3">7-Day Money-Back Guarantee</h3>
+            <p className="text-sm md:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+              If you don't learn at least one AI income stream you can try immediately, email me within 7 days and get a <span className="font-bold text-black">full refund. No questions asked.</span>
+            </p>
+          </div>
+
           <Button 
             onClick={openCheckout}
             className="btn-brutal h-auto min-h-14 md:min-h-20 text-sm sm:text-lg md:text-2xl px-5 sm:px-10 md:px-16 py-4 w-full md:w-auto shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px]"
@@ -601,7 +684,7 @@ export default function Home() {
           <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { icon: "🔒", label: "Secure Payment", sub: "Stripe encrypted" },
-              { icon: "↩️", label: "30-Day Guarantee", sub: "Full refund, no questions" },
+              { icon: "↩️", label: "7-Day Guarantee", sub: "Full refund, no questions" },
               { icon: "⚡", label: "Instant Access", sub: "Download immediately" },
               { icon: "♾️", label: "Lifetime Updates", sub: "Free forever" },
             ].map((b, i) => (
@@ -622,7 +705,7 @@ export default function Home() {
             £1000/Mo With AI
           </div>
           <div className="text-xs md:text-sm">
-            © 2025 All Rights Reserved. Not affiliated with Facebook or Google.
+            © 2026 All Rights Reserved. Not affiliated with Facebook or Google.
           </div>
           <div className="flex gap-4 md:gap-6 text-xs md:text-sm font-bold uppercase">
             <a href="/terms" className="hover:text-primary">Terms</a>
