@@ -109,7 +109,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-xl md:text-3xl text-muted-foreground font-medium max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-1"
           >
-            A 30-minute system using ChatGPT, Claude and Midjourney to sell simple AI services{" "}<span className="text-black font-bold">businesses already pay for.</span>
+            A 30-minute system using ChatGPT, Claude, gemini and loveable to sell simple AI services{" "}<span className="text-black font-bold">businesses already pay for.</span>
           </motion.p>
 
           {/* Benefit Checklist */}
@@ -180,19 +180,19 @@ export default function Home() {
                 amount: "£350",
                 label: "Logo Project",
                 desc: "Brand identity package created using AI prompts — delivered in under 2 hours. Client was a local restaurant.",
-                placeholder: "Screenshot: AI-generated logo deliverable",
+                image: "/proof/logo-harvest-tabl.png",
               },
               {
                 amount: "£120",
                 label: "Instagram Content Pack",
                 desc: "30 days of Instagram posts, captions and hashtags generated with AI. Sold as a monthly retainer to a beauty salon.",
-                placeholder: "Screenshot: AI content pack example",
+                image: "/proof/social-calendar.png",
               },
               {
                 amount: "£900/mo",
                 label: "Retainer Client",
                 desc: "Monthly AI automation setup for a property management company — invoice routing, auto-replies and lead sorting.",
-                placeholder: "Screenshot: Client invoice / Stripe payment",
+                image: "/proof/stripe-dashboard.png",
               },
             ].map((proof, i) => (
               <motion.div
@@ -203,9 +203,13 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col"
               >
-                {/* Placeholder image area */}
-                <div className="bg-gray-100 border-b-2 border-black h-48 flex items-center justify-center p-4">
-                  <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 text-center">{proof.placeholder}</span>
+                {/* Proof image */}
+                <div className="bg-gray-100 border-b-2 border-black h-48 overflow-hidden">
+                  <img 
+                    src={proof.image} 
+                    alt={proof.label}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-5 md:p-6 flex flex-col gap-2 flex-1">
                   <div className="flex items-center gap-3">
