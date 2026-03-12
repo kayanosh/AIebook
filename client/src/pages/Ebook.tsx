@@ -41,11 +41,11 @@ function ChapterNav({ onNav }: { onNav: (id: string) => void }) {
 }
 
 function Step({ num, title, desc, variant }: { num: string; title: string; desc: string; variant?: "good" | "bad" }) {
-  const bg = variant === "bad" ? "border-l-4 border-l-red-500" : variant === "good" ? "border-l-4 border-l-green-500" : "border-l-4 border-l-primary";
+  const bg = variant === "bad" ? "border-l-4 border-l-blue-900" : variant === "good" ? "border-l-4 border-l-green-500" : "border-l-4 border-l-primary";
   return (
     <div className={`bg-muted/20 border-2 border-black/5 p-5 flex gap-4 items-start ${bg}`}>
       <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-black ${
-        variant === "bad" ? "bg-red-500 text-white" : variant === "good" ? "bg-green-500 text-white" : "bg-primary text-white"
+        variant === "bad" ? "bg-blue-900 text-white" : variant === "good" ? "bg-green-500 text-white" : "bg-primary text-white"
       }`}>
         {num}
       </div>
@@ -116,8 +116,8 @@ function TipBox({ children }: { children: React.ReactNode }) {
 
 function WarnBox({ children }: { children: React.ReactNode }) {
   return (
-    <div className="border-l-4 border-l-red-500 bg-red-50 p-4 my-4 text-sm flex gap-3">
-      <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+    <div className="border-l-4 border-l-blue-900 bg-blue-50 p-4 my-4 text-sm flex gap-3">
+      <AlertTriangle className="w-5 h-5 text-blue-900 flex-shrink-0 mt-0.5" />
       <div className="leading-relaxed">{children}</div>
     </div>
   );
